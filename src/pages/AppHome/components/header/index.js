@@ -8,7 +8,7 @@ import UserService from '../../../../api/user';
 import { deleteCache } from '../../../../utils/cache'
 
 const { Search } = Input;
-const logo = "/resource/image/logo.png";
+const logo = "/resource/image/logo.jpg";
 const hottel = "/resource/image/hottel.png";
 
 @withRouter

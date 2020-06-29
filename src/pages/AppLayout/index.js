@@ -26,7 +26,6 @@ class LayoutView extends React.Component {
         this.authComouted(nextProps)
     }
     authComouted(props) {
-        debugger
         let { history, MenuStore, match } = props;
         if (this.state.moduelName !== match.params.module) {
             let module = MenuStore.getMenuForName(match.params.module);

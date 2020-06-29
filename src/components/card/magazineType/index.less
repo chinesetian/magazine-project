@@ -1,0 +1,40 @@
+@activeColor: #e91d25;
+
+.magazine-type-warp{
+  padding: 5px 10px;
+  border-bottom: 1px dotted #999;
+  border-left: 1px dotted #fff;
+
+  &:hover{
+    background: #fff;
+    border-left: 1px solid @activeColor;
+  }
+
+
+  .title{
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+    line-height: 40px;
+    height: 40px;
+  }
+  .content{
+    height: 100px;
+
+    .item{
+      color: #333;
+      line-height: 26px;
+      height: 26px;
+      margin-right: 10px;
+      float: left;
+      max-width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:hover{
+        color: @activeColor;
+        text-decoration: underline;
+      }
+    }
+  }
+}

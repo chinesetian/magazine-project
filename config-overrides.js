@@ -1,6 +1,20 @@
 const { fixBabelImports, addDecoratorsLegacy, override, addBabelPlugins, 
   addLessLoader, addWebpackAlias, useEslintRc } = require("customize-cra");
 
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const myPlugin = [
+  new UglifyJsPlugin(
+    {
+      uglifyOptions: {
+        warnings: false,
+        compress: {
+          drop_debugger: true,
+          drop_console: true
+        }
+      }
+    }
+  )
+]
 if (process.env.NODE_ENV === "development") {
   process.env.PORT = 3000;
 }
@@ -33,4 +47,10 @@ module.exports = override(
       '@box-shadow-base': '0 2px 8px rgba(0, 0, 0, 0.15)', // 浮层阴影
      },
   }),
+  (config)=>{ //暴露webpack的配置 config ,evn
+    // 去掉打包生产map 文件
+    config.devtool = process.env.NODE_ENV !== 'development' ? 'nosources-source-map' : 'source-map';
+    config.plugins = process.env.NODE_ENV !=="development" ? [...config.plugins,...myPlugin] : [...config.plugins,]
+    return config
+  }
 );

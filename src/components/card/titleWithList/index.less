@@ -1,0 +1,33 @@
+@activeColor: #e91d25;
+
+.title-with-list{
+  padding: 10px 10px 40px 10px;
+  border: 1px solid #eaeaea;
+  margin-top: 20px;
+
+  .title{
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+    line-height: 30px;
+    height: 30px;
+  }
+  .content{
+
+    .item{
+      color: #333;
+      line-height: 26px;
+      height: 26px;
+      max-width: 100%;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:hover{
+        color: @activeColor;
+        text-decoration: underline;
+      }
+    }
+  }
+}

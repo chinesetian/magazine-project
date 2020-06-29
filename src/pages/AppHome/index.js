@@ -44,7 +44,6 @@ class HomeComponent extends React.Component {
         }
 
         let { UserStore, history } = this.props;
-        debugger
         let { pathname } = history.location;
         if(pathname == '/home'){
             history.replace('/home/view');
@@ -78,7 +77,6 @@ class HomeComponent extends React.Component {
     render(){
 
         let { isFooter, activeTab, userInfo, scanInfo } = this.state;
-        debugger
         return (
             <div className="home-layout">
                 <Header  userInfo={userInfo} />

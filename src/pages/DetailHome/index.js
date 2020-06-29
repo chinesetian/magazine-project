@@ -27,7 +27,6 @@ class DetailHomeComponent extends React.Component {
         }
 
         let { UserStore, history } = this.props;
-        debugger
         let { pathname } = history.location;   
     }
 
@@ -47,7 +46,6 @@ class DetailHomeComponent extends React.Component {
     render(){
 
         let { isFooter, activeTab, userInfo, scanInfo } = this.state;
-        debugger
         return (
             <div className="home-layout">
                 <div className="w1200" style={{height: 220}}>图片</div>
