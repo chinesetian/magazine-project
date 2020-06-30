@@ -1732,7 +1732,7 @@ babel-code-frame@^6.22.0:
 
 babel-eslint@10.0.1, babel-eslint@^10.0.1:
   version "10.0.1"
-  resolved "http://r.cnpmjs.org/babel-eslint/download/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
+  resolved "https://r.cnpmjs.org/babel-eslint/download/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.0.0"
@@ -2427,7 +2427,7 @@ commander@~2.19.0:
 
 comment-parser@^0.5.4:
   version "0.5.4"
-  resolved "http://r.cnpmjs.org/comment-parser/download/comment-parser-0.5.4.tgz#089840b9cccacad2b769b231ed43081d501b9487"
+  resolved "https://r.cnpmjs.org/comment-parser/download/comment-parser-0.5.4.tgz#089840b9cccacad2b769b231ed43081d501b9487"
 
 common-tags@^1.8.0:
   version "1.8.0"
@@ -3221,14 +3221,14 @@ ecc-jsbn@~0.1.1:
 
 echarts-for-react@^2.0.15-beta.0:
   version "2.0.15-beta.0"
-  resolved "http://r.cnpmjs.org/echarts-for-react/download/echarts-for-react-2.0.15-beta.0.tgz#dbf30b66bfcc8b1cb9f889eb3ec59a8b1363c3d6"
+  resolved "https://r.cnpmjs.org/echarts-for-react/download/echarts-for-react-2.0.15-beta.0.tgz#dbf30b66bfcc8b1cb9f889eb3ec59a8b1363c3d6"
   dependencies:
     fast-deep-equal "^2.0.1"
     size-sensor "^0.2.0"
 
 echarts@^4.2.1:
   version "4.2.1"
-  resolved "http://r.cnpmjs.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  resolved "https://r.cnpmjs.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
   dependencies:
     zrender "4.0.7"
 
@@ -3407,7 +3407,7 @@ eslint-plugin-import@2.16.0:
 
 eslint-plugin-jsdoc@^8.1.0:
   version "8.1.0"
-  resolved "http://r.cnpmjs.org/eslint-plugin-jsdoc/download/eslint-plugin-jsdoc-8.1.0.tgz#c0d5911b7b86d4185e4a9577446a3959376f48e9"
+  resolved "https://r.cnpmjs.org/eslint-plugin-jsdoc/download/eslint-plugin-jsdoc-8.1.0.tgz#c0d5911b7b86d4185e4a9577446a3959376f48e9"
   dependencies:
     comment-parser "^0.5.4"
     jsdoctypeparser "4.0.0"
@@ -3466,7 +3466,7 @@ eslint-visitor-keys@^1.0.0:
 
 eslint@^5.16.0:
   version "5.16.0"
-  resolved "http://r.cnpmjs.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
+  resolved "https://r.cnpmjs.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -5332,7 +5332,7 @@ jsbn@~0.1.0:
 
 jsdoctypeparser@4.0.0:
   version "4.0.0"
-  resolved "http://r.cnpmjs.org/jsdoctypeparser/download/jsdoctypeparser-4.0.0.tgz#f25e212ff8b0e3e9ed76627554392787cd524128"
+  resolved "https://r.cnpmjs.org/jsdoctypeparser/download/jsdoctypeparser-4.0.0.tgz#f25e212ff8b0e3e9ed76627554392787cd524128"
 
 jsdom@^11.5.1:
   version "11.12.0"
@@ -5660,9 +5660,10 @@ lodash._getnative@^3.0.0:
   version "3.9.1"
   resolved "https://registry.npm.taobao.org/lodash._getnative/download/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
 
-lodash._reinterpolate@~3.0.0:
+lodash._reinterpolate@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.npm.taobao.org/lodash._reinterpolate/download/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
+  resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
+  integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
 lodash.debounce@^4.0.0, lodash.debounce@^4.0.8:
   version "4.0.8"
@@ -5701,17 +5702,19 @@ lodash.tail@^4.1.1:
   resolved "https://registry.npm.taobao.org/lodash.tail/download/lodash.tail-4.1.1.tgz#d2333a36d9e7717c8ad2f7cacafec7c32b444664"
 
 lodash.template@^4.2.4, lodash.template@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.npm.taobao.org/lodash.template/download/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.5.0.tgz#f976195cf3f347d0d5f52483569fe8031ccce8ab"
+  integrity sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==
   dependencies:
-    lodash._reinterpolate "~3.0.0"
+    lodash._reinterpolate "^3.0.0"
     lodash.templatesettings "^4.0.0"
 
 lodash.templatesettings@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.npm.taobao.org/lodash.templatesettings/download/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.2.0.tgz#e481310f049d3cf6d47e912ad09313b154f0fb33"
+  integrity sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
   dependencies:
-    lodash._reinterpolate "~3.0.0"
+    lodash._reinterpolate "^3.0.0"
 
 lodash.throttle@^4.0.0:
   version "4.1.1"
@@ -8762,7 +8765,7 @@ sisteransi@^1.0.0:
 
 size-sensor@^0.2.0:
   version "0.2.4"
-  resolved "http://r.cnpmjs.org/size-sensor/download/size-sensor-0.2.4.tgz#93f7b3a8a8582967a1ae782c5ae39ae1dbb7368d"
+  resolved "https://r.cnpmjs.org/size-sensor/download/size-sensor-0.2.4.tgz#93f7b3a8a8582967a1ae782c5ae39ae1dbb7368d"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -10140,4 +10143,4 @@ yargs@^12.0.2:
 
 zrender@4.0.7:
   version "4.0.7"
-  resolved "http://r.cnpmjs.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  resolved "https://r.cnpmjs.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
