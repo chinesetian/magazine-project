@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "mobx-react";
-import { LocaleProvider } from "antd";
+import { ConfigProvider } from "antd";
 import zh_CN from "antd/lib/locale-provider/zh_CN";
 import Store from './store'
 
@@ -12,12 +12,12 @@ import TestPage from "./pages/test";
 import DetailHomeComponent from "./pages/DetailHome";
 
 
-import "./App.css";
+import "./App.less";
 
 class App extends Component {
   render() {
     return (
-      <LocaleProvider locale={zh_CN}>
+      <ConfigProvider locale={zh_CN}>
         <Provider {...Store}>
           <BrowserRouter>
             <Switch>
@@ -29,7 +29,7 @@ class App extends Component {
             </Switch>
           </BrowserRouter>
         </Provider>
-      </LocaleProvider>
+      </ConfigProvider>
     );
   }
 }

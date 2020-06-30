@@ -11,7 +11,7 @@ class MenuList extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            currentMenu: 'home'
+            currentMenu: 'view'
         }
     }
 

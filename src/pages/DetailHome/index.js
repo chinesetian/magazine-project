@@ -47,7 +47,7 @@ class DetailHomeComponent extends React.Component {
 
         let { isFooter, activeTab, userInfo, scanInfo } = this.state;
         return (
-            <div className="home-layout">
+            <div className="detail-home-layout">
                 <div className="w1200" style={{height: 220}}>图片</div>
                 <MenuList menuList={menuList2} {...this.props}/>
                 <div className="home-layout-content w1200">

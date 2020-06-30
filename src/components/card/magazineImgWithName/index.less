@@ -1,0 +1,54 @@
+
+@activeColor: #e91d25;
+
+.magazine-img-with-name{
+  width: 160px;
+  height: 250px;
+  padding: 10px 10px 0 10px;
+  float: left;
+  overflow: hidden;
+  border: 2px solid transparent;
+  margin-right: 15px;
+
+  &:hover{
+    border: 2px solid #c30;
+  }
+
+  .top{
+    width: 120px;
+    height: 160px;
+    cursor: pointer;
+    margin-left: 10px;
+
+    img{
+      width: 120px;
+      height: 160px;
+    }
+  }
+
+  .name{
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    text-align: center;
+    margin: 10px 0 5px 0;
+
+    &:hover{
+      color: @activeColor;
+      text-decoration: @activeColor;
+    }
+  }
+
+  .origin{
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    text-align: center;
+  }
+
+}

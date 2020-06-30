@@ -2,7 +2,7 @@ import { observable, action, computed, autorun, toJS, configure } from 'mobx'
 import RouterList from '../router'
 import * as _ from 'lodash'
 // import { computTreeList, setCacheItem, getCacheItem } from '../../Utils/Tools'
-configure({ enforceActions: true })
+configure({ enforceActions: 'observed' })
 
 class MenuStore {
     constructor() {

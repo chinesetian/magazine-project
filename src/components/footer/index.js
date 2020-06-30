@@ -8,7 +8,7 @@ export class Footer extends React.Component{
 
         return(
             <div className="home-layout-footer">
-                Copyright ©2019深圳羚羊极速科技有限公司
+                Copyright ©2019期刊订阅发行部
             </div>
         )
     }

@@ -1,12 +1,12 @@
 {
-  "name": "doudou_home",
+  "name": "magazine",
   "version": "0.1.0",
   "private": true,
   "main": "src/index.js",
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@huangjingjing/axios-fetch": "^1.0.4",
-    "antd": "^3.13.6",
+    "antd": "^3.25.3",
     "babel-eslint": "^10.0.1",
     "echarts": "^4.2.1",
     "echarts-for-react": "^2.0.15-beta.0",
@@ -21,7 +21,8 @@
     "papaparse": "^5.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "uglifyjs-webpack-plugin": "^2.2.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -42,7 +43,7 @@
     "customize-cra": "^0.2.12",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "react-app-rewired": "^2.1.0",
+    "react-app-rewired": "^2.1.6",
     "react-hot-loader": "^4.8.4",
     "react-scripts": "^3.0.0"
   }
