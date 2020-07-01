@@ -1,5 +1,5 @@
 const config = {
-    api:'/nessus/',
+    api:'/magazine/',
     downLoad: '/csvdownload/',
     version:'v1',
 };

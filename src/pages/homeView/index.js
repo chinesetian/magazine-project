@@ -5,6 +5,8 @@ import Card from '../../components/card'
 
 import './index.less';
 
+const { Dict, Service, Store } = window
+
 const MagazineType = Card.MagazineType
 const Title = Card.Title
 const MagazineIntroduction = Card.MagazineIntroduction
@@ -118,12 +120,8 @@ class HomeView extends React.Component {
     };
   }
 
-  componentDidMount() {
-
-  }
-
   clickMagazineType = (item) => {
-    let page = this.props.MenuStore.getMenuForName('main');
+    let page = Store.MenuStore.getMenuForName('main');
       if (page) {
           this.props.history.push(page.url);
       } else {
@@ -154,7 +152,7 @@ class HomeView extends React.Component {
   render() {
     let { activeTab } = this.props;
     return (
-      <div className="home-wrap">
+      <div className="home-wrap w1200">
         <div className='home-view1'>
           <div className='home-view-left'>
             {data.map(v => {return (

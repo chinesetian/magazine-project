@@ -1,0 +1,48 @@
+@activeColor: #e91d25;
+
+.title-with-img-list{
+  padding: 10px 10px 40px 10px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 20px;
+
+  .title{
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+    line-height: 30px;
+    height: 30px;
+  }
+  .content{
+
+    .item{
+      color: #333;
+      max-width: 100%;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+      padding: 10px 0;
+      border: 1px solid transparent;
+
+      &:hover{
+        color: @activeColor;
+
+      }
+
+      img{
+        width: 120px;
+        height: 160px;
+      }
+
+      .name{
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}

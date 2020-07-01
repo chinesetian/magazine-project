@@ -81,7 +81,7 @@ class HomeComponent extends React.Component {
             <div className="home-layout">
                 <Header  userInfo={userInfo} />
                 <MenuList menuList={menuList1} {...this.props}/>
-                <div className="home-layout-content w1200">
+                <div className="home-layout-content">
                     <Switch>
                         <Route
                             exact

@@ -847,13 +847,6 @@
   version "9.0.1"
   resolved "https://registry.npm.taobao.org/@csstools/normalize.css/download/@csstools/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
 
-"@huangjingjing/axios-fetch@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/@huangjingjing/axios-fetch/download/@huangjingjing/axios-fetch-1.0.4.tgz#87b2cb1f4b60092cbf779b52fcf826d948e6f39a"
-  dependencies:
-    follow-redirects "^1.4.1"
-    is-buffer "^2.0.2"
-
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.npm.taobao.org/@jest/console/download/@jest/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
@@ -3746,6 +3739,14 @@ fbjs@^0.8.15, fbjs@^0.8.16, fbjs@^0.8.9:
     promise "^7.1.1"
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.18"
+
+fetch-like-axios@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npm.taobao.org/fetch-like-axios/download/fetch-like-axios-0.0.3.tgz#27cc9ac5722c9cf42e91e680b16c7770e3da3844"
+  integrity sha1-J8yaxXIsnPQukeaAsWx3cOPaOEQ=
+  dependencies:
+    follow-redirects "^1.4.1"
+    is-buffer "^2.0.2"
 
 figgy-pudding@^3.5.1:
   version "3.5.1"

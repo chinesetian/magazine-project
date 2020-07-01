@@ -4,6 +4,8 @@ import { Provider } from "mobx-react";
 import { ConfigProvider } from "antd";
 import zh_CN from "antd/lib/locale-provider/zh_CN";
 import Store from './store'
+import Service from './api';
+import Dict from './dict'
 
 
 // import Login from "./pages/login";
@@ -14,7 +16,23 @@ import DetailHomeComponent from "./pages/DetailHome";
 
 import "./App.less";
 
+window.Service = Service;
+window.Dict = Dict;
+
 class App extends Component {
+
+  async componentDidMount() {
+    const [dictType, dictData, ] = await this.fetchInit({});
+    Dict.append(dictData.data, dictType.data)
+  }
+
+  fetchInit(){
+    return Promise.all([
+      Service.base.dictType(),
+      Service.base.dictData(), 
+    ]);
+  }
+
   render() {
     return (
       <ConfigProvider locale={zh_CN}>

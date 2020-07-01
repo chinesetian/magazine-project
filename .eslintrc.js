@@ -26,6 +26,7 @@ module.exports = {
         // 0: 'off'
         // 1: 'warn'
         // 2: 'error
+        "no-loop-func": 0,
         // Common js rules
         "no-useless-escape": 0,
         // 强制使用骆驼拼写法命名约定

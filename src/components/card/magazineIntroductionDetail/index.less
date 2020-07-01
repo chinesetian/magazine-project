@@ -1,0 +1,70 @@
+
+@activeColor: #e91d25;
+
+.magazine-introduction-detail{
+  height: 175px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ececec;
+  padding: 0px 10px 0 10px;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+
+  .left{
+    width: 130px;
+    height: 100%;
+    cursor: pointer;
+
+    img{
+      width: 120px;
+      height: 150px;
+    }
+  }
+  .right{
+    flex: 1;
+    height: 100%;
+
+    .title {
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #996600;
+  }
+
+    .info{
+      width: 220px;
+      height: 24px;
+
+      &:hover{
+        color: @activeColor;
+      }
+    }
+
+    .description{
+      height: 80px;
+      line-height: 20px;
+      text-indent: 2em;
+      font-size: 12px;
+      color: #666;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+    }
+
+    .click-book{
+      margin-top: 15px;
+      background-color: #fff;
+      border: 1px solid @activeColor;
+      text-decoration: none;
+      color: @activeColor;
+      cursor: pointer;
+
+      &:hover{
+        color: #fff;
+        background: @activeColor;
+      }
+    }
+
+  }
+}

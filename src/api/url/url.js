@@ -17,3 +17,11 @@ export const scan = {
     edit: `${api}editor/scan/`, // 编辑信息
     csvdownload: `${downLoad}tokens/`, // 下载csv
 }
+
+/**
+ * 基础接口(字典、)
+ */
+export const base = {
+    dictType: `${api}js/qikan/dictType/listData`, // 数据字典类型
+    dictData: `${api}js/qikan/dictData/listData`, // 数据字典内容
+}

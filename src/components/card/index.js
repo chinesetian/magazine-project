@@ -4,7 +4,8 @@ import MagazineIntroduction from './magazineIntroduction';
 import TitleWithList from './titleWithList'
 import MagazineImgWithName from './magazineImgWithName';
 import SortWithList from './sortWithList';
-
+import MagazineIntroductionDetail from './magazineIntroductionDetail';
+import TitleWithImgList from './titleWithImgList';
 
 const Card =  {
   MagazineType,
@@ -13,6 +14,8 @@ const Card =  {
   TitleWithList,
   MagazineImgWithName,
   SortWithList,
+  MagazineIntroductionDetail,
+  TitleWithImgList
 }
 
 export default Card
