@@ -24,4 +24,5 @@ export const scan = {
 export const base = {
     dictType: `${api}js/qikan/dictType/listData`, // 数据字典类型
     dictData: `${api}js/qikan/dictData/listData`, // 数据字典内容
+    getLinkData: `${api}js/qikan/link/listData`, // 外部链接
 }

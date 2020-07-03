@@ -22,6 +22,18 @@ class BaseService{
     });
   }
 
+  /**
+   * 外部链接
+   * @param {*} data 
+   */
+  getLinkData(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.getLinkData}`,
+      data:data
+    });
+  }
+
 }
 
 export default new BaseService()
