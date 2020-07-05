@@ -11,7 +11,7 @@ export class Footer extends React.Component{
         }
     }
 
-    componentWillUpdate(){
+    componentDidMount(){
         Service.base.getLinkData().then(res => {
             if(res.code == 0){
                 this.setState({linkData: res.data});
@@ -29,7 +29,7 @@ export class Footer extends React.Component{
             <div className="home-layout-footer">
                 <div className="link-data">
                     {linkData.map((v,i) => {
-                        return(<span className="link-item"><a href={v.url}>{v.name}</a></span>)
+                        return(<span key={i} className="link-item"><a href={`https://${v.url}`} target={'_blank'} rel="noopener noreferrer">{v.name}</a></span>)
                     })}
                 </div>
                 <div className="copy-right"> Copyright ©2019期刊订阅发行部</div>

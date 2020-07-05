@@ -6,20 +6,53 @@ import './index.less'
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
+const { Service } = window
+
 @inject('MenuStore')
 class MenuList extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            currentMenu: 'view'
+            currentMenu: 'view',
+            process: '',
+            about: '',
         }
+    }
+
+    componentDidMount(){
+        let p = '';
+        let a = '';
+        Service.base.articleOther({}).then(res => {
+            if(res.code == 0){
+                let result = res.data;
+                p = result.find(v => v.periodicalArticleTypeOther == 'periodical_article_type_other_process').content;
+                a = result.find(v => v.periodicalArticleTypeOther == 'periodical_article_type_other_about').content;
+                this.setState({process: p, about: a });
+            } else {
+                this.setState({process: p, about: a });
+            }
+        }).catch(e => {
+            this.setState({process: p, about: a });
+        })
     }
 
     menuClick = ({item, key, domEvent }) => {
         console.log(key)
         let page = this.props.MenuStore.getMenuForName(key);
+        let { history } = this.props;
+        let { location } = history;
+        let other = {}
         if (page) {
-            this.props.history.push(page.url);
+            location.pathname = page.url
+            if(key == 'process' || key == 'about'){
+                other = {
+                    dataHtml: this.state[key] || ''
+                }
+            }
+            location.state = {
+                ...other
+            }
+            history.push(location);
         } else {
             this.props.history.push('/home/404');
         }

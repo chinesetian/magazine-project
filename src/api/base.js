@@ -34,6 +34,31 @@ class BaseService{
     });
   }
 
+  
+   /**
+   * 期刊范文列表
+   * @param {*} data 
+   */
+  articleThesis(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.articleThesis}`,
+      data:data
+    });
+  }
+     /**
+   * 流程须知、关于我们
+   * @param {*} data 
+   */
+  articleOther(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.articleOther}`,
+      data:data
+    });
+  }
+
+  
 }
 
 export default new BaseService()

@@ -122,10 +122,14 @@ class HomeView extends React.Component {
 
   clickMagazineType = (item) => {
     let page = Store.MenuStore.getMenuForName('main');
+    let { history } = this.props
+    let { location } = history
       if (page) {
-          this.props.history.push(page.url);
+        location.pathname = page.url
+        location.state = {a: 1}
+        history.push(location);
       } else {
-          this.props.history.push('/home/404');
+          history.push('/home/404');
       }
   }
 

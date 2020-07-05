@@ -25,4 +25,7 @@ export const base = {
     dictType: `${api}js/qikan/dictType/listData`, // 数据字典类型
     dictData: `${api}js/qikan/dictData/listData`, // 数据字典内容
     getLinkData: `${api}js/qikan/link/listData`, // 外部链接
+    articleThesis: `${api}js/qikan/articleThesis/listData`, // 期刊范文列表
+    articleOther: `${api}js/qikan/articleOther/listData`, // 流程须知、关于我们
+
 }
