@@ -20,10 +20,18 @@ window.Service = Service;
 window.Dict = Dict;
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      flag: false,
+    }
+  }
 
-  async componentDidMount() {
+  async UNSAFE_componentWillMount() {
+    this.setState({flag: false})
     const [dictType, dictData, ] = await this.fetchInit({});
     Dict.append(dictData.data, dictType.data)
+    this.setState({flag: true})
   }
 
   fetchInit(){
@@ -34,6 +42,10 @@ class App extends Component {
   }
 
   render() {
+    let { flag } = this.state;
+    if(!flag){
+      return null
+    }
     return (
       <ConfigProvider locale={zh_CN}>
         <Provider {...Store}>

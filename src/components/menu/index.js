@@ -49,6 +49,11 @@ class MenuList extends React.Component {
                     dataHtml: this.state[key] || ''
                 }
             }
+            if(key == 'issue' || key == 'news'){
+                other = {
+                    type: key
+                }
+            }
             location.state = {
                 ...other
             }

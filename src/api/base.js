@@ -57,7 +57,41 @@ class BaseService{
       data:data
     });
   }
+   /**
+   * 期刊查询
+   * @param {*} data 
+   */
+  qikan(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.qikan}`,
+      data:data
+    });
+  }
 
+   /**
+   * 问题和咨询
+   * @param {*} data 
+   */
+  articleInfo(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.articleInfo}`,
+      data:data
+    });
+  }
+
+    /**
+   * 顶部、底部图片
+   * @param {*} data 
+   */
+  image(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.image}`,
+      data:data
+    });
+  }
   
 }
 

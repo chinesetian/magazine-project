@@ -6,7 +6,7 @@ import fetchAxios from 'fetch-like-axios'
 const CancelToken = fetchAxios.CancelToken
 const config = {
   baseURL: '/',
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
   xhrMode: 'fetch',
   headers: {
     Accept: 'application/json; charset=utf-8',

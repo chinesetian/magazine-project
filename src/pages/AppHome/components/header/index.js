@@ -11,6 +11,8 @@ const { Search } = Input;
 const logo = "/resource/image/logo.jpg";
 const hottel = "/resource/image/hottel.png";
 
+const { Service, Dict } = window
+
 @withRouter
 @inject('UserStore')
 class Header extends React.Component{
@@ -18,7 +20,15 @@ class Header extends React.Component{
         super(props)
         this.state = {
             visible: false,
+            tel: '',
         }
+        debugger
+    }
+
+    componentDidMount(){
+        let target =  Dict.getDict("periodical_other_info") || []
+        let tel = target.filter(v => v.value == "periodical_other_info_tel") || {}
+        this.setState({ tel })
     }
 
     logout = (e) => {
@@ -51,6 +61,7 @@ class Header extends React.Component{
 
     render(){
         let { userInfo } = this.props;
+        let { tel } = this.state
         return(
             <div className="home-layout-header w1200">
                 <div className="home-header-message">
@@ -68,7 +79,7 @@ class Header extends React.Component{
                         />
                     </div>
                     <div className="phone">
-                        <img src={hottel}/>
+                        {tel.label || ''}
                     </div>
                 </div>
             </div>

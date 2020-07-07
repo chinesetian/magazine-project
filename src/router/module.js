@@ -25,6 +25,18 @@ export default [
         ),
     },
     {
+        id: 21,
+        title: '杂志详情',
+        name: 'magazineDetail',
+        isLocal: true,
+        url: '/home/magazineDetail',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/magazineDetail'),
+            'MagazineDetail'
+        ),
+    },
+    {
         id: 4,
         title: '期刊范文',
         name: 'essay',
@@ -38,7 +50,7 @@ export default [
     },
     {
         id: 41,
-        title: '期刊范文详情',
+        title: '范文详情',
         name: 'essayDetail',
         isLocal: true,
         url: '/home/essayDetail',
@@ -49,17 +61,53 @@ export default [
         ),
     },
     {
-      id: 41,
-      title: '流程须知',
-      name: 'process',
-      isLocal: true,
-      url: '/home/process',
-      parentId: 0,
-      component: asyncComponent(
-        () => import('../pages/essayDetail'),
-        'EssayDetail'
-    ),
-  },
+        id: 41,
+        title: '流程须知',
+        name: 'process',
+        isLocal: true,
+        url: '/home/process',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/essayDetail'),
+            'EssayDetail'
+        ),
+    },
+    {
+        id: 5,
+        title: '关于我们',
+        name: 'about',
+        isLocal: true,
+        url: '/home/about',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/essayDetail'),
+            'EssayDetail'
+        ),
+    },
+    {
+        id: 5,
+        title: '常见问题',
+        name: 'issue',
+        isLocal: true,
+        url: '/home/issue',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/questionAndIssue'),
+            'QuestionAndIssue'
+        ),
+    },
+    {
+        id: 5,
+        title: '新闻咨询',
+        name: 'news',
+        isLocal: true,
+        url: '/home/news',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/questionAndIssue'),
+            'QuestionAndIssue'
+        ),
+    },
     {
         id: 20,
         title: '首页',

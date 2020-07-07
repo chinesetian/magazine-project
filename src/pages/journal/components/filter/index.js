@@ -51,8 +51,8 @@ class Filter extends React.Component{
 
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
-            labelCol: { span: 2 },
-            wrapperCol: { span: 22 },
+            labelCol: { span: 4 },
+            wrapperCol: { span: 20 },
             colon: false
         };
         let { data, searchData, onChange} = this.props;
@@ -75,7 +75,7 @@ class Filter extends React.Component{
                                 )}
             
                             </Form.Item>
-                            {item.children.length > 11 && <div className="right-slidr"onClick={(e) => this.isShowItem(i)}><span>展开<Icon type="down" /></span></div>}
+                            {/* {item.children.length > 11 && <div className="right-slidr"onClick={(e) => this.isShowItem(i)}><span>展开<Icon type="down" /></span></div>} */}
                           </div>
                           )
                         })}

@@ -10,10 +10,10 @@ export default class MagazineImgWithName extends React.Component{
         return(
             <div className="magazine-img-with-name" onClick={(e) => clickBook(data)} title={data.name}>
                 <div className='top' >
-                    <img  src={data.url}/>
+                    <img src={`/magazine${data.url}`} />
                 </div>
                 <div className="name" onClick={(e) => clickBook(data)}>{data.name}</div>
-                <div className="origin">{data.name}</div>
+                <div className="origin">{data.periodicalLevel}</div>
             </div>
         )
     }

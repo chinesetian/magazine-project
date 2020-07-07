@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import './index.less';
-function LabelValue({ label, value, emptyValue, labelColor, valueColor, className, fontSize, noWrap = true, valueFontWeight, valueFontSize,noColon }) {
+function LabelValue({ label, value, emptyValue, labelColor, valueColor, className, fontSize, noWrap=true , valueFontWeight, valueFontSize,noColon }) {
   const defaultValueColor = useMemo(() => (!!value ? valueColor : '#333'), [value, valueColor]);
   return (
     <div className={`label-value-layout ${className}`} style={{ fontSize }}>

@@ -22,10 +22,13 @@ export const scan = {
  * 基础接口(字典、)
  */
 export const base = {
-    dictType: `${api}js/qikan/dictType/listData`, // 数据字典类型
-    dictData: `${api}js/qikan/dictData/listData`, // 数据字典内容
-    getLinkData: `${api}js/qikan/link/listData`, // 外部链接
-    articleThesis: `${api}js/qikan/articleThesis/listData`, // 期刊范文列表
-    articleOther: `${api}js/qikan/articleOther/listData`, // 流程须知、关于我们
+    dictType: `${api}qikan/dictType/listData`, // 数据字典类型
+    dictData: `${api}qikan/dictData/listData`, // 数据字典内容
+    getLinkData: `${api}qikan/link/listData`, // 外部链接
+    articleThesis: `${api}qikan/articleThesis/listData`, // 期刊范文列表
+    articleOther: `${api}qikan/articleOther/listData`, // 流程须知、关于我们
+    qikan: `${api}qikan/qikan/listData`, // 期刊查询
+    articleInfo: `${api}qikan/articleInfo/listData`, // 问题和咨询
+    image: `${api}qikan/image/listData`, // 顶部、底部图片
 
 }

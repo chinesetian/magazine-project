@@ -1,7 +1,9 @@
 import React from "react";
 import { observer, inject } from 'mobx-react'
 import { Carousel, Tabs, message } from 'antd';
+import * as _ from 'lodash';
 import Card from '../../components/card'
+import IssueAndEssay from './components/issueAndEssay';
 
 import './index.less';
 
@@ -10,7 +12,7 @@ const { Dict, Service, Store } = window
 const MagazineType = Card.MagazineType
 const Title = Card.Title
 const MagazineIntroduction = Card.MagazineIntroduction
-const TitleWithList = Card.TitleWithList
+
 const MagazineImgWithName = Card.MagazineImgWithName;
 const SortWithList = Card.SortWithList
 
@@ -20,26 +22,12 @@ const bookUrl = "/resource/image/book.jpg"
 
 const data = [{
   title: '自然科学与工程技术',
-  list: [
-    {title: '基础科学',name: 1, url: 1},
-    {title: '农业科技',name: 1, url: 1},
-    {title: '信息科技',name: 1, url: 1},
-    {title: '工程科技I',name: 1, url: 1},
-    {title: '工程科技II',name: 1, url: 1},
-    {title: '医药卫生科技',name: 1, url: 1},
-  ]
-},
-{
-  title: '人文社会科学',
-  list: [
-    {title: '哲学与人文科学',name: 1, url: 1},
-    {title: '社会科学I',name: 1, url: 1},
-    {title: '社会科学II',name: 1, url: 1},
-    {title: '世界文学',name: 1, url: 1},
-    {title: '中国文学',name: 1, url: 1},
-    {title: '心里学',name: 1, url: 1},
-  ]
-},
+  list: _.cloneDeep(Dict.getDict("periodical_major_natural_science")),
+  },
+  {
+    title: '人文社会科学',
+    list: _.cloneDeep(Dict.getDict("periodical_major_social_science")),
+  },
 ]
 
 const imgData = [
@@ -111,50 +99,151 @@ const tabData = [
   },
 ]
 
+let tab1 = [];
+let tab2 = [];
+
 @inject('UserStore')
 class HomeView extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      activeTab: '1'
+      activeTab1: '', // tab1
+      activeTab2: '', // tab2
+      bookList1: [], // tab1的数据
+      bookList2: [], // tab2的数据
+      scrollImg: [], // 滚动图
+      listImg: [], // 静态宣传图
+      naturalList: [], //自然科学排行榜
+      socialList: [], // 人文科学排行榜
+      heavyList: [], //重磅杂志
+
     };
+    this.tab1 = [];
+    this.tab2 = [];
+  }
+
+  componentDidMount(){
+    this.getTabList();
+    this.getImg();
+  }
+  componentWillUnmount(){
+    this.tab1 = null;
+    this.tab2 = null;
+  }
+
+  getTabList(){
+    this.tab1 = _.cloneDeep(Dict.getDict("periodical_major_natural_science") || []);
+    this.tab2 = _.cloneDeep(Dict.getDict("periodical_major_social_science") || []);
+    let activeTab1 = this.tab1[0].dictValue;
+    let activeTab2 = this.tab2[0].dictValue;
+    this.setState({
+      activeTab1,
+      activeTab2,
+    })
+    // 第一个tab
+    this.queryData(activeTab1, 'bookList1', 'periodical_major_natural_science');
+    // 第二个tab
+    this.queryData(activeTab2, 'bookList2', 'periodical_major_social_science');
+    // 自然科学
+    this.queryData('periodical_major_natural_science', 'naturalList', 'periodical_major_natural_science');
+    // 人文科学
+    this.queryData('periodical_major_social_science', 'socialList', 'periodical_major_social_science');
+    // 重磅杂志
+    this.queryData('', 'heavyList', '');
+  }
+
+  getImg(){
+    Service.base.image({}).then(res => {
+      if(res.code == 0){
+          let result = res.data;
+          let scrollImg = result.find(v => v.periodicalImageType == "periodical_image_type_home_page_top").url.split(",");
+          let listImg = result.find(v => v.periodicalImageType == "periodical_image_type_home_page_button").url.split(",");
+          this.setState({scrollImg, listImg });
+      } else {
+        this.setState({scrollImg: [], listImg: [] });
+      }
+  }).catch(e => {
+    this.setState({scrollImg: [], listImg: [] });
+  })
   }
 
   clickMagazineType = (item) => {
-    let page = Store.MenuStore.getMenuForName('main');
+    let page = Store.MenuStore.getMenuForName('journal');
     let { history } = this.props
     let { location } = history
       if (page) {
         location.pathname = page.url
-        location.state = {a: 1}
+        location.state = {data: {[item.dictType]: item.dictValue}}
         history.push(location);
       } else {
           history.push('/home/404');
       }
   }
 
-  clickImg = (v) => {
-    console.log(v)
-  }
+  // clickImg = (v) => {
+  //   console.log(v)
+  // }
 
   clickBook = (v) =>{
-    console.log(v)
+    let page = Store.MenuStore.getMenuForName('magazineDetail');
+    let { history } = this.props
+    let { location } = history
+      if (page) {
+        location.pathname = page.url
+        location.state = {data: v}
+        history.push(location);
+      } else {
+          history.push('/home/404');
+      }
   }
 
   clickArticle = (v) =>{
-    console.log(v)
+    console.log(v);
   }
 
-  changeTab = (key) =>{
-    this.setState({activeTab: key})
+  changeTab1 = (key) =>{
+    this.setState({activeTab1: key});
+    this.queryData(key, 'bookList1', 'periodical_major_natural_science');
   }
 
-  clickMore = (v) =>{
-    console.log(v)
+  changeTab2 = (key) =>{
+    this.setState({activeTab2: key});
+    this.queryData(key, 'bookList2', 'periodical_major_social_science');
   }
+
+  queryData(key, name, type){
+    this.setState({[name]: [],});
+    let searchData = {};
+    if(key){
+      searchData = {
+        offset: 0,
+        limit: 10,
+        [type]: key
+      }
+    } else {
+      searchData = {
+        offset: 0,
+        limit: 4,
+      }
+    }
+    Service.base.qikan(searchData).then(res => {
+      if(res.code == 0){
+          this.setState({[name]: res.data.list});
+      } else {
+          this.setState({[name]: [],});
+      }
+    }).catch(e => {
+        this.setState({[name]: [],});
+    })
+  }
+
+  // clickMore = (v) =>{
+  //   console.log(v)
+  // }
 
   render() {
-    let { activeTab } = this.props;
+    debugger
+    let { scrollImg, listImg, bookList1, activeTab1, bookList2, activeTab2, naturalList, socialList, heavyList, } = this.state;
     return (
       <div className="home-wrap w1200">
         <div className='home-view1'>
@@ -166,16 +255,21 @@ class HomeView extends React.Component {
           <div className="home-view-mid">
             <div className="home-view-mid-box">
                 <div className="img-scroll">
-                  <Carousel autoplay={true} dots={true}>
-                    {imgData.map(v =>{ 
-                      return <div className="img-wrap" onClick={this.clickImg.bind(this,v)} key={Math.random()}><img  src={v.url} /></div>
+                  <Carousel autoplay={scrollImg.length > 0 ? true : false} dots={true}>
+                    {scrollImg.map(v =>{ 
+                      return <div className="img-wrap" 
+                        key={Math.random()}
+                        // onClick={this.clickImg.bind(this,v)} 
+                      >
+                        <img src={`/magazine${v}`} />
+                      </div>
                     })}
                   </Carousel>
                 </div>
                 <div className='heavy-magazine-recommend'>
                   <Title title={"重磅杂志推荐"}/>
                   <div className="heavy-magazine-list">
-                      {bookData.map(v => {
+                      {heavyList.map(v => {
                         return( <MagazineIntroduction data={v} clickBook={this.clickBook} key={v.id}/>)
                       })}
                   </div>
@@ -183,23 +277,24 @@ class HomeView extends React.Component {
             </div>
           </div>
           <div className="home-view-right">
-            <TitleWithList title={'常见问题'} data={journal} clickArticle={this.clickArticle}/>
-            <TitleWithList title={'期刊范文'}data={journal} clickArticle={this.clickArticle}/>
+            <IssueAndEssay {...this.props}/>
           </div>
         </div>
         <div className='home-view2'>
-          {home2.map(v =>{ 
-            return <div onClick={this.clickImg.bind(this,v)} className="img-wrap" key={v.url}><img src={v.url}/></div>
+          {listImg.map(v =>{ 
+            return <div 
+            // onClick={this.clickImg.bind(this,v)} 
+            className="img-wrap" key={v}><img src={`/magazine${v}`} /></div>
           })}
         </div>
         <div className="home-left-right-box">
           <div className="left">
-            <Tabs defaultActiveKey="1" type={'line'} onChange={this.changeTab}>
-              {tabData.map((v,i) => {
+            <Tabs defaultActiveKey={activeTab1} type={'line'} onChange={this.changeTab1}>
+              {this.tab1.map((v,i) => {
                 return (
-                  <TabPane tab={v.title} key={v.id}>
+                  <TabPane tab={v.dictLabel} key={v.dictValue}>
                     <div className="book-list">
-                      {v.list.map((item,i) => {
+                      {bookList1.map((item,i) => {
                         return( <MagazineImgWithName data={item} clickBook={this.clickBook} key={i}/>)
                       })}
                     </div>
@@ -209,17 +304,17 @@ class HomeView extends React.Component {
             </Tabs>
           </div>
           <div className="right">
-            <SortWithList title={'自然科学杂志推荐排行榜'} data={journal} clickArticle={this.clickArticle} clickMore={this.clickMore}/>
+            <SortWithList title={'自然科学杂志推荐排行榜'} data={naturalList} clickArticle={this.clickBook} clickMore={this.clickMore}/>
           </div>
         </div>
         <div className="home-left-right-box">
           <div className="left">
-            <Tabs defaultActiveKey="1" type={'line'} onChange={this.changeTab}>
-              {tabData.map((v,i) => {
+          <Tabs defaultActiveKey={activeTab2} type={'line'} onChange={this.changeTab2}>
+              {this.tab2.map((v,i) => {
                 return (
-                  <TabPane tab={v.title} key={v.id}>
+                  <TabPane tab={v.dictLabel} key={v.dictValue}>
                     <div className="book-list">
-                      {v.list.map((item,i) => {
+                      {bookList2.map((item,i) => {
                         return( <MagazineImgWithName data={item} clickBook={this.clickBook} key={i}/>)
                       })}
                     </div>
@@ -229,7 +324,7 @@ class HomeView extends React.Component {
             </Tabs>
           </div>
           <div className="right">
-            <SortWithList title={'社会科学杂志推荐排行榜'} data={journal} clickArticle={this.clickArticle} clickMore={this.clickMore}/>
+            <SortWithList title={'社会科学杂志推荐排行榜'} data={socialList} clickArticle={this.clickBook} clickMore={this.clickMore}/>
           </div>
         </div>
       </div>

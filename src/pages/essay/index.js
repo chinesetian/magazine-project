@@ -60,6 +60,9 @@ onChange = (options) => {
     })
   }
 
+  /**
+   * 详情
+   */
   clickEssay = (v) => {
     console.log(v)
     let page = Store.MenuStore.getMenuForName('essayDetail');

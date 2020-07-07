@@ -26,7 +26,7 @@ class MagazineType extends React.Component {
         <div className="title">{data.title}</div>
         <div className="content">
           {data.list.map(item => {
-            return(<span key={item.title} className="item" onClick={(e) => this.clickMagazineType(e,item)}>{item.title}</span>)
+            return(<span key={item.label} className="item" onClick={(e) => this.clickMagazineType(e,item)}>{item.label}</span>)
           })}
         </div>
       </div>

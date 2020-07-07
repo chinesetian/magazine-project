@@ -1,13 +1,10 @@
 import React from "react";
 import { Pagination } from 'antd';
-import Filter from './components/filter';
 import Card from '../../components/card'
-import * as _ from 'lodash';
 
 import './index.less';
 
 const { Dict, Service, Store } = window
-const MagazineIntroductionDetail = Card.MagazineIntroductionDetail
 const TitleWithImgList = Card.TitleWithImgList
 
 const defaultKey = '-1'
@@ -18,52 +15,28 @@ const bookData = [
   {id: 3,  name: '吉林医学', url: bookUrl, description: "《中国药房》杂志是中",},
   {id: 4,  name: '重庆医学', url: bookUrl, description: "国国家卫生和",},
 ]
-let defaultData = []
-let defaultType = {}
 
-
-class JournalPage extends React.Component {
+class QuestionAndIssue extends React.Component {
   constructor(props){
     super(props)
-
-    let { history } = this.props
-    let { location } = history
-    let param = location.state.data;
-
-    defaultData = []
-    defaultType = {}
-    let target = _.cloneDeep(Dict.getDict("periodical") || [])
-    let parentTag = target.filter(v => v.remarks == "期刊分类查询条件") || []
-    parentTag.forEach(element => {
-      defaultType[element.dictType] = defaultKey;
-      let target = _.cloneDeep(Dict.getDict(element.dictType));
-      target.unshift({label: '不限', value: defaultKey, dictType: element.dictType}) 
-      defaultData.push({
-        ...element,
-        children:target,
-      })
-    });
-    defaultType = Object.assign(defaultType, param);
-
+    const { location } = props;
+    let periodicalArticleTypeInfo = location.state.type == 'issue' ? 'periodical_article_type_info_question' : 'periodical_article_type_info_information';
     this.state = {
       bookList: [],
-      filterData: defaultData,
       searchData:{
         offset: 0,
         limit: 10,
-        ...defaultType,
+        periodicalArticleTypeInfo: periodicalArticleTypeInfo,
       }
     };
-    this.onChange(defaultType)
-    this.queryBookList(this.state.searchData)  
+    this.queryBookList(this.state.searchData)
   }
 
   componentDidMount() {
-    
+
   }
 
   onChange = (options) => {
-    debugger
     let params = this.mergeSearchData({ ...options, offset: 0, limit: 10, });
     console.log(params)
     this.queryBookList(params)
@@ -80,17 +53,14 @@ class JournalPage extends React.Component {
   }
 
 
-  /**
-   * 期刊范文详情
-   */
   clickBook = (v) =>{
     console.log(v)
-    let page = Store.MenuStore.getMenuForName('magazineDetail');
+    let page = Store.MenuStore.getMenuForName('essayDetail');
     let { history } = this.props
     let { location } = history
       if (page) {
         location.pathname = page.url
-        location.state = {data: v}
+        location.state = {dataHtml: v.content}
         history.push(location);
       } else {
           history.push('/home/404');
@@ -103,8 +73,7 @@ class JournalPage extends React.Component {
   };
 
   queryBookList(searchData){
-    console.log('查询数据', searchData)
-    Service.base.qikan(searchData).then(res => {
+    Service.base.articleInfo(searchData).then(res => {
         if(res.code == 0){
             this.setState({bookList: res.data.list, total: res.data.total});
         } else {
@@ -116,15 +85,16 @@ class JournalPage extends React.Component {
   }
 
   render() {
-    let { searchData, bookList, total = 0, filterData } = this.state;
+    let { searchData, bookList, total = 0 } = this.state;
     return (
       <div className='journal-wrap w1200'>
-        <Filter searchData={searchData} data={filterData} onChange={this.onChange}/>
         <div className="journal-content">
           <div className="journal-left">
               <div className="journal-list">
                 {bookList.map((v,i) => {
-                  return( <MagazineIntroductionDetail key={i} data={v} clickBook={this.clickBook}/>)
+                  return( 
+                    <div onClick={this.clickBook.bind(this, v)} key={i} className='article-title'>{v.title}</div>
+                  )
                 })}
               </div>
               <div className="content-pagination-box" style={{ display: 'flex', justifyContent: 'center' }}>
@@ -152,4 +122,4 @@ class JournalPage extends React.Component {
   }
 }
 
-export default JournalPage;
+export default QuestionAndIssue;
