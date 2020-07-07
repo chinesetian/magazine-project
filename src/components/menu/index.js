@@ -36,6 +36,9 @@ class MenuList extends React.Component {
         })
     }
 
+    /**
+     * 菜单点击跳转
+     */
     menuClick = ({item, key, domEvent }) => {
         console.log(key)
         let page = this.props.MenuStore.getMenuForName(key);
@@ -68,18 +71,21 @@ class MenuList extends React.Component {
         let { menuList } = this.props
         return(
             <div className="menu-wrap">
-                <Menu className='w1200' theme="light" mode="horizontal" selectedKeys={[currentMenu]} onClick={this.menuClick} forceSubMenuRender={true}>
-                {menuList.map((menu) => {
-                    return(
-                        <MenuItem key={menu.name}>
-                        <span className="menu-item-content">
-                        <span className="menu-item-layout">
-                            <span>{menu.menuName}</span>
-                        </span>
-                        </span>
-                    </MenuItem>
-                    )
-                })}
+                <Menu className='w1200' theme="light" mode="horizontal" 
+                    selectedKeys={[currentMenu]} 
+                    onClick={this.menuClick} forceSubMenuRender={true}
+                >
+                    {menuList.map((menu) => {
+                        return(
+                            <MenuItem key={menu.name}>
+                            <span className="menu-item-content">
+                            <span className="menu-item-layout">
+                                <span>{menu.menuName}</span>
+                            </span>
+                            </span>
+                        </MenuItem>
+                        )
+                    })}
                 </Menu>
             </div>
         )

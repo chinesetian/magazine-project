@@ -15,7 +15,7 @@ export class Footer extends React.Component{
     componentDidMount(){
         // copyright
         let target =  Dict.getDict("periodical_other_info") || []
-        let copyright = target.filter(v => v.value == "periodical_other_info_copyright") || {}
+        let copyright = target.find(v => v.value == "periodical_other_info_copyright") || {}
         this.setState({copyright})
         // 链接
         Service.base.getLinkData().then(res => {

@@ -29,7 +29,7 @@ class QuestionAndIssue extends React.Component {
         periodicalArticleTypeInfo: periodicalArticleTypeInfo,
       }
     };
-    this.queryBookList(this.state.searchData)
+    this.articleInfopageList(this.state.searchData)
   }
 
   componentDidMount() {
@@ -39,7 +39,7 @@ class QuestionAndIssue extends React.Component {
   onChange = (options) => {
     let params = this.mergeSearchData({ ...options, offset: 0, limit: 10, });
     console.log(params)
-    this.queryBookList(params)
+    this.articleInfopageList(params)
   }
     /**
    * 更新参数
@@ -69,11 +69,11 @@ class QuestionAndIssue extends React.Component {
 
   onPaginationChange = (current, pageSize) => {
     let params = this.mergeSearchData({limit: pageSize, offset: (current - 1) * pageSize });
-    this.queryBookList(params);
+    this.articleInfopageList(params);
   };
 
-  queryBookList(searchData){
-    Service.base.articleInfo(searchData).then(res => {
+  articleInfopageList(searchData){
+    Service.base.articleInfopageList(searchData).then(res => {
         if(res.code == 0){
             this.setState({bookList: res.data.list, total: res.data.total});
         } else {

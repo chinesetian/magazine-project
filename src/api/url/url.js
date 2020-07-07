@@ -24,11 +24,18 @@ export const scan = {
 export const base = {
     dictType: `${api}qikan/dictType/listData`, // 数据字典类型
     dictData: `${api}qikan/dictData/listData`, // 数据字典内容
-    getLinkData: `${api}qikan/link/listData`, // 外部链接
-    articleThesis: `${api}qikan/articleThesis/listData`, // 期刊范文列表
-    articleOther: `${api}qikan/articleOther/listData`, // 流程须知、关于我们
-    qikan: `${api}qikan/qikan/listData`, // 期刊查询
-    articleInfo: `${api}qikan/articleInfo/listData`, // 问题和咨询
     image: `${api}qikan/image/listData`, // 顶部、底部图片
+    articleOther: `${api}qikan/articleOther/listData`, // 流程须知、关于我们
+    getLinkData: `${api}qikan/link/listData`, // 外部链接
+
+    articleThesis: `${api}qikan/articleThesis/listData`, // 范文列表、没total
+    qikan: `${api}qikan/qikan/listData`, // 期刊查询、没total
+    articleInfo: `${api}qikan/articleInfo/listData`, // 问题和咨询、没total
+
+    articleThesispageList: `${api}qikan/articleThesis/pageList`, // 范文列表、有total
+    qikanpageList: `${api}qikan/qikan/pageList`, // 期刊查询、有total
+    articleInfopageList: `${api}qikan/articleInfo/pageList`, // 问题和咨询、有total
+    
+    qikanDetail: `${api}qikan/qikan/detail`, // 期刊查询详情
 
 }

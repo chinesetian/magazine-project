@@ -23,13 +23,13 @@ class Essay extends React.Component {
 
 componentDidMount(){
   let { searchData } = this.state
-  this.queryBookList(searchData)
+  this.articleThesispageList(searchData)
 }
 
 onChange = (options) => {
   let params = this.mergeSearchData({ ...options, offset: 0 });
   console.log(params)
-  this.queryBookList(params)
+  this.articleThesispageList(params)
 }
 
   /**
@@ -45,11 +45,11 @@ onChange = (options) => {
 
   onPaginationChange = (current, pageSize) => {
     let params = this.mergeSearchData({limit: pageSize, offset: (current - 1) * pageSize });
-    this.queryBookList(params);
+    this.articleThesispageList(params);
   };
 
-  queryBookList(searchData){
-    Service.base.articleThesis(searchData).then(res => {
+  articleThesispageList(searchData){
+    Service.base.articleThesispageList(searchData).then(res => {
         if(res.code == 0){
             this.setState({articleList: res.data.list, total:  res.data.total});
         } else {

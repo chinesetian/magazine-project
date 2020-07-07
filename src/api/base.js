@@ -34,18 +34,6 @@ class BaseService{
     });
   }
 
-  
-   /**
-   * 期刊范文列表
-   * @param {*} data 
-   */
-  articleThesis(data){
-    return this.$httpRequest({
-      method: "post",
-      url: `${base.articleThesis}`,
-      data:data
-    });
-  }
      /**
    * 流程须知、关于我们
    * @param {*} data 
@@ -57,8 +45,31 @@ class BaseService{
       data:data
     });
   }
+      /**
+   * 顶部、底部图片
+   * @param {*} data 
+   */
+  image(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.image}`,
+      data:data
+    });
+  }
+
+     /**
+   * 范文列表、没total
+   * @param {*} data 
+   */
+  articleThesis(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.articleThesis}`,
+      data:data
+    });
+  }
    /**
-   * 期刊查询
+   * 期刊查询、没total
    * @param {*} data 
    */
   qikan(data){
@@ -70,7 +81,7 @@ class BaseService{
   }
 
    /**
-   * 问题和咨询
+   * 问题和咨询、没total
    * @param {*} data 
    */
   articleInfo(data){
@@ -81,15 +92,50 @@ class BaseService{
     });
   }
 
-    /**
-   * 顶部、底部图片
+   /**
+   * 范文列表、有total
    * @param {*} data 
    */
-  image(data){
+  articleThesispageList(data){
     return this.$httpRequest({
       method: "post",
-      url: `${base.image}`,
+      url: `${base.articleThesispageList}`,
       data:data
+    });
+  }
+
+     /**
+   * 期刊查询、有total
+   * @param {*} data 
+   */
+  qikanpageList(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.qikanpageList}`,
+      data:data
+    });
+  }
+
+   /**
+   * 问题和咨询、有total
+   * @param {*} data 
+   */
+  articleInfopageList(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.articleInfopageList}`,
+      data:data
+    });
+  }
+
+  /**
+   * 期刊查询详情
+   * @param {*} data 
+   */
+  qikanDetail(data){
+    return this.$httpRequest({
+      method: "get",
+      url: `${base.qikanDetail}/${data.id}`,
     });
   }
   

@@ -52,10 +52,12 @@ class App extends Component {
           <BrowserRouter>
             <Switch>
               {/* <Route exact path="/login" component={Login} /> */}
-              <Route path="/home" component={HomeComponent} />
               <Route exact path="/" render={(props) => <Redirect {...props} to="/home" />} />
-              <Route exact path="/test" component={TestPage} />
+              <Route path="/home" component={HomeComponent} />
               <Route path="/detail" component={DetailHomeComponent} />
+      
+              <Route exact path="/test" component={TestPage} />
+
             </Switch>
           </BrowserRouter>
         </Provider>

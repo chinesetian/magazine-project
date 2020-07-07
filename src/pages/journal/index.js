@@ -10,7 +10,8 @@ const { Dict, Service, Store } = window
 const MagazineIntroductionDetail = Card.MagazineIntroductionDetail
 const TitleWithImgList = Card.TitleWithImgList
 
-const defaultKey = '-1'
+const defaultKey = '-1'; // 不限
+
 const bookUrl = "/resource/image/book.jpg"
 const bookData = [
   {id: 1,  name: '中国药房', url: bookUrl, description: "《中国药房》",},
@@ -35,9 +36,9 @@ class JournalPage extends React.Component {
     let target = _.cloneDeep(Dict.getDict("periodical") || [])
     let parentTag = target.filter(v => v.remarks == "期刊分类查询条件") || []
     parentTag.forEach(element => {
-      defaultType[element.dictType] = defaultKey;
+      defaultType[element.transformPeriodical] = defaultKey;
       let target = _.cloneDeep(Dict.getDict(element.dictType));
-      target.unshift({label: '不限', value: defaultKey, dictType: element.dictType}) 
+      target.unshift({label: '不限', value: defaultKey, dictType: element.transformPeriodical}) 
       defaultData.push({
         ...element,
         children:target,
@@ -55,7 +56,7 @@ class JournalPage extends React.Component {
       }
     };
     this.onChange(defaultType)
-    this.queryBookList(this.state.searchData)  
+    this.qikanpageList(this.state.searchData)  
   }
 
   componentDidMount() {
@@ -66,7 +67,7 @@ class JournalPage extends React.Component {
     debugger
     let params = this.mergeSearchData({ ...options, offset: 0, limit: 10, });
     console.log(params)
-    this.queryBookList(params)
+    this.qikanpageList(params)
   }
     /**
    * 更新参数
@@ -81,11 +82,11 @@ class JournalPage extends React.Component {
 
 
   /**
-   * 期刊范文详情
+   * 期刊详情
    */
   clickBook = (v) =>{
     console.log(v)
-    let page = Store.MenuStore.getMenuForName('magazineDetail');
+    let page = Store.MenuStore.getMenuForName('detailview');
     let { history } = this.props
     let { location } = history
       if (page) {
@@ -99,12 +100,16 @@ class JournalPage extends React.Component {
 
   onPaginationChange = (current, pageSize) => {
     let params = this.mergeSearchData({limit: pageSize, offset: (current - 1) * pageSize });
-    this.queryBookList(params);
+    this.qikanpageList(params);
   };
 
-  queryBookList(searchData){
+  /**
+   * 查询期刊列表
+   * @param {*} searchData 
+   */
+  qikanpageList(searchData){
     console.log('查询数据', searchData)
-    Service.base.qikan(searchData).then(res => {
+    Service.base.qikanpageList(searchData).then(res => {
         if(res.code == 0){
             this.setState({bookList: res.data.list, total: res.data.total});
         } else {

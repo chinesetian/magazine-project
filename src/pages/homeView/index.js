@@ -140,14 +140,14 @@ class HomeView extends React.Component {
       activeTab1,
       activeTab2,
     })
-    // 第一个tab
-    this.queryData(activeTab1, 'bookList1', 'periodical_major_natural_science');
-    // 第二个tab
-    this.queryData(activeTab2, 'bookList2', 'periodical_major_social_science');
-    // 自然科学
-    this.queryData('periodical_major_natural_science', 'naturalList', 'periodical_major_natural_science');
-    // 人文科学
-    this.queryData('periodical_major_social_science', 'socialList', 'periodical_major_social_science');
+    // 第一个tab自然科学
+    this.queryData(activeTab1, 'bookList1', "periodicalMajorNaturalScience");
+    // 第二个tab人文科学
+    this.queryData(activeTab2, 'bookList2', "periodicalMajorSocialScience");
+    // 自然科学排行榜
+    this.queryData('all', 'naturalList', 'periodicalMajorNaturalScience');
+    // 人文科学排行榜
+    this.queryData('all', 'socialList', 'periodicalMajorSocialScience');
     // 重磅杂志
     this.queryData('', 'heavyList', '');
   }
@@ -173,7 +173,7 @@ class HomeView extends React.Component {
     let { location } = history
       if (page) {
         location.pathname = page.url
-        location.state = {data: {[item.dictType]: item.dictValue}}
+        location.state = {data: {[item.transformPeriodical]: item.dictValue}}
         history.push(location);
       } else {
           history.push('/home/404');
@@ -185,7 +185,7 @@ class HomeView extends React.Component {
   // }
 
   clickBook = (v) =>{
-    let page = Store.MenuStore.getMenuForName('magazineDetail');
+    let page = Store.MenuStore.getMenuForName('detailview');
     let { history } = this.props
     let { location } = history
       if (page) {
@@ -203,12 +203,12 @@ class HomeView extends React.Component {
 
   changeTab1 = (key) =>{
     this.setState({activeTab1: key});
-    this.queryData(key, 'bookList1', 'periodical_major_natural_science');
+    this.queryData(key, 'bookList1', 'periodicalMajorNaturalScience');
   }
 
   changeTab2 = (key) =>{
     this.setState({activeTab2: key});
-    this.queryData(key, 'bookList2', 'periodical_major_social_science');
+    this.queryData(key, 'bookList2', 'periodicalMajorSocialScience');
   }
 
   queryData(key, name, type){

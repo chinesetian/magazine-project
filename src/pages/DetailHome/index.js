@@ -17,6 +17,8 @@ const menuList2 = [
     {menuName: '关于我们', name: 'detailabout'},
 ]
 
+const { Dict, Service, Store } = window
+
 @withRouter
 @inject('UserStore')
 class DetailHomeComponent extends React.Component {
@@ -24,6 +26,8 @@ class DetailHomeComponent extends React.Component {
         super(props)
         this.state = {
             isFooter: true,
+            topImg: [],
+            bottomImg: [],
         }
 
         let { UserStore, history } = this.props;
@@ -31,7 +35,7 @@ class DetailHomeComponent extends React.Component {
     }
 
     componentWillMount(){
-        
+        this.getImg()
     }
 
     componentDidMount(){
@@ -42,13 +46,34 @@ class DetailHomeComponent extends React.Component {
      
     }
 
+    getImg(){
+        Service.base.image({}).then(res => {
+            if(res.code == 0){
+                let result = res.data;
+                let topImg = result.find(v => v.periodicalImageType == "periodical_image_type_child_page_top").url.split(",");
+                let bottomImg = result.find(v => v.periodicalImageType == "periodical_image_type_child_page_button").url.split(",");
+                this.setState({topImg, bottomImg });
+            } else {
+                this.setState({topImg: [], bottomImg: [] });
+            }
+        }).catch(e => {
+            this.setState({topImg: [], bottomImg: [] });
+        })
+      }
+
 
     render(){
 
-        let { isFooter, activeTab, userInfo, scanInfo } = this.state;
+        let { isFooter, topImg, bottomImg, } = this.state;
         return (
             <div className="detail-home-layout">
-                <div className="w1200" style={{height: 220}}>图片</div>
+                <div className="top-img w1200">
+                    {topImg.map((v,i) => {
+                        return(
+                            <img src={`/magazine${v}`} />
+                        )
+                    })}
+                </div>
                 <MenuList menuList={menuList2} {...this.props}/>
                 <div className="home-layout-content w1200">
                     <Switch>

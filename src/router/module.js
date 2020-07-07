@@ -111,13 +111,13 @@ export default [
     {
         id: 20,
         title: '首页',
-        name: 'main',
+        name: 'detailview',
         isLocal: true,
-        url: '/detail/main',
+        url: '/detail/detailview',
         parentId: 0,
         component: asyncComponent(
-            () => import('../pages/detailMain'),
-            'DetailMain'
+            () => import('../pages/detailView'),
+            'DetailView'
         ),
     },
 

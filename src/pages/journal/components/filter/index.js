@@ -6,35 +6,22 @@ class Filter extends React.Component{
 
     state = {
         checked: true,
-        confirmDirty: false,
     }
 
     componentDidMount(){
     }
 
-    submit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                let param = {
-                    current_password: values.oldPassword,
-                    password: values.newPassword,
-                }
-                // UserService.changePwd(param).then(res => {
-                //     if(res.status === 200){
-                //         message.info("修改成功！")
-                //     } else {
-                //         message.error("密码修改失败！")
-                //     }
-                // }).catch(e => {
-                //     if(e.status == 400){
-                //     }
-                // })
-
-                // console.log('Received values of form: ', values);
-            }
-        });
-    }
+    // submit = (e) => {
+    //     e.preventDefault();
+    //     this.props.form.validateFields((err, values) => {
+    //         if (!err) {
+    //             let param = {
+    //                 current_password: values.oldPassword,
+    //                 password: values.newPassword,
+    //             }
+    //         }
+    //     });
+    // }
 
     isShowItem = (i) => {
         let target = document.getElementsByClassName("tag-item")[i];
@@ -51,8 +38,8 @@ class Filter extends React.Component{
 
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
-            labelCol: { span: 4 },
-            wrapperCol: { span: 20 },
+            labelCol: { span: 5 },
+            wrapperCol: { span: 19 },
             colon: false
         };
         let { data, searchData, onChange} = this.props;
@@ -65,11 +52,11 @@ class Filter extends React.Component{
                           return(
                             <div key={i} className={`tag-item ${i}`}>
                               <Form.Item label={item.dictName} {...formItemLayout}>
-                                {getFieldDecorator(item.dictType, {
+                                {getFieldDecorator(item.transformPeriodical, {
                                 })(
                                   <Tag 
                                     list={item.children} 
-                                    activeKey={searchData[item.dictType]}
+                                    activeKey={searchData[item.transformPeriodical]}
                                     onChange={onChange}
                                   />
                                 )}
@@ -94,7 +81,7 @@ class Tag extends React.Component{
         {list.map((v,i) => {
           return (<span title={v.label} data-value={v.value}
             className={`tag ${activeKey === v.value ? 'active' : ''}`} key={i} 
-            onClick={(e) => onChange({[v.dictType]: v.value})}>
+            onClick={(e) => onChange({[v.transformPeriodical]: v.value})}>
             {v.label}
           </span>)
         })}
