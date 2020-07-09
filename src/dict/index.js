@@ -84,7 +84,7 @@ function getLabel(name, code, getText = false) {
  * @param {*} typeCode 期刊大类
  * remarks: "期刊分类查询条件"，其他是另外的信息
  */
-const append = (arr = [], typeCode) => {
+const append = (arr = [], typeCode = [], imgs = []) => {
   for (let i in typeCode) {
     //   arr.forEach(item => {
     //     if (item.dictType === typeCode[i].dictType) {
@@ -101,6 +101,16 @@ const append = (arr = [], typeCode) => {
     // 小类
     if (!map[typeCode[i].name]) {
       let list = arr.filter(v => v.dictType === typeCode[i].dictType).map(v => {
+          let other = {};
+          try {
+            if(transformPeriodical[v.dictType]){
+              other.transformPeriodical = transformPeriodical[v.dictType];
+            }
+            if(v.dictType == "periodical_image_type"){
+              other.url = imgs.find(item => item.periodicalImageType == v.dictValue).url;
+            }
+          } catch (error) {
+          }
 
           return {
             ...v,
@@ -109,7 +119,7 @@ const append = (arr = [], typeCode) => {
             label: v.dictLabel,
             typeCode: v.dictType,
             // typeName: typeCode[i].name
-            transformPeriodical: transformPeriodical[v.dictType] ? transformPeriodical[v.dictType] : undefined
+            ...other
           };
         });
       map[typeCode[i].name] = _.orderBy(list, ["value"], "asc");

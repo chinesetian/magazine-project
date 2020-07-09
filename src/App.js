@@ -29,15 +29,16 @@ class App extends Component {
 
   async UNSAFE_componentWillMount() {
     this.setState({flag: false})
-    const [dictType, dictData, ] = await this.fetchInit({});
-    Dict.append(dictData.data, dictType.data)
+    const [dictType, dictData, imgs] = await this.fetchInit({});
+    Dict.append(dictData.data, dictType.data, imgs.data)
     this.setState({flag: true})
   }
 
   fetchInit(){
     return Promise.all([
-      Service.base.dictType(),
-      Service.base.dictData(), 
+      Service.base.dictType(), // 字典大类
+      Service.base.dictData(), // 字典左右
+      Service.base.image({}), // 图片
     ]);
   }
 

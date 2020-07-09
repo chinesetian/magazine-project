@@ -10,20 +10,62 @@ const bookData = [
     {id: 4,  name: '重庆医学', url: bookUrl, description: "国国家卫生和",},
   ]
 
+  const { Dict, Service, Store } = window
 
 export default class TitleWithImgList extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            bookList: [],
+        }
+        this.qikanpageList({
+            offset: 0,
+            limit: 4,
+        })
+    }
+
+    /**
+   * 查询期刊列表
+   * @param {*} searchData 
+    */
+    qikanpageList(searchData){
+        console.log('查询数据', searchData)
+        Service.base.qikan(searchData).then(res => {
+            if(res.code == 0){
+                this.setState({bookList: res.data.list});
+            } else {
+                this.setState({bookList: [],});
+            }
+        }).catch(e => {
+            this.setState({bookList: [], });
+        })
+    }
+
+    clickArticle = (v) => {
+        let page = Store.MenuStore.getMenuForName('detailview');
+        let { history } = this.props
+        let { location } = history
+        if (page) {
+            location.pathname = page.url
+            location.state = {data: v}
+            history.push(location);
+        } else {
+            history.push('/home/404');
+        }
+    }
 
     render(){
-      let { title = '', data = bookData, clickArticle } = this.props
+        let { bookList } = this.state;
+      let { title = '', } = this.props
         return(
             <div className='title-with-img-list' >
                 <div className="title">{title}</div>
                 <div className="content">
-                    {data.map(item => {
+                    {bookList.map(item => {
                         return(
-                        <div key={item.id} className="item" onClick={() => clickArticle(item)}>
-                            <img src={item.url}/>
-                            <div className="name" title={item.description}>{item.description}</div>
+                        <div key={item.id} className="item" onClick={() => this.clickArticle(item)}>
+                             <img  src={`/magazine${item.url}`}/>
+                            <div className="name" title={item.name}>{item.name}</div>
                         </div>
                     )
                     })}

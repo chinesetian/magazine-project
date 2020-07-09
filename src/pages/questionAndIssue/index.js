@@ -113,7 +113,7 @@ class QuestionAndIssue extends React.Component {
               </div>
             </div>
             <div className="journal-right">
-              <TitleWithImgList title={'热门期刊'} data={bookData}/>
+              <TitleWithImgList title={'热门期刊'} {...this.props}/>
             </div>
           </div>
       </div>

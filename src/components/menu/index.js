@@ -27,12 +27,12 @@ class MenuList extends React.Component {
                 let result = res.data;
                 p = result.find(v => v.periodicalArticleTypeOther == 'periodical_article_type_other_process').content;
                 a = result.find(v => v.periodicalArticleTypeOther == 'periodical_article_type_other_about').content;
-                this.setState({process: p, about: a });
+                this.setState({process: p, detailprocess: p, about: a, detailabout: a});
             } else {
-                this.setState({process: p, about: a });
+                this.setState({process: p, detailprocess: p, about: a, detailabout: a});
             }
         }).catch(e => {
-            this.setState({process: p, about: a });
+            this.setState({process: p, detailprocess: p, about: a, detailabout: a});
         })
     }
 
@@ -47,7 +47,7 @@ class MenuList extends React.Component {
         let other = {}
         if (page) {
             location.pathname = page.url
-            if(key == 'process' || key == 'about'){
+            if(key == 'process' || key == 'about' || key == 'detailprocess' || key == 'detailabout'){
                 other = {
                     dataHtml: this.state[key] || ''
                 }

@@ -20,13 +20,30 @@ const { TabPane } = Tabs;
 
 const bookUrl = "/resource/image/book.jpg"
 
-const data = [{
-  title: '自然科学与工程技术',
-  list: _.cloneDeep(Dict.getDict("periodical_major_natural_science")),
+const data = [
+  {
+    title: '自然科学与工程技术',
+    list: _.cloneDeep(Dict.getDict("periodical_major_natural_science")),
   },
   {
     title: '人文社会科学',
     list: _.cloneDeep(Dict.getDict("periodical_major_social_science")),
+  },
+  {
+    title: "期刊级别",
+    list: _.cloneDeep(Dict.getDict("periodical_level")),
+  },
+  {
+    title: '期刊收录',
+    list: _.cloneDeep(Dict.getDict("periodical_included")),
+  },
+  {
+    title: "期刊荣誉",
+    list: _.cloneDeep(Dict.getDict("periodical_honor")),
+  },
+  {
+    title: "期刊发行周期",
+    list: _.cloneDeep(Dict.getDict("periodical_period")),
   },
 ]
 
@@ -153,18 +170,10 @@ class HomeView extends React.Component {
   }
 
   getImg(){
-    Service.base.image({}).then(res => {
-      if(res.code == 0){
-          let result = res.data;
-          let scrollImg = result.find(v => v.periodicalImageType == "periodical_image_type_home_page_top").url.split(",");
-          let listImg = result.find(v => v.periodicalImageType == "periodical_image_type_home_page_button").url.split(",");
-          this.setState({scrollImg, listImg });
-      } else {
-        this.setState({scrollImg: [], listImg: [] });
-      }
-  }).catch(e => {
-    this.setState({scrollImg: [], listImg: [] });
-  })
+    let scrollImg = _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_home_page_top").url.split(",") || []);
+    let listImg = _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_home_page_button").url.split(",") || []);
+    this.setState({scrollImg, listImg });
+    
   }
 
   clickMagazineType = (item) => {

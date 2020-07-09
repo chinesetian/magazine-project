@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react'
 import { Footer } from '../../components/footer';
 import MenuList from '../../components/menu'
 import LayoutView from '../AppLayout'
-
+import * as _ from 'lodash';
 
 import './index.less'
 const menuList2 = [
@@ -26,8 +26,7 @@ class DetailHomeComponent extends React.Component {
         super(props)
         this.state = {
             isFooter: true,
-            topImg: [],
-            bottomImg: [],
+            imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_top").url.split(",") || []),
         }
 
         let { UserStore, history } = this.props;
@@ -35,7 +34,7 @@ class DetailHomeComponent extends React.Component {
     }
 
     componentWillMount(){
-        this.getImg()
+
     }
 
     componentDidMount(){
@@ -46,36 +45,34 @@ class DetailHomeComponent extends React.Component {
      
     }
 
-    getImg(){
-        Service.base.image({}).then(res => {
-            if(res.code == 0){
-                let result = res.data;
-                let topImg = result.find(v => v.periodicalImageType == "periodical_image_type_child_page_top").url.split(",");
-                let bottomImg = result.find(v => v.periodicalImageType == "periodical_image_type_child_page_button").url.split(",");
-                this.setState({topImg, bottomImg });
-            } else {
-                this.setState({topImg: [], bottomImg: [] });
-            }
-        }).catch(e => {
-            this.setState({topImg: [], bottomImg: [] });
-        })
-      }
-
+    backHome = () => {
+        let page = Store.MenuStore.getMenuForName('view');
+        let { history } = this.props
+        let { location } = history
+        if (page) {
+            location.pathname = page.url
+            history.push(location);
+        } else {
+            history.push('/home/404');
+        }
+    }
 
     render(){
 
-        let { isFooter, topImg, bottomImg, } = this.state;
+        let { isFooter, imgs, } = this.state;
         return (
             <div className="detail-home-layout">
+                
                 <div className="top-img w1200">
-                    {topImg.map((v,i) => {
+                    {imgs.map((v,i) => {
                         return(
-                            <img src={`/magazine${v}`} />
+                            <img key={i}  src={`/magazine${v}`} />
                         )
                     })}
                 </div>
                 <MenuList menuList={menuList2} {...this.props}/>
                 <div className="home-layout-content w1200">
+                    <span className="back-home" onClick={this.backHome}>返回首页</span>
                     <Switch>
                         <Route
                             exact

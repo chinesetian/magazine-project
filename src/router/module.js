@@ -120,5 +120,41 @@ export default [
             'DetailView'
         ),
     },
+    {
+        id: 21,
+        title: '期刊范文',
+        name: 'detailessay',
+        isLocal: true,
+        url: '/detail/detailessay',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/essay'),
+            'Essay'
+        ),
+    },
+    {
+        id: 22,
+        title: '流程须知',
+        name: 'detailprocess',
+        isLocal: true,
+        url: '/detail/detailprocess',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/essayDetail'),
+            'EssayDetail'
+        ),
+    },
+    {
+        id: 23,
+        title: '流程须知',
+        name: 'detailabout',
+        isLocal: true,
+        url: '/detail/detailabout',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/essayDetail'),
+            'EssayDetail'
+        ),
+    },
 
 ]
