@@ -8,6 +8,7 @@ import MagazineIntroductionDetail from './magazineIntroductionDetail'; //杂志�
 import TitleWithImgList from './titleWithImgList'; //热门期刊
 import EssayCard from './essayCard'; // 期刊范围
 
+import QikanBaseInfo from './qikanBaseInfo';
 
 const Card =  {
   MagazineType,
@@ -19,6 +20,7 @@ const Card =  {
   MagazineIntroductionDetail,
   TitleWithImgList,
   EssayCard,
+  QikanBaseInfo,
 }
 
 export default Card

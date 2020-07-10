@@ -6,6 +6,7 @@ import IconFont from '../../../../components/iconFont'
 import './index.less'
 import UserService from '../../../../api/user';
 import { deleteCache } from '../../../../utils/cache'
+import * as _ from 'lodash';
 
 const { Search } = Input;
 const logo = "/resource/image/logo.jpg";
@@ -19,55 +20,38 @@ class Header extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            visible: false,
-            tel: '',
         }
-        debugger
     }
 
     componentDidMount(){
-        let target =  Dict.getDict("periodical_other_info") || []
-        let tel = target.filter(v => v.value == "periodical_other_info_tel") || {}
-        this.setState({ tel })
     }
 
-    logout = (e) => {
-        let that = this;
-        Modal.confirm({
-            title: '确定退出登录？',
-            content: '',
-            onOk:() => {
-                UserService.logout().then(res => {
-                    if(res.status === 200){
-                        this.props.UserStore.logout();
-                        // that.props.history.replace('/login');
-                        console.log("确认退出")
-                    } else {
-                        return message.error("登出失败！")
-                    }
-                    
-                })
-            },
-            onCancel: ()=> {
-                console.log("取消退出")
-            },
-        })
-        
-    }
 
     change = (value) => {
         console.log(value)
+        message.warn("正在开发中...")
     }
 
     render(){
-        let { userInfo } = this.props;
-        let { tel } = this.state
+        let logo = []
+        let tel = []
+        try {
+            logo = _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_logo").url.split(",") || []);
+            tel = _.cloneDeep(Dict.getDict("periodical_other_info").find(v => v.dictValue == "periodical_other_info_tel").label || '');
+        } catch (error) {
+            
+        }
+
         return(
             <div className="home-layout-header w1200">
                 <div className="home-header-message">
                     <div className="logo">
                         <a href={'/'}>
-                            <img src={logo}/>
+                            {logo.map((v,i) => {
+                                return(
+                                    <img key={i}  src={`/magazine${v}`} />
+                                )
+                            })}
                         </a>
                     </div>
                     <div className="search">
@@ -79,7 +63,8 @@ class Header extends React.Component{
                         />
                     </div>
                     <div className="phone">
-                        {tel.label || ''}
+                        <span>咨询热线</span>
+                        <span className="number">{tel || ''}</span>
                     </div>
                 </div>
             </div>

@@ -21,8 +21,8 @@ LabelValue.defaultProps = {
   labelColor: '#999',
   emptyValue: '-',
   valueColor: '#333',
-  fontSize: '12px',
-  valueFontSize: '12px',
+  fontSize: '14px',
+  valueFontSize: '14px',
   noWrap: false,
   className: '',
   valueFontWeight: 'normal'

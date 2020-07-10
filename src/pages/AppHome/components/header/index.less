@@ -1,3 +1,5 @@
+@activeColor: #e91d25;
+
 .home-layout-header{
     height: 120px;
     display: flex;
@@ -14,7 +16,6 @@
         img{
             width: 100%;
             height: 100%;
-            display: none;
         }
 
         .logo{
@@ -32,7 +33,14 @@
         .phone{
             width: 240px;
             height: 100%;  
-            display: none;
+            font-size: 14px;
+
+            .number{
+                margin-left: 10px;
+                font-size: 20px;
+                color: @activeColor;
+            }
+            
         }
     }
 }
