@@ -251,7 +251,6 @@ class HomeView extends React.Component {
   // }
 
   render() {
-    debugger
     let { scrollImg, listImg, bookList1, activeTab1, bookList2, activeTab2, naturalList, socialList, heavyList, } = this.state;
     return (
       <div className="home-wrap w1200">

@@ -82,7 +82,6 @@ class AntFile extends React.Component {
    *
    */
   customUpload = async ({ file }) => {
-    debugger
     const { uploadType = "remote", imageCompress=false } = this.props;
     let newFile = file;
     if (file.type !== "image/svg+xml" && imageCompress) {

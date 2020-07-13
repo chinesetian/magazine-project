@@ -176,8 +176,8 @@ export default [
         url: '/detail/detailquery',
         parentId: 0,
         component: asyncComponent(
-            () => import('../pages/detailContribute'),
-            'DetailContribute'
+            () => import('../pages/queryContribute'),
+            'QueryContribute'
         ),
     },
 

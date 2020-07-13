@@ -1,6 +1,6 @@
 module.exports = {
     extends: 'react-app',
-    plugins: ['react', 'jsdoc'],
+    plugins: ['react',],
     parser: 'babel-eslint',
     parserOptions: {
         sourceType: 'module',

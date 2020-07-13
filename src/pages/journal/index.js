@@ -67,7 +67,6 @@ class JournalPage extends React.Component {
   }
 
   onChange = (options) => {
-    debugger
     let params = this.mergeSearchData({ ...options, offset: 0, limit: 10, });
     console.log(params)
     this.qikanpageList(params)

@@ -9,14 +9,17 @@ export class Footer extends React.Component{
         this.state = {
             linkData: [],
             copyright: {},
+            announce:{},
         }
     }
 
     componentDidMount(){
         // copyright
         let target =  Dict.getDict("periodical_other_info") || []
+        
+        let announce = target.find(v => v.value == "periodical_other_info_announce") || {}
         let copyright = target.find(v => v.value == "periodical_other_info_copyright") || {}
-        this.setState({copyright})
+        this.setState({copyright, announce})
         // 链接
         Service.base.getLinkData().then(res => {
             if(res.code == 0){
@@ -30,7 +33,7 @@ export class Footer extends React.Component{
     }
 
     render(){
-        let { linkData, copyright } = this.state;
+        let { linkData, copyright, announce } = this.state;
         return(
             <div className="home-layout-footer">
                 <div className="link-data">
@@ -43,7 +46,7 @@ export class Footer extends React.Component{
                             </span>)
                     })}
                 </div>
-                <div className="copy-right">{copyright.label || ''}</div>
+                <div className="copy-right">{announce.label || ''}&nbsp;&nbsp;&nbsp;{copyright.label || ''}</div>
                
             </div>
         )

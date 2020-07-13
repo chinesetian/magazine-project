@@ -19,6 +19,16 @@ class MenuList extends React.Component {
         }
     }
 
+    UNSAFE_componentWillMount(){
+        this.setCurrentMenu(this.props);
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps,){
+        // if(nextProps.location.pathname !== this.props.location.pathname){
+            this.setCurrentMenu(nextProps);
+        // }
+    }
+
     componentDidMount(){
         let p = '';
         let a = '';
@@ -40,7 +50,7 @@ class MenuList extends React.Component {
      * 菜单点击跳转
      */
     menuClick = ({item, key, domEvent }) => {
-        console.log(key)
+        // console.log(key)
         let page = this.props.MenuStore.getMenuForName(key);
         let { history } = this.props;
         let { location } = history;
@@ -71,6 +81,17 @@ class MenuList extends React.Component {
         }
         this.setState({currentMenu: key})
     }
+
+    setCurrentMenu(props){
+        let { location } =props;
+        let { currentMenu } = this.state;
+        let temp = location.pathname.split("/")[2]
+        if(temp && currentMenu != temp){
+            this.setState({currentMenu: temp});
+        }
+
+    }
+
     render(){
         let { currentMenu} = this.state;
         let { menuList } = this.props

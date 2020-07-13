@@ -32,7 +32,7 @@ class MenuStore {
         //     }
         // });
         let tempList = this.RouterList
-        console.log('过滤后的菜单、权限---', tempList);
+        // console.log('过滤后的菜单、权限---', tempList);
         return tempList
     }
 

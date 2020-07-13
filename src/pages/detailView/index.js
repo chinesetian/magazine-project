@@ -5,6 +5,7 @@ import { isString } from "util";
 import * as _ from 'lodash';
 import { setCache, getCache } from '../../utils/cache';
 import Card from '../../components/card'
+import ScrollBox from '../../components/scrollBox'
 
 import './index.less';
 
@@ -22,14 +23,16 @@ class DetailView extends React.Component {
     let query = getCache("detailData", "session") || {}
     query.id && this.qikanDetail(query)
     this.state = {
-      data: query,
-      imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_button").url.split(",") || []),
+      data: query, // 详情数据
+      imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_button").url.split(",") || []), // 底部宣传图
+      tougaoList: [], // 投稿列表
     };
   }
 
   componentDidMount() {
-
+    this.tougaoList();
   }
+
 
   qikanDetail(data){
     Service.base.qikanDetail(data).then(res => {
@@ -62,12 +65,36 @@ class DetailView extends React.Component {
 
   }
 
+  tougaoList(){
+    Service.base.tougaoList({"limit":10,"offset":0}).then(res => {
+      if(res.code == 0){
+        this.setState({tougaoList: res.data.list,});
+      } else {
+          this.setState({tougaoList: [],});
+      }
+    }).catch(e => {
+      this.setState({tougaoList: [],});
+    })
+  }
+
+  /**
+   * 跳转到投稿
+   */
   goContribute = () => {
-    
+    let page = Store.MenuStore.getMenuForName('detailcontribute');
+    let { history } = this.props
+    let { location } = history
+      if (page) {
+        location.pathname = page.url
+        // location.state = {data: {[item.transformPeriodical]: item.dictValue}}
+        history.push(location);
+      } else {
+          history.push('/home/404');
+      }
   }
 
   render() {
-    let { data, imgs } = this.state;
+    let { data, imgs, tougaoList } = this.state;
     if(!data.id){
       return null
     }
@@ -103,29 +130,11 @@ class DetailView extends React.Component {
              
                       </div>
                       <div className="qikan-base scroll">
-                            <Carousel autoplay={true} dotPosition={'left'}>
-                              <div>
-                                  <h3>1</h3>
-                                <h3>1</h3>
-                                <h3>1</h3>
-                              </div>
-                              <div>
-                                <h3>2</h3>
-                                <h3>2</h3>
-                                <h3>2</h3>
-                              </div>
-                              <div>
-                                <h3>3</h3>
-                                <h3>3</h3>
-                                <h3>3</h3>
-                              </div>
-                              <div>
-                                <h3>4</h3>
-                                <h3>4</h3>
-                                <h3>4</h3>
-                              </div>
-                            </Carousel>
-                          </div>
+                          <ScrollBox
+                            data={tougaoList}
+                            title={"稿件/期刊订阅信息公告"}
+                          />
+                      </div>
                     </div>
                     <div className="right-phone">
                         <div className="one">在线咨询：</div>

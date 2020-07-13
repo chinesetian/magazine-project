@@ -28,7 +28,7 @@ export default class TitleWithImgList extends React.Component{
    * @param {*} searchData 
     */
     qikanpageList(searchData){
-        console.log('查询数据', searchData)
+        // console.log('查询数据', searchData)
         Service.base.qikan(searchData).then(res => {
             if(res.code == 0){
                 this.setState({bookList: res.data.list});
