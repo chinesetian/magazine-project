@@ -38,4 +38,8 @@ export const base = {
     
     qikanDetail: `${api}qikan/qikan/detail`, // 期刊查询详情
 
+    uploadFile: `${api}qikan/uploadFile`, // 稿件上传
+    tougaoAdd: `${api}qikan/tougao/add`, // 投稿
+    tougaoList: `${api}qikan/tougao/listData`, // 投稿列表
+    tougaoDetail: `${api}qikan/tougao/detail`, // 投稿详情
 }

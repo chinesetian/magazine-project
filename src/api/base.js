@@ -138,6 +138,54 @@ class BaseService{
       url: `${base.qikanDetail}/${data.id}`,
     });
   }
+
+   /**
+   * 稿件上传
+   * @param {*} data 
+   */
+  uploadFile(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.uploadFile}`,
+      data:data
+    });
+  }
+
+     /**
+   * 投稿
+   * @param {*} data 
+   */
+  tougaoAdd(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.tougaoAdd}`,
+      data:data
+    });
+  }
+
+     /**
+   * 投稿详情
+   * @param {*} data 
+   */
+  tougaoDetail(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.tougaoDetail}/${data.no}`,
+      data:data
+    });
+  }
+
+     /**
+   * 投稿列表
+   * @param {*} data 
+   */
+  tougaoList(data){
+    return this.$httpRequest({
+      method: "post",
+      url: `${base.tougaoList}`,
+      data:data
+    });
+  }
   
 }
 

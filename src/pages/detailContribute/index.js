@@ -8,6 +8,8 @@ import {
   Form, Icon, Input, Button, Checkbox, message
 } from 'antd'
 
+import AntFile from '../../components/AntFile'
+
 import './index.less';
 
 const QikanBaseInfo = Card.QikanBaseInfo
@@ -25,7 +27,7 @@ class Contribute extends React.Component {
     // query.id && this.qikanDetail(query)
     this.state = {
       data: query || {},
-      imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_button").url.split(",") || []),
+      file: {},
     };
   }
  
@@ -51,36 +53,62 @@ class Contribute extends React.Component {
      */
     handleSubmit(e) {
       e.preventDefault();
+      let { file } = this.state;
       this.props.form.validateFields((err, values) => {
+          
+            console.log('Received values of form: ', values);
           debugger
           if (!err) {
-              let param = {
-                  username: values.username,
-                  password: values.password,
-              }
-              Service.base.qikanDetail(param).then(res => {
-                  if(res.status === 200){
-                      if(values.remember){
-                          setCache("Nessus.remember-username", param.username, 'local');
-                      } else {
-                          setCache("Nessus.remember-username", '', 'local');
-                      }
-                      setCache("isRemember", values.remember, 'local');
-                      setCache("Nessus.token", res.data.token, 'local');
-                      // message.info("登录成功！")
-                      // console.log("token", res.data.token);
-                      this.props.UserStore.setLoginState(true);
-                      this.props.history.replace('/home');
-                      // window.location.href = '/home';
-                  } else {
-                      return message.error("登录失败！")
-                  }
-              })
-
-              console.log('Received values of form: ', values);
+                let param ={
+                    "qiKanId":"1",
+                    "platform": "SJ",
+                    "title": values.title,
+                    "author": values.author,
+                    "tel": values.tel,
+                    "qq": values.qq,
+                    "email": values.email,
+                    "fileName": file.name || '',
+                    "fileUrl": file.fileUrl || '',
+                }
+                Service.base.tougaoAdd(param).then(res => {
+                    if(res.code == 0){
+                        message.info("投稿成功")
+                    } else {
+                        message.error("投稿失败")
+                        return  false
+                    }
+                }).catch(err => {
+                    console.error(err);
+                    message.error('投稿失败');
+                });
           }
       });
   }
+
+  FormmemoizedUploadRemote = (file) => {
+      debugger
+      console.log(file)
+      const formData = new FormData();
+      formData.append('file', file);
+      console.log(formData)
+      Service.base.uploadFile(formData).then(res => {
+            console.log(res)
+            if(res.responseData.code == 0){
+                const url = res.responseData.data.fileUrl;
+                file.fileUrl = url
+                if (!url) {
+                    return message.error('图片上传失败');
+                }
+                this.setState({file});
+            } else {
+                message.error('图片上传失败');
+            }
+           
+        }).catch(err => {
+          console.error(err);
+          message.error('图片上传失败');
+        });
+    }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -90,7 +118,7 @@ class Contribute extends React.Component {
       colon: true
     }
 
-    let { data, imgs } = this.state;
+    let { data, file } = this.state;
     if(!data.id){
       return null
     }
@@ -111,51 +139,55 @@ class Contribute extends React.Component {
             <div className="right">
               <Form onSubmit={this.handleSubmit.bind(this)} className="submit-form">
                 <Form.Item label="文章标题" {...formItemLayout}>
-                    {getFieldDecorator('username', {
+                    {getFieldDecorator('title', {
                         rules: [{ required: true, message: '请填写您的文章题目' }],
                     })(
                         <Input   placeholder="请填写您的文章题目" />
                     )}
                 </Form.Item>
                 <Form.Item label="作者姓名" {...formItemLayout}>
-                    {getFieldDecorator('password', {
+                    {getFieldDecorator('author', {
                         rules: [{ required: true, message: '只写第一作者或通讯作者名称' }],
                     })(
-                        <Input   type="password" placeholder="只写第一作者或通讯作者名称" />
+                        <Input  placeholder="只写第一作者或通讯作者名称" />
                     )}
                 </Form.Item>
                 <Form.Item label="联系方式" {...formItemLayout}>
-                    {getFieldDecorator('username', {
+                    {getFieldDecorator('tel', {
                         rules: [{ required: true, message: '请正确填写您的手机联系方式' }],
                     })(
                         <Input   placeholder="请正确填写您的手机联系方式" />
                     )}
                 </Form.Item>
                 <Form.Item label="QQ号码" {...formItemLayout}>
-                    {getFieldDecorator('password', {
+                    {getFieldDecorator('qq', {
                         rules: [{ required: true, message: '请正确填写您的QQ号码' }],
                     })(
-                        <Input   type="password" placeholder="请正确填写您的QQ号码" />
+                        <Input  placeholder="请正确填写您的QQ号码" />
                     )}
                 </Form.Item>
                 <Form.Item label="电子邮箱" {...formItemLayout}>
-                    {getFieldDecorator('username', {
+                    {getFieldDecorator('email', {
                         rules: [{ required: true, message: '请提供正确的通讯电子信箱' }],
                     })(
                         <Input   placeholder="请提供正确的通讯电子信箱" />
                     )}
                 </Form.Item>
                 <Form.Item label="上传稿件" {...formItemLayout}>
-                    {getFieldDecorator('password', {
-                        rules: [{ required: true, message: '请输入密码' }],
+                    {getFieldDecorator('fileName', {
+                        // rules: [{ required: true, message: '请输入密码' }],
                     })(
-                        <Input   type="password" placeholder="密码" />
-                    )}
+                        <AntFile customUpload={this.FormmemoizedUploadRemote}>
+                            <Button >
+                                {<Icon type={<Icon type="arrow-up" />} />}{"上传文件"}
+                            </Button>
+                        </AntFile>
+                       
+                    )}<span>{file.name || ''}</span>
                 </Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     投 稿
                 </Button>
-
             </Form>
             </div>
           </div>
