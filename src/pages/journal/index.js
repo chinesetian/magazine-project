@@ -38,7 +38,10 @@ class JournalPage extends React.Component {
     parentTag.forEach(element => {
       defaultType[element.transformPeriodical] = defaultKey;
       let target = _.cloneDeep(Dict.getDict(element.dictType));
-      target.unshift({label: '不限', value: defaultKey, dictType: element.transformPeriodical}) 
+      target.unshift(
+        { label: '不限', value: defaultKey, 
+        transformPeriodical: element.transformPeriodical,
+      }) 
       defaultData.push({
         ...element,
         children:target,

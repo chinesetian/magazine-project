@@ -45,10 +45,10 @@ class MenuList extends React.Component {
         let { history } = this.props;
         let { location } = history;
         let other = {}
-        if(key == 'detailcontribute' || key == 'detailquery'){
-            message.warn("正在开发中...")
-            return false
-        }
+        // if(key == 'detailcontribute' || key == 'detailquery'){
+        //     message.warn("正在开发中...")
+        //     return false
+        // }
         if (page) {
             location.pathname = page.url
             if(key == 'process' || key == 'about' || key == 'detailprocess' || key == 'detailabout'){

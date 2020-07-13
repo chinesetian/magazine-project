@@ -71,7 +71,7 @@ class DetailHomeComponent extends React.Component {
                     })}
                 </div>
                 <MenuList menuList={menuList2} {...this.props}/>
-                <div className="home-layout-content w1200">
+                <div className="detail-layout-content w1200">
                     <span className="back-home" onClick={this.backHome}>返回首页</span>
                     <Switch>
                         <Route

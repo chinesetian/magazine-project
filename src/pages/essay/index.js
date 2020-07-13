@@ -13,7 +13,7 @@ class Essay extends React.Component {
     super(props);
     this.state = {
       searchData:{
-        "limit":10,
+        "limit":5,
         "offset":0,
       },
       articleList: [],

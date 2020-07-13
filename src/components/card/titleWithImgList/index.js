@@ -19,7 +19,7 @@ export default class TitleWithImgList extends React.Component{
             bookList: [],
         }
         let { searchData = {}  } = props
-        let param = Object.assign({offset: 0, limit: 4,},searchData);
+        let param = Object.assign({offset: 0, limit: 5,},searchData);
         this.qikanpageList(param)
     }
 

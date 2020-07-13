@@ -16,9 +16,7 @@ export default class QikanBaseInfo extends React.Component{
           <LabelValue  label='国内刊号' className="info" value={data.domesticNumber} emptyValue="暂无"  noWrap={true}/>
           <LabelValue  label='创刊时间' className="info" value={data.publicationYear} emptyValue="暂无"  noWrap={true}/>
           <LabelValue  label='发行周期' className="info" value={Dict.getLabel("periodical_period", data.periodicalPeriod)} emptyValue="暂无"  noWrap={true}/>
-          <LabelValue  label='见刊时间' className="info" value={Dict.getLabel("periodical_publish", data.periodicalPublish)} emptyValue="暂无"  noWrap={true}/>
-          <LabelValue  label='期刊级别' className="info" value={Dict.getLabel("periodical_level", data.periodicalLevel)} emptyValue="暂无"  noWrap={true}/>
-                
+          <LabelValue  label='见刊时间' className="info" value={Dict.getLabel("periodical_publish", data.periodicalPublish)} emptyValue="暂无"  noWrap={true}/>        
       </React.Fragment>
       )
     }

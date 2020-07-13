@@ -1,78 +1,113 @@
-
-
 @activeColor: #e91d25;
 
-.detail-view-page{
-  display: flex;
+.detail-layout-content {
+  .detail-view-page {
+    .left {
+    }
 
-  .left{
-    width: 290px;
-    height: auto;
+    .right {
 
-    .img-box{
-      width: 290px;
-      height: 390px;
-
-      img{
+      .top-info{
+        height: auto;
         width: 100%;
-        height: 100%;
+        display: flex;
+
+        .top-left{
+          flex: 1;
+        }
+
+        .right-phone{
+          width: 150px;
+          height: 100%;
+          font-size: 14px;
+          .one {
+            line-height: 24px;
+            height: 24px;
+          }
+        }
+
       }
-    }
-  }
-
-  .right{
-    width: calc(~"100% - 290px");
-    height: auto;
-    padding: 15px;
-
-    .title {
-      height: 40px;
-      line-height: 40px;
-      font-size: 24px;
-      color: #333;
-      font-weight: 700;
-    }
-
-    .qikan-base{
-      height: 100px;
-      width: 100%;
-      padding: 10px 0px;
-      
-      .info{
-        width: 260px;
-        height: 24px;
-      }
-      .item{
-        width: 100%;
-        height: 24px;
-      }
-    }
-
-    .qikan-other{
-
-      .other-title{
+      .title {
         height: 40px;
         line-height: 40px;
-        background-color: #f5f5f5;
-        border-left: 5px solid @activeColor;
-        padding: 0 20px;
-        font-size: 16px;
-        font-weight: 400;
+        font-size: 24px;
         color: #333;
-        cursor: pointer;
-        position: relative;
+        font-weight: 700;
       }
-    }
 
-    .bottom-img{
-      height: 150px;
-      width: 100%;
-
-      img{
+      .qikan-base {
+        height: 100px;
         width: 100%;
-        height: 100%;
+        padding: 10px 0px;
+
+        .info {
+          width: 220px;
+          height: 24px;
+        }
+        .item {
+          width: 100%;
+          height: 24px;
+        }
+      }
+
+      .qikan-base{
+        
+        &.scroll{
+          height: 120px;
+          width: 100%;
+        }
+
+        .online-contribute{
+          border-top: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          height: 90px;
+          display: flex;
+          // justify-content: center;
+          align-items: center;
+          background: #fafafa;
+         
+          button{
+            margin: 0 30px;
+          }
+          
+          .online-right{
+            border-left: 1px solid #ddd;
+            height: 100%;
+            padding: 20px 0 0 30px;
+          }
+
+        }
+
+      }
+
+      .qikan-other {
+        
+
+
+        .other-title {
+          height: 40px;
+          line-height: 40px;
+          background-color: #f5f5f5;
+          border-left: 5px solid @activeColor;
+          padding: 0 20px;
+          font-size: 16px;
+          font-weight: 400;
+          color: #333;
+          cursor: pointer;
+          position: relative;
+        }
+      }
+
+      .bottom-img {
+        height: 150px;
+        width: 100%;
+        margin-top: 20px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
-    
   }
 }

@@ -33,6 +33,11 @@ class Filter extends React.Component{
 
     }
 
+    getHeight = (i) => {
+      let target = document.getElementsByClassName("tag-item")[i];
+      return target.style.height;
+    }
+
     render(){
         // let { checked } = this.state;
 
@@ -49,6 +54,7 @@ class Filter extends React.Component{
                 
                     <Form className="tag-form">
                         {data.map((item,i) => {
+                          // let flag = this.getHeight(i) == '36px' ? true : false;
                           return(
                             <div key={i} className={`tag-item ${i}`}>
                               <Form.Item label={item.dictName} {...formItemLayout}>
@@ -62,7 +68,7 @@ class Filter extends React.Component{
                                 )}
             
                             </Form.Item>
-                            {/* {item.children.length > 11 && <div className="right-slidr"onClick={(e) => this.isShowItem(i)}><span>展开<Icon type="down" /></span></div>} */}
+                            {/* {item.children.length > 11 && <div className="right-slidr"onClick={(e) => this.isShowItem(i)}><span>{'展开'}</span></div>} */}
                           </div>
                           )
                         })}

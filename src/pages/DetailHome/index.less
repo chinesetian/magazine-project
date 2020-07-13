@@ -16,7 +16,7 @@
         }
     }
 
-    .home-layout-content{
+    .detail-layout-content{
         position: relative;
   
         .back-home{
@@ -27,6 +27,40 @@
             font-size: 16px;
             color: @activeColor;
             cursor: pointer;
+        }
+        
+
+        //主体样式 
+        .detail-view-page{
+
+            .detail-view-wrap{
+                width: 100%;
+                height: auto;
+                display: flex;
+                .left{
+                  width: 290px;
+                  height: auto;
+              
+                  .img-box{
+                    width: 290px;
+                    height: 390px;
+              
+                    img{
+                      width: 100%;
+                      height: 100%;
+                    }
+                  }
+                }
+              
+                .right{
+                  width: calc(~"100% - 290px");
+                  height: auto;
+                  padding: 15px;
+                  
+                }
+            }
+          
+           
         }
     }
 

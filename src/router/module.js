@@ -156,5 +156,29 @@ export default [
             'EssayDetail'
         ),
     },
+    {
+        id: 24,
+        title: '在线投稿',
+        name: 'detailcontribute',
+        isLocal: true,
+        url: '/detail/detailcontribute',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/detailContribute'),
+            'DetailContribute'
+        ),
+    },
+    {
+        id: 25,
+        title: '稿件查询',
+        name: 'detailquery',
+        isLocal: true,
+        url: '/detail/detailquery',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/detailContribute'),
+            'DetailContribute'
+        ),
+    },
 
 ]

@@ -56,7 +56,7 @@ class Header extends React.Component{
                     </div>
                     <div className="search">
                         <Search
-                            placeholder="杂志名称 / 主管主办 / 栏目 / 分类 / 级别 / 订阅"
+                            placeholder="期刊名称"
                             enterButton="搜文章"
                             size="default"
                             onSearch={value => this.change(value)}

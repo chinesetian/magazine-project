@@ -39,7 +39,8 @@ export default class IssueAndEssay extends React.Component{
     }
 
     queryEssay(searchData){
-      Service.base.articleThesis(searchData).then(res => {
+      let param = Object.assign(searchData, {limit: 5})
+      Service.base.articleThesis(param).then(res => {
           if(res.code == 0){
               this.setState({essayList: res.data.list});
           } else {
