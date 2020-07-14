@@ -1,11 +1,27 @@
 const { fixBabelImports, addDecoratorsLegacy, override, addBabelPlugins, 
   addLessLoader, addWebpackAlias, useEslintRc } = require("customize-cra");
 
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+// const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+// const myPlugin = [
+//   new UglifyJsPlugin(
+//     {
+//       uglifyOptions: {
+//         warnings: false,
+//         compress: {
+//           drop_debugger: true,
+//           drop_console: true
+//         }
+//       }
+//     }
+//   )
+// ]
+
+const TerserPlugin = require("terser-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const myPlugin = [
-  new UglifyJsPlugin(
+  new TerserPlugin(
     {
-      uglifyOptions: {
+      terserOptions: {
         warnings: false,
         compress: {
           drop_debugger: true,
@@ -13,8 +29,12 @@ const myPlugin = [
         }
       }
     }
-  )
+  ),
+  new CleanWebpackPlugin({
+    dry: true,
+  }),
 ]
+
 if (process.env.NODE_ENV === "development") {
   process.env.PORT = 3000;
 }
