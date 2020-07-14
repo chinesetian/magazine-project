@@ -100,7 +100,7 @@ class QuestionAndIssue extends React.Component {
               <div className="content-pagination-box" style={{ display: 'flex', justifyContent: 'center' }}>
                 <Pagination
                   total={total}
-                  showTotal={(total) => `共 ${total} 条记录`}
+                  // showTotal={(total) => `共 ${total} 条记录`}
                   style={{ padding: '20px'}}
                   defaultCurrent={1}
                   // showSizeChanger={true}

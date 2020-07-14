@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Modal, message, Input } from 'antd'
+import { Divider, Modal, message, Input, Icon} from 'antd'
 import { withRouter } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import IconFont from '../../../../components/iconFont'
@@ -63,7 +63,8 @@ class Header extends React.Component{
                         />
                     </div>
                     <div className="phone">
-                        <span>咨询热线</span>
+                        
+                        <span>咨询热线<Icon type="phone" /></span>
                         <span className="number">{tel || ''}</span>
                     </div>
                 </div>

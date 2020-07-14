@@ -3,6 +3,7 @@ import { Pagination } from 'antd';
 import Filter from './components/filter';
 import Card from '../../components/card'
 import * as _ from 'lodash';
+import { setCache, getCache } from '../../utils/cache';
 
 import './index.less';
 
@@ -29,6 +30,7 @@ class JournalPage extends React.Component {
 
     let { history } = this.props
     let { location } = history
+    // 外部传进来的tag
     let param = location.state.data;
 
     defaultData = []
@@ -47,6 +49,7 @@ class JournalPage extends React.Component {
         children:target,
       })
     });
+    // 合并选中的tag标签
     defaultType = Object.assign(defaultType, param);
 
     this.state = {
@@ -58,8 +61,8 @@ class JournalPage extends React.Component {
         ...defaultType,
       }
     };
-    this.onChange(defaultType)
-    this.qikanpageList(this.state.searchData)  
+
+    this.onChange(defaultType) 
   }
 
   componentDidMount() {
@@ -92,9 +95,12 @@ class JournalPage extends React.Component {
     let { history } = this.props
     let { location } = history
       if (page) {
-        location.pathname = page.url
+        location.pathname = `${page.url}/${v.id}`
         location.state = {data: v}
-        history.push(location);
+        setCache('detailData', v, "session")
+        //新开页签
+        window.open(location.pathname)
+        // history.push(location);
       } else {
           history.push('/home/404');
       }
@@ -137,7 +143,7 @@ class JournalPage extends React.Component {
               <div className="content-pagination-box" style={{ display: 'flex', justifyContent: 'center' }}>
                 <Pagination
                   total={total}
-                  showTotal={(total) => `共 ${total} 条记录`}
+                  // showTotal={(total) => `共 ${total} 条记录`}
                   style={{ padding: '20px'}}
                   defaultCurrent={1}
                   // showSizeChanger={true}

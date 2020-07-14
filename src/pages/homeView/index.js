@@ -4,6 +4,7 @@ import { Carousel, Tabs, message } from 'antd';
 import * as _ from 'lodash';
 import Card from '../../components/card'
 import IssueAndEssay from './components/issueAndEssay';
+import { setCache, getCache } from '../../utils/cache';
 
 import './index.less';
 
@@ -198,9 +199,13 @@ class HomeView extends React.Component {
     let { history } = this.props
     let { location } = history
       if (page) {
-        location.pathname = page.url
+        location.pathname = `${page.url}/${v.id}`
         location.state = {data: v}
-        history.push(location);
+        location.search = v.id
+        setCache('detailData', v, "session")
+        //新开页签
+        window.open(location.pathname)
+        // history.push(location);
       } else {
           history.push('/home/404');
       }

@@ -17,11 +17,16 @@ class DetailView extends React.Component {
 
   constructor(props){
     super(props)
-    const { location } = props;
-    const data = location.state.data;
-    data && data.id && setCache('detailData', data, "session")
+    const { location, history } = props;
+    // let search = location.search.substr(1);
+    // debugger
+    // const data = location.state.data;
+    // data && data.id && setCache('detailData', data, "session")
     let query = getCache("detailData", "session") || {}
     query.id && this.qikanDetail(query)
+    // let newUrl = `${location.pathname}/${query.id}`;
+    // history.replace(newUrl);
+
     this.state = {
       data: query, // 详情数据
       imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_button").url.split(",") || []), // 底部宣传图
@@ -149,14 +154,17 @@ class DetailView extends React.Component {
                   <div className="other-title">{'期刊简介'}</div>
                   <div dangerouslySetInnerHTML = {{ __html: this.getHtml(data.description)}}></div>
                 </div>
+                <div className="qikan-other wen-xian">
+                  <div className="other-title">{'期刊荣誉'}</div>
+                  <div>
+                    {this.getShow("periodical_honor", data.periodicalHonor)}
+                  </div>
+                </div>
                 <div className="qikan-other te-se">
                   <div className="other-title">{'期刊特色'}</div>
                   <div dangerouslySetInnerHTML = {{ __html: this.getHtml(data.characteristic)}}></div>
                 </div>
-                <div className="qikan-other wen-xian">
-                  <div className="other-title">{'参考文献分析'}</div>
-                  <div dangerouslySetInnerHTML = {{ __html: this.getHtml(data.otherInfo)}}></div>
-                </div>
+               
                 <div className="bottom-img">
                   {imgs.map((v,i) => {
                       return(

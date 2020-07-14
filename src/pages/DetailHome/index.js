@@ -30,7 +30,9 @@ class DetailHomeComponent extends React.Component {
         }
 
         let { UserStore, history } = this.props;
-        let { pathname } = history.location;   
+        let { pathname } = history.location;  
+        debugger 
+        console.log("detailprops", this.props)
     }
 
     componentWillMount(){

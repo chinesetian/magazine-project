@@ -1,4 +1,6 @@
 import React from 'react'
+import { setCache, getCache } from '../../../utils/cache';
+
 import './index.less'
 
 
@@ -45,9 +47,12 @@ export default class TitleWithImgList extends React.Component{
         let { history } = this.props
         let { location } = history
         if (page) {
-            location.pathname = page.url
+            location.pathname = `${page.url}/${v.id}`
             location.state = {data: v}
-            history.push(location);
+            setCache('detailData', v, "session")
+            //新开页签
+            window.open(location.pathname)
+            // history.push(location);
         } else {
             history.push('/home/404');
         }

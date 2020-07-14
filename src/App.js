@@ -47,6 +47,7 @@ class App extends Component {
     if(!flag){
       return null
     }
+    console.log("appprops", this.props)
     return (
       <ConfigProvider locale={zh_CN}>
         <Provider {...Store}>
@@ -55,8 +56,8 @@ class App extends Component {
               {/* <Route exact path="/login" component={Login} /> */}
               <Route exact path="/" render={(props) => <Redirect {...props} to="/home" />} />
               <Route path="/home" component={HomeComponent} />
-              <Route path="/detail" component={DetailHomeComponent} />
-      
+              <Route path="/detail/:name" component={DetailHomeComponent} />
+              {/* <Route path="/detail/detailview?id" component={DetailHomeComponent} /> */}
               <Route exact path="/test" component={TestPage} />
 
             </Switch>
