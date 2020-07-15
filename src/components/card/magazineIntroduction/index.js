@@ -16,8 +16,9 @@ export default class MagazineIntroduction extends React.Component{
                 </div>
                 <div className='right'>
                     <div className="name" onClick={(e) => clickBook(data)}>{data.name}</div>
-                    <div className="description" dangerouslySetInnerHTML = {{ __html: html}}>
-                        
+                    <div className="description">
+                        <div>创刊时间：{data.publicationYear}</div>
+                        <div>主管单位：{data.competentDepartment}</div>
                     </div>
                     <Button className="click-book" onClick={(e) => clickBook(data)}>马上阅读</Button>
                 </div>

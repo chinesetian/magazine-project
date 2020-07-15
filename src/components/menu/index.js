@@ -96,8 +96,8 @@ class MenuList extends React.Component {
         let { currentMenu} = this.state;
         let { menuList } = this.props
         return(
-            <div className="menu-wrap">
-                <Menu className='w1200' theme="light" mode="horizontal" 
+            <div className="menu-wrap w1200">
+                <Menu className='menu-box' theme="light" mode="horizontal" 
                     selectedKeys={[currentMenu]} 
                     onClick={this.menuClick} forceSubMenuRender={true}
                 >

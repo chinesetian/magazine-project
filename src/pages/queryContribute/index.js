@@ -20,7 +20,7 @@ class QueryContributeForm extends React.Component {
   constructor(props){
     super(props)
     const { location } = props;
-    // const data = location.state.data;
+    this.value = location.state.data || '';
     // data && data.id && setCache('detailId', {id: data.id }, "session")
     let query = getCache("detailData", "session") || {}
     this.state = {
@@ -31,7 +31,12 @@ class QueryContributeForm extends React.Component {
   }
  
   componentDidMount() {
-
+    if(this.value){
+         this.props.form.setFieldsValue({
+            no: this.value,
+        });
+        this.queryData({"no": this.value,})
+    }
   }
 
       /**
@@ -46,20 +51,25 @@ class QueryContributeForm extends React.Component {
                 let param ={
                     "no": values.no,
                 }
-                Service.base.tougaoDetail(param).then(res => {
-                    if(res.code == 0){
-                        this.setState({gaojian: res.data || {}})
-                        // message.info("查询成功")
-                    } else {
-                        message.error("查询失败")
-                        return  false
-                    }
-                }).catch(err => {
-                    // console.error(err);
-                    message.error("查询失败")
-                });
+             
+             this.queryData(param)
           }
       });
+  }
+
+  queryData = (param) => {
+    Service.base.tougaoDetail(param).then(res => {
+        if(res.code == 0){
+            this.setState({gaojian: res.data || {}})
+            // message.info("查询成功")
+        } else {
+            message.error("查询失败")
+            return  false
+        }
+    }).catch(err => {
+        // console.error(err);
+        message.error("查询失败")
+    });
   }
 
   render() {

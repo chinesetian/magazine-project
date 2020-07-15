@@ -6,6 +6,7 @@ import * as _ from 'lodash';
 import { setCache, getCache } from '../../utils/cache';
 import Card from '../../components/card'
 import ScrollBox from '../../components/scrollBox'
+import QuerySearch from '../../components/querySearch'
 
 import './index.less';
 
@@ -58,14 +59,22 @@ class DetailView extends React.Component {
   }
 
   getShow = (parent, type) => {
+    let content = '';
     if(type){
       let arr = []
       type.split(",").map(v => {
         arr.push(Dict.getLabel(parent, v))
       })
-      return arr.join("   ")
+      content = (
+        <div className="honor-box">
+          {arr.map((item,i) => {
+            return <span className="tag">{item}</span>
+          })}
+        </div>
+      )
+      return content;
     } else {
-      return ''
+      return content
     }
 
   }
@@ -112,7 +121,10 @@ class DetailView extends React.Component {
               <div className="img-box">
                 <img src={`/magazine${data.url}`} />
               </div>
-              <div><TitleWithImgList searchData={searchData} title={'相关期刊'} {...this.props}/></div>
+              <div>
+                {/* <TitleWithImgList searchData={searchData} title={'相关期刊'} {...this.props}/> */}
+                <QuerySearch {...this.props}/>
+              </div>
             </div>
             <div className="right">
                 <div className="top-info">
@@ -154,11 +166,9 @@ class DetailView extends React.Component {
                   <div className="other-title">{'期刊简介'}</div>
                   <div dangerouslySetInnerHTML = {{ __html: this.getHtml(data.description)}}></div>
                 </div>
-                <div className="qikan-other wen-xian">
+                <div className="qikan-other honor">
                   <div className="other-title">{'期刊荣誉'}</div>
-                  <div>
                     {this.getShow("periodical_honor", data.periodicalHonor)}
-                  </div>
                 </div>
                 <div className="qikan-other te-se">
                   <div className="other-title">{'期刊特色'}</div>
