@@ -44,11 +44,27 @@ class DetailView extends React.Component {
       data: query, // 详情数据
       imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_button").url.split(",") || []), // 底部宣传图
       tougaoList: [], // 投稿列表
+      flag: false
     };
   }
 
   componentDidMount() {
+    document.getElementById("root").addEventListener("scroll", this.myScript, false)
     this.tougaoList();
+  }
+
+  componentWillUnmount(){
+    document.getElementById("root").removeEventListener("scroll", this.myScript, false)
+  }
+
+  myScript = (e) => {
+    let top = document.getElementById("root").scrollTop
+    if(top > 270){
+      this.setState({flag: true})
+    } else {
+      this.setState({flag: false})
+    }
+
   }
 
 
@@ -120,7 +136,7 @@ class DetailView extends React.Component {
   }
 
   render() {
-    let { data, imgs, tougaoList } = this.state;
+    let { data, imgs, tougaoList, flag } = this.state;
     if(!data.id){
       return null
     }
@@ -131,7 +147,7 @@ class DetailView extends React.Component {
           <div className="detail-view-wrap">
             <div className="left">
               <div className="img-box">
-                <img src={`/magazine${data.url}`} />
+                <img className={`img ${flag ? "fixed-img" :''}`} src={`/magazine${data.url}`} />
               </div>
               <div style={{padding: '20px  0'}}>
                 {/* <TitleWithImgList searchData={searchData} title={'相关期刊'} {...this.props}/> */}

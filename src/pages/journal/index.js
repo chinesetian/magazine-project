@@ -97,7 +97,7 @@ class JournalPage extends React.Component {
     let { location } = history
       if (page) {
         location.pathname = `${page.url}/${v.id}`
-        location.state = {data: v}
+        // location.state = {data: v}
         setCache('detailData', v, "session")
         //新开页签
         window.open(location.pathname)
