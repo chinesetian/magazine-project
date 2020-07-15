@@ -5,7 +5,7 @@ import './index.less'
 class Filter extends React.Component{
 
     state = {
-        checked: true,
+      collapse: true,
     }
 
     componentDidMount(){
@@ -38,21 +38,25 @@ class Filter extends React.Component{
       return target.style.height;
     }
 
-    render(){
-        // let { checked } = this.state;
+    collapse = () => {
+      let { collapse } = this.state;
+      this.setState({collapse: !collapse})
+    }
 
+    render(){
+        let { collapse } = this.state;
+        let { data, searchData, onChange} = this.props;
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
             labelCol: { span: 5 },
             wrapperCol: { span: 19 },
             colon: false
         };
-        let { data, searchData, onChange} = this.props;
-        console.log(data)
+
         return(
             <div className="filter-layout">
                 
-                    <Form className="tag-form">
+                    <Form className="tag-form" style={{height: collapse ? 130 : 'auto'}}>
                         {data.map((item,i) => {
                           // let flag = this.getHeight(i) == '36px' ? true : false;
                           return(
@@ -73,8 +77,7 @@ class Filter extends React.Component{
                           )
                         })}
                     </Form>
-
-                {/* <span className="slider" onClick={this.submit}>{'收起'}</span> */}
+                <span className="bottom-slider" onClick={this.collapse}>{collapse ? "展开" : '收起'}</span>
             </div>
         )
     }

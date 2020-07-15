@@ -5,13 +5,14 @@ import * as _ from 'lodash';
 import { setCache, getCache } from '../../utils/cache';
 import Card from '../../components/card'
 import {
-  Form, Icon, Input, Button, Checkbox, message
+  Form, Icon, Input, Button, Modal, message,
 } from 'antd'
 
 import AntFile from '../../components/AntFile'
 
 import './index.less';
 
+const { success } = Modal;
 const QikanBaseInfo = Card.QikanBaseInfo
 const TitleWithImgList = Card.TitleWithImgList
 const { Dict, Service, Store } = window
@@ -74,7 +75,18 @@ class Contribute extends React.Component {
                 }
                 Service.base.tougaoAdd(param).then(res => {
                     if(res.code == 0){
-                        message.info("投稿成功")
+                        // message.info("投稿成功")
+                        success({
+                            title: "投稿成功",
+                            content: <div>稿件编号为：<span className="red">{res.data.no}</span> </div>,
+                            okText: '确定',
+                            onOk() {
+                                console.log('OK');
+                            },
+                            // onCancel() {
+                            //     console.log('Cancel');
+                            // },
+                        })
                         this.setState({gaojian: res.data || {}})
                     } else {
                         message.error("投稿失败")
@@ -187,7 +199,7 @@ class Contribute extends React.Component {
                                         </Button>
                                     </AntFile>
                                 
-                                )}<span>{file.name || ''}</span>
+                                )}<span style={{marginLeft: 10}}>{file.name || ''}</span>
                             </Form.Item>
                             <div >{gaojian.no ? 
                                 <div >稿件编号为：

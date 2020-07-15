@@ -116,8 +116,10 @@ class QueryContributeForm extends React.Component {
                             </Form.Item>
                             <div className="tip">{gaojian.no ? 
                                 <div>
-                                    <span>{gaojian.title} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <span className="red">{Dict.getLabel("periodical_audit_status", gaojian.status)}</span>
+                                    <div style={{marginBottom: 15}}><b>以下为查询结果：</b>（为了隐私信息，这里只显示部分作者信息）</div>
+                                    <div>姓名：{gaojian.author}</div>
+                                    <div>刊物名称：{gaojian.title}</div>
+                                    <div>状态：<span className="red">{Dict.getLabel("periodical_audit_status", gaojian.status)}</span></div>
                                 </div>
                                 : '未查到相关数据'}
                             </div>

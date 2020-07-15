@@ -58,6 +58,7 @@ class JournalPage extends React.Component {
       searchData:{
         offset: 0,
         limit: 10,
+        // keyword: '',
         ...defaultType,
       }
     };

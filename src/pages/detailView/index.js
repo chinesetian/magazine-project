@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Carousel } from 'antd';
 import LabelValue from '../../components/LabelValue'
-import { isString } from "util";
+import { isString, isNumber } from "util";
 import * as _ from 'lodash';
 import { setCache, getCache } from '../../utils/cache';
 import Card from '../../components/card'
@@ -19,15 +19,27 @@ class DetailView extends React.Component {
   constructor(props){
     super(props)
     const { location, history } = props;
-    // let search = location.search.substr(1);
-    // debugger
     // const data = location.state.data;
     // data && data.id && setCache('detailData', data, "session")
-    let query = getCache("detailData", "session") || {}
-    query.id && this.qikanDetail(query)
-    // let newUrl = `${location.pathname}/${query.id}`;
-    // history.replace(newUrl);
+    let query = {};
+    try {  
+      let arr = window.location.pathname.split("/");
+      let searchId = arr[3];
+      if(searchId){
+        query = {id: searchId}
+      } else {
+        query = getCache("detailData", "session")
+        location.pathname = `${location.pathname}/${query.id}`;
+        history.replace(location);
+      }
+    } catch (error) {
+      
+    }
 
+    query.id && this.qikanDetail(query)
+
+    this.tel = _.cloneDeep(Dict.getDict("periodical_other_info").find(v => v.dictValue == "periodical_other_info_tel").label || '');
+    
     this.state = {
       data: query, // 详情数据
       imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_button").url.split(",") || []), // 底部宣传图
@@ -68,7 +80,7 @@ class DetailView extends React.Component {
       content = (
         <div className="honor-box">
           {arr.map((item,i) => {
-            return <span className="tag">{item}</span>
+            return <span key={i} className="tag">{item}</span>
           })}
         </div>
       )
@@ -121,7 +133,7 @@ class DetailView extends React.Component {
               <div className="img-box">
                 <img src={`/magazine${data.url}`} />
               </div>
-              <div>
+              <div style={{padding: '20px  0'}}>
                 {/* <TitleWithImgList searchData={searchData} title={'相关期刊'} {...this.props}/> */}
                 <QuerySearch {...this.props}/>
               </div>
@@ -155,7 +167,7 @@ class DetailView extends React.Component {
                     </div>
                     <div className="right-phone">
                         <div className="one">在线咨询：</div>
-                        <div className="one">电话：400-8715-468 </div>
+                        <div className="one">电话：{this.tel} </div>
                         <div className="one">（周一至周六）</div>
                         <div className="one">早上 09:00-12:00</div>
                         <div className="one">下午 13:30-17:30</div>

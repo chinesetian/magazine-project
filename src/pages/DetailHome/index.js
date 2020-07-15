@@ -20,7 +20,6 @@ const menuList2 = [
 const { Dict, Service, Store } = window
 
 @withRouter
-@inject('UserStore')
 class DetailHomeComponent extends React.Component {
     constructor(props){
         super(props)
@@ -28,11 +27,7 @@ class DetailHomeComponent extends React.Component {
             isFooter: true,
             imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_top").url.split(",") || []),
         }
-
-        let { UserStore, history } = this.props;
-        let { pathname } = history.location;  
-        debugger 
-        console.log("detailprops", this.props)
+        // console.log("detailprops", this.props)
     }
 
     componentWillMount(){

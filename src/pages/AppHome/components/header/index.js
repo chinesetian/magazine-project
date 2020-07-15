@@ -1,21 +1,15 @@
 import React from 'react'
-import { Divider, Modal, message, Input, Icon} from 'antd'
+import { message, Input, Icon} from 'antd'
 import { withRouter } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
-import IconFont from '../../../../components/iconFont'
 import './index.less'
-import UserService from '../../../../api/user';
-import { deleteCache } from '../../../../utils/cache'
 import * as _ from 'lodash';
 
 const { Search } = Input;
-const logo = "/resource/image/logo.jpg";
-const hottel = "/resource/image/hottel.png";
 
-const { Service, Dict } = window
+const { Service, Dict, Store } = window
 
 @withRouter
-@inject('UserStore')
 class Header extends React.Component{
     constructor(props){
         super(props)
@@ -29,7 +23,19 @@ class Header extends React.Component{
 
     change = (value) => {
         console.log(value)
-        message.warn("正在开发中...")
+        if(value.length <= 0){
+            message.warn("请输入查询内容")
+        }
+        let page = Store.MenuStore.getMenuForName('journal');
+        let { history } = this.props
+        let { location } = history
+        if (page) {
+        location.pathname = page.url
+        location.state = {data: {keyword: value}}
+        history.push(location);
+        } else {
+            history.push('/home/404');
+        }
     }
 
     render(){
@@ -57,7 +63,7 @@ class Header extends React.Component{
                     <div className="search">
                         <Search
                             placeholder="期刊名称"
-                            enterButton="搜文章"
+                            enterButton="搜索"
                             size="default"
                             onSearch={value => this.change(value)}
                         />
