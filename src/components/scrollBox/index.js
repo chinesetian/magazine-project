@@ -56,7 +56,7 @@ export default class ScrollBox extends React.Component{
                         {data.map((item,index) => {
                             return(
                             <div key={item.id} className="item">
-                                <span className="index">{index+1}</span>
+                                <span className="index">{item.no}</span>
                                 <span className="name">{item.title}</span>
                                 <span className="auther">{item.author}</span>
                                 <span className="status">{Dict.getLabel("periodical_audit_status", item.status)}</span>
@@ -66,7 +66,7 @@ export default class ScrollBox extends React.Component{
                         {data.map((item,index) => {
                             return(
                             <div key={item.id} className="item">
-                                <span className="index">{index+1}</span>
+                                <span className="index">{item.no}</span>
                                 <span className="name">{item.title}</span>
                                 <span className="auther">{item.author}</span>
                                 <span className="status">{Dict.getLabel("periodical_audit_status", item.status)}</span>

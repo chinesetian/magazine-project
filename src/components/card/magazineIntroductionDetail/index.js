@@ -18,7 +18,7 @@ export default class MagazineIntroductionDetail extends React.Component{
                     {/* <img src={'http://47.114.188.175:8980/js/userfiles/fileupload/20200704/1279117208455147522.png'} /> */}
                 </div>
                 <div className='right'>
-                    <div className="title">{data.name}</div>
+                    <div className="title" title={data.name}>{data.name}</div>
                     <QikanBaseInfo data={data}/>
                 </div>
             </div>

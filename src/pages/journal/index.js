@@ -30,8 +30,8 @@ class JournalPage extends React.Component {
 
     let { history } = this.props
     let { location } = history
-    // 外部传进来的tag
-    let param = location.state.data;
+    // 外部传进来的tag或者keyword值
+    let param = location.state.data || {};
 
     defaultData = []
     defaultType = {}
@@ -49,7 +49,7 @@ class JournalPage extends React.Component {
         children:target,
       })
     });
-    // 合并选中的tag标签
+    // 合并选中的tag标签或者keyword值
     defaultType = Object.assign(defaultType, param);
 
     this.state = {
@@ -68,6 +68,15 @@ class JournalPage extends React.Component {
 
   componentDidMount() {
     
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps){
+    let param = nextProps.location.state.data
+    if(param){
+      // 合并选中的tag标签或者keyword值
+      let defaultType = Object.assign({}, param);
+      this.onChange(defaultType) 
+    }
   }
 
   onChange = (options) => {
