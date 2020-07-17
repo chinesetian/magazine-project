@@ -21,6 +21,58 @@
     -->
     <title>期刊订阅发行部</title>
     <script src="%PUBLIC_URL%/BSConfig.js"></script>
+    <style>
+      .fd-qq {
+          width: 177px;
+          position: fixed;
+          right: 40%;
+          top: 150px;
+          z-index: 900000;
+          margin-right: -700px;
+          font-size: 14px;
+      }
+      .fd-qqt {
+          background: url(%PUBLIC_URL%/resource/image/qq-t.png) no-repeat;
+          height: 32px;
+          line-height: 32px;
+          text-align: center;
+          overflow: hidden;
+          color: #fff;
+      }
+      .fd-qqlist {
+          background: #fcfcfc;
+          border-right: 1px #d5d5d5 solid;
+          border-left: 1px #d5d5d5 solid;
+          padding: 5px 10px;
+      }
+      .fd-qqlist h3 {
+          height: 28px;
+          line-height: 28px;
+          font-size: 14px;
+      }
+
+      .fd-qqlist a {
+          margin-bottom: 8px;
+          display: block;
+          background: url(%PUBLIC_URL%/resource/image/qq-lb.png) no-repeat;
+          height: 31px;
+          line-height: 31px;
+          /* color: #fff; */
+          padding-left: 32px;
+      }
+      .fd-qqfgx {
+          border-top: 1px #c0c0c0 dashed;
+          margin-top: 0;
+      }
+      .fd-qqb {
+          background: url(%PUBLIC_URL%/resource/image/qq-b.png) no-repeat;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          color: #fff;
+      }
+
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -35,5 +87,25 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+      <div class="fd-qq">
+        <div class="fd-qqt" style="font-size:18px;">采编室</div>
+        <div class="fd-qqlist">
+            <h3>投稿咨询</h3>
+            <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=27943146&amp;site=qq&amp;menu=yes" target="_blank">张老师</a>
+            <h3 class="fd-qqfgx">稿件查询</h3>
+            <a href="tencent://message/?uin=27945722&amp;Site=www.freeforver.cn&amp;Menu=yes">李老师</a>
+            <h3 class="fd-qqfgx">稿件修改</h3>
+            <a href="tencent://message/?uin=27961412&amp;Site=www.freeforver.cn&amp;Menu=yes">周老师</a>
+            <h3 class="fd-qqfgx">文章检测</h3>
+            <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=27952712&amp;site=qq&amp;menu=yes" target="_blank">王老师</a>
+        </div>
+        <div class="fd-qqb">
+            快速审稿   优先发表
+        </div>
+        <div class="fd-qqbtn">
+            <img src="/home/img/btbt.png" width="15" height="15" original="/home/img/btbt.png" style="display: inline;">
+        </div>
+    </div>
   </body>
+  <script language="javascript" src="http://dft.zoosnet.net/JS/LsJS.aspx?siteid=DFT78699547&float=1&lng=cn"></script>
 </html>

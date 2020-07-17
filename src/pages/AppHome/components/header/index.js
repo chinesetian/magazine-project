@@ -23,10 +23,10 @@ class Header extends React.Component{
 
     change = (value) => {
         console.log(value)
-        if(value.length <= 0){
-            message.warn("请输入查询内容")
-            return false
-        }
+        // if(value.length <= 0){
+        //     message.warn("请输入查询内容")
+        //     return false
+        // }
         let page = Store.MenuStore.getMenuForName('journal');
         let { history } = this.props
         let { location } = history
