@@ -29,9 +29,12 @@ class App extends Component {
 
   async UNSAFE_componentWillMount() {
     this.setState({flag: false})
-    const [dictType, dictData, imgs] = await this.fetchInit({});
+    const [dictType, dictData, imgs, BSConfig] = await this.fetchInit({});
     Dict.append(dictData.data, dictType.data, imgs.data)
+    window.BSConfig = BSConfig;
+    
     this.setState({flag: true})
+
   }
 
   fetchInit(){
@@ -39,6 +42,7 @@ class App extends Component {
       Service.base.dictType(), // 字典大类
       Service.base.dictData(), // 字典左右
       Service.base.image({}), // 图片
+      Service.base.systemConfig(),
     ]);
   }
 

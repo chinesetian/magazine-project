@@ -51,7 +51,7 @@ class Contribute extends React.Component {
   // }
 
       /**
-     * 登录提交
+     * 投稿提交
      */
     handleSubmit(e) {
       e.preventDefault();
@@ -64,7 +64,7 @@ class Contribute extends React.Component {
           if (!err) {
                 let param ={
                     "qiKanId": data.id,
-                    "platform": "SJ",
+                    "platform": window.BSConfig.platform || "SJ",
                     "title": values.title,
                     "author": values.author,
                     "tel": values.tel,

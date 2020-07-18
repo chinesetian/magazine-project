@@ -108,7 +108,12 @@ class DetailView extends React.Component {
   }
 
   tougaoList(){
-    Service.base.tougaoList({"limit":10,"offset":0}).then(res => {
+    let param= {
+      "limit":10,
+      "offset":0,
+      "platform": window.BSConfig.platform || "SJ"
+    }
+    Service.base.tougaoList(param).then(res => {
       if(res.code == 0){
         this.setState({tougaoList: res.data.list,});
       } else {

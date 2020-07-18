@@ -43,7 +43,8 @@ const { Utils } = window;
 */
 
 // 默认上传的格式
-const ACCEPT_FILE = "image/jpeg,image/jpg";
+const ACCEPT_FILE = "*";
+// const ACCEPT_FILE = "image/jpeg,image/jpg";
 const MAX_SIZE = 500;
 
 class AntFile extends React.Component {

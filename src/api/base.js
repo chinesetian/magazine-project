@@ -5,6 +5,21 @@ import { base } from './url/url'
 @httpRequest
 class BaseService{
 
+
+  systemConfig() {
+    return this.$httpRequest({
+      url: `/resource/config/systemConfig.json?${Date.now()}`,
+    });
+  }
+
+    // 数据字典类型
+    dictType(){
+      return this.$httpRequest({
+        method: "post",
+        url: `${base.dictType}`
+      });
+    }
+
   // 数据字典类型
   dictType(){
     return this.$httpRequest({
