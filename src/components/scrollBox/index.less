@@ -22,35 +22,43 @@
     overflow: hidden;
     padding: 0 15px;
 
-    .item{
-
+    .scroll-item{
+      width: 100%;
       text-decoration: none;
       color: #333;
       font-size: 12px;
+      overflow: hidden;
+      display: flex;
 
-      .index,.name,.auther.status{
+      .index,.name,.auther,.status{
         line-height: 20px;
         height: 20px;
-      }
-
-      .name{
-        display: inline;
-        max-width: 400px;
+        display: inline-block;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+
+      .index{
+        max-width: 120px;
+      }
+
+      .name{
+        max-width: 300px;
         margin-left: 10px;
       }
 
       .auther{
-        display: inline-block;
         color: green;
-        margin: 0 15px;
+        max-width: 150px;
+        margin-left: 10px;
       }
 
       .status{
         display: inline-block;
         color: red;
+        margin-left: 10px;
+        max-width: 100px;
       }
     }
     

@@ -46,7 +46,8 @@ export class Footer extends React.Component{
                             </span>)
                     })}
                 </div>
-                <div className="copy-right">{announce.label || ''}&nbsp;&nbsp;&nbsp;{copyright.label || ''}</div>
+                <div className="announce">{announce.label || ''}</div>
+                <div className="copy-right">{window.BSConfig[window.BSConfig.platform] || ''}</div>
                
             </div>
         )

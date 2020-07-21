@@ -55,20 +55,20 @@ export default class ScrollBox extends React.Component{
                     {<div className="content" id="scroll-content">
                         {data.map((item,index) => {
                             return(
-                            <div key={item.id} className="item">
-                                <span className="index">{item.no}</span>
-                                <span className="name">{item.title}</span>
-                                <span className="auther">{item.author}</span>
+                            <div key={item.id} className="scroll-item">
+                                <span className="index" title={item.no}>{item.no}</span>
+                                <span className="name" title={item.title}>{item.title}</span>
+                                <span className="auther" >{item.author}</span>
                                 <span className="status">{Dict.getLabel("periodical_audit_status", item.status)}</span>
                             </div>
                             )
                         })}
                         {data.map((item,index) => {
                             return(
-                            <div key={item.id} className="item">
-                                <span className="index">{item.no}</span>
-                                <span className="name">{item.title}</span>
-                                <span className="auther">{item.author}</span>
+                            <div key={item.id} className="scroll-item">
+                                <span className="index" title={item.no}>{item.no}</span>
+                                <span className="name" title={item.title}>{item.title}</span>
+                                <span className="auther" title={item.author}>{item.author}</span>
                                 <span className="status">{Dict.getLabel("periodical_audit_status", item.status)}</span>
                             </div>
                             )
