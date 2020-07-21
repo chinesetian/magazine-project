@@ -1725,7 +1725,7 @@ babel-code-frame@^6.22.0:
 
 babel-eslint@10.0.1, babel-eslint@^10.0.1:
   version "10.0.1"
-  resolved "http://r.cnpmjs.org/babel-eslint/download/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
+  resolved "https://r.cnpmjs.org/babel-eslint/download/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.0.0"
@@ -2420,7 +2420,7 @@ commander@~2.19.0:
 
 comment-parser@^0.5.4:
   version "0.5.4"
-  resolved "http://r.cnpmjs.org/comment-parser/download/comment-parser-0.5.4.tgz#089840b9cccacad2b769b231ed43081d501b9487"
+  resolved "https://r.cnpmjs.org/comment-parser/download/comment-parser-0.5.4.tgz#089840b9cccacad2b769b231ed43081d501b9487"
 
 common-tags@^1.8.0:
   version "1.8.0"
@@ -3214,14 +3214,14 @@ ecc-jsbn@~0.1.1:
 
 echarts-for-react@^2.0.15-beta.0:
   version "2.0.15-beta.0"
-  resolved "http://r.cnpmjs.org/echarts-for-react/download/echarts-for-react-2.0.15-beta.0.tgz#dbf30b66bfcc8b1cb9f889eb3ec59a8b1363c3d6"
+  resolved "https://r.cnpmjs.org/echarts-for-react/download/echarts-for-react-2.0.15-beta.0.tgz#dbf30b66bfcc8b1cb9f889eb3ec59a8b1363c3d6"
   dependencies:
     fast-deep-equal "^2.0.1"
     size-sensor "^0.2.0"
 
 echarts@^4.2.1:
   version "4.2.1"
-  resolved "http://r.cnpmjs.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  resolved "https://r.cnpmjs.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
   dependencies:
     zrender "4.0.7"
 
@@ -3400,7 +3400,7 @@ eslint-plugin-import@2.16.0:
 
 eslint-plugin-jsdoc@^8.1.0:
   version "8.1.0"
-  resolved "http://r.cnpmjs.org/eslint-plugin-jsdoc/download/eslint-plugin-jsdoc-8.1.0.tgz#c0d5911b7b86d4185e4a9577446a3959376f48e9"
+  resolved "https://r.cnpmjs.org/eslint-plugin-jsdoc/download/eslint-plugin-jsdoc-8.1.0.tgz#c0d5911b7b86d4185e4a9577446a3959376f48e9"
   dependencies:
     comment-parser "^0.5.4"
     jsdoctypeparser "4.0.0"
@@ -3459,7 +3459,7 @@ eslint-visitor-keys@^1.0.0:
 
 eslint@^5.16.0:
   version "5.16.0"
-  resolved "http://r.cnpmjs.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
+  resolved "https://r.cnpmjs.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -5333,7 +5333,7 @@ jsbn@~0.1.0:
 
 jsdoctypeparser@4.0.0:
   version "4.0.0"
-  resolved "http://r.cnpmjs.org/jsdoctypeparser/download/jsdoctypeparser-4.0.0.tgz#f25e212ff8b0e3e9ed76627554392787cd524128"
+  resolved "https://r.cnpmjs.org/jsdoctypeparser/download/jsdoctypeparser-4.0.0.tgz#f25e212ff8b0e3e9ed76627554392787cd524128"
 
 jsdom@^11.5.1:
   version "11.12.0"
@@ -5726,14 +5726,10 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-"lodash@>=3.5 <5", lodash@^4.16.5, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5:
-  version "4.17.11"
-  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
-
-lodash@^4.17.13:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+"lodash@>=3.5 <5", lodash@^4.16.5, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.19, lodash@^4.17.4, lodash@^4.17.5:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 loglevel@^1.4.1:
   version "1.6.1"
@@ -8763,7 +8759,7 @@ sisteransi@^1.0.0:
 
 size-sensor@^0.2.0:
   version "0.2.4"
-  resolved "http://r.cnpmjs.org/size-sensor/download/size-sensor-0.2.4.tgz#93f7b3a8a8582967a1ae782c5ae39ae1dbb7368d"
+  resolved "https://r.cnpmjs.org/size-sensor/download/size-sensor-0.2.4.tgz#93f7b3a8a8582967a1ae782c5ae39ae1dbb7368d"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -10141,4 +10137,4 @@ yargs@^12.0.2:
 
 zrender@4.0.7:
   version "4.0.7"
-  resolved "http://r.cnpmjs.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  resolved "https://r.cnpmjs.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
