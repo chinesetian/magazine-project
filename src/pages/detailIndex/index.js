@@ -7,11 +7,16 @@ import './index.less'
 
 const { Dict, Service, Store } = window
 const TitleContentCard = Card.TitleContentCard
+const ContactUs = Card.ContactUs
+
 const imgData = [
   {url: "/resource/image/fw-p1-1.jpg", name: '1'},
   {url: "/resource/image/fw-p1-2.jpg", name: '2'},
   {url: "/resource/image/fw-p1-3.jpg", name: '3'},
 ]
+
+const liucheng = "/resource/image/heng.jpg"
+const ju = "/resource/image/ju.jpg"
 
 class DetailIndex extends React.Component {
   constructor(props){
@@ -103,10 +108,25 @@ class DetailIndex extends React.Component {
               </div>
             </div>
           </TitleContentCard>
-          <div className="second-box left-box">
-
+          <div className="second-box">
+            <TitleContentCard
+              title="国家新闻出版广电总局备案信息"
+              borderColor={'#dddddd'}
+              className="ju"
+            >
+              <a href="http://www.gapp.gov.cn/govservice/108.shtml" ><img src={ju} /></a>
+            </TitleContentCard>
+            <TitleContentCard
+              title="投稿须知"
+              borderColor={'#dddddd'}
+              className="xuzhi"
+            >
+              <div>请各位投稿作者注意，凡是投稿《新课程教学》正在审核期的文章，请勿一稿多投，审稿期一般二个工作日以内，作者可以随时在本站上输入文章编号查询稿件审核情况。稿件录用后，《新课程教学》编辑部在通知作者的情况下有权适当修改文章，以便适应期刊的定位要求。</div>
+            </TitleContentCard>
           </div>
+          <img className="liucheng" src={liucheng} />
           <div className="third-box">
+            <ContactUs></ContactUs>
             
           </div>
         </div>
