@@ -1,0 +1,30 @@
+
+@activeColor: #e91d25;
+
+.title-content-card{
+  
+  .title-content-title{
+    border-bottom: 1px solid #dddddd;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    .title{
+      line-height: 40px;
+      color: @activeColor;
+      font-size: 20px;
+      padding-left: 8px;
+      font-weight: bold;
+    }
+    .more{
+      cursor: pointer;
+      &:hover{
+        color: @activeColor;
+      }
+    }
+  }
+  
+  .content-card{
+    padding: 10px;
+  }
+}

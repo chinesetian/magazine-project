@@ -109,8 +109,20 @@ export default [
         ),
     },
     {
-        id: 20,
+        id: 19,
         title: '首页',
+        name: 'detailindex',
+        isLocal: true,
+        url: '/detail/detailindex',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/detailIndex'),
+            'DetailIndex'
+        ),
+    },
+    {
+        id: 20,
+        title: '期刊简介',
         name: 'detailview',
         isLocal: true,
         url: '/detail/detailview',
@@ -178,6 +190,30 @@ export default [
         component: asyncComponent(
             () => import('../pages/queryContribute'),
             'QueryContribute'
+        ),
+    },
+    {
+        id: 26,
+        title: '新闻咨询',
+        name: 'detailnews',
+        isLocal: true,
+        url: '/detail/detailnews',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/questionAndIssue'),
+            'QuestionAndIssue'
+        ),
+    },
+    {
+        id: 27,
+        title: '投稿须知',
+        name: 'contributenotice',
+        isLocal: true,
+        url: '/detail/contributenotice',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/contributeNotice'),
+            'ContributeNotice'
         ),
     },
 

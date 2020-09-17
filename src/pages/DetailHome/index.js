@@ -9,10 +9,13 @@ import * as _ from 'lodash';
 
 import './index.less'
 const menuList2 = [
-    {menuName: '首页', name: 'detailview'},
+    {menuName: '首页', name: 'detailindex'},
+    {menuName: '期刊简介', name: 'detailview'},
     {menuName: '期刊范文', name: 'detailessay'},
     {menuName: '在线投稿', name: 'detailcontribute'},
     {menuName: '稿件查询', name: 'detailquery'},
+    {menuName: '投稿须知', name: 'contributenotice'},
+    {menuName: '新闻咨询', name: 'detailnews'},
     {menuName: '流程须知', name: 'detailprocess'},
     {menuName: '关于我们', name: 'detailabout'},
 ]

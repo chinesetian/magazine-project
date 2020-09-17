@@ -6,7 +6,8 @@ import MagazineImgWithName from './magazineImgWithName'; //杂志name、title卡
 import SortWithList from './sortWithList'; //排行榜标题列表
 import MagazineIntroductionDetail from './magazineIntroductionDetail'; //杂志详情简介卡片
 import TitleWithImgList from './titleWithImgList'; //热门期刊
-import EssayCard from './essayCard'; // 期刊范围
+import EssayCard from './essayCard'; // 期刊范文
+import TitleContentCard from './titleContentCard'; // 新的子页面壳子
 
 import QikanBaseInfo from './qikanBaseInfo';
 
@@ -21,6 +22,7 @@ const Card =  {
   TitleWithImgList,
   EssayCard,
   QikanBaseInfo,
+  TitleContentCard,
 }
 
 export default Card
