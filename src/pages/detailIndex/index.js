@@ -5,6 +5,7 @@ import Card from '../../components/card'
 import ScrollBoxWithLabel from '../../components/scrollBoxWithLabel'
 import QuerySearch from '../../components/querySearch'
 import { setCache, getCache } from '../../utils/cache';
+import ScrollBoxFriend from '../../components/scrollBoxFriend'
 
 import './index.less'
 
@@ -14,9 +15,11 @@ const ContactUs = Card.ContactUs
 const ArticleCopyright = Card.ArticleCopyright
 
 const imgData = [
-  {url: "/resource/image/fw-p1-1.jpg", name: '1'},
-  {url: "/resource/image/fw-p1-2.jpg", name: '2'},
-  {url: "/resource/image/fw-p1-3.jpg", name: '3'},
+  {url: "/resource/image/new1.jpg", name: '1'},
+  {url: "/resource/image/new2.jpg", name: '2'},
+  {url: "/resource/image/new3.jpg", name: '3'},
+  {url: "/resource/image/new4.jpg", name: '4'},
+  {url: "/resource/image/new5.jpg", name: '5'},
 ]
 
 const liucheng = "/resource/image/heng.jpg"
@@ -109,10 +112,13 @@ class DetailIndex extends React.Component {
    * 稿件公告
    */
   tougaoList(){
+    let target =  Dict.getDict("periodical_other_info") || []   
+    let platform = target.find(v => v.value == "periodical_other_info_code") || {}
+    
     let param= {
       "limit":10,
       "offset":0,
-      "platform": window.BSConfig.platform || "SJ"
+      "platform": platform.label || "SJ"
     }
     Service.base.tougaoList(param).then(res => {
       if(res.code == 0){
@@ -140,8 +146,21 @@ class DetailIndex extends React.Component {
       }
   }
 
-  clickArticle = () => {
-
+  /**
+   * 详情
+   */
+  clickArticle = (v) => {
+    console.log(v)
+    let page = Store.MenuStore.getMenuForName('essayDetail');
+    let { history } = this.props
+    let { location } = history
+      if (page) {
+        location.pathname = page.url
+        location.state = {dataHtml: v.content}
+        history.push(location);
+      } else {
+          history.push('/home/404');
+      }
   }
 
   showMore = (menu) => {
@@ -201,12 +220,12 @@ class DetailIndex extends React.Component {
               borderColor={'#dddddd'}
               className="xuzhi"
             >
-              <div className="xuzhi-content">请各位投稿作者注意，凡是投稿《新课程教学》正在审核期的文章，请勿一稿多投，审稿期一般二个工作日以内，作者可以随时在本站上输入文章编号查询稿件审核情况。稿件录用后，《新课程教学》编辑部在通知作者的情况下有权适当修改文章，以便适应期刊的定位要求。</div>
+              <div className="xuzhi-content">&nbsp;&nbsp;&nbsp; 请各位投稿作者注意，凡是投稿《新课程教学》正在审核期的文章，请勿一稿多投，审稿期一般二个工作日以内，作者可以随时在本站上输入文章编号查询稿件审核情况。稿件录用后，《新课程教学》编辑部在通知作者的情况下有权适当修改文章，以便适应期刊的定位要求。</div>
             </TitleContentCard>
           </div>
           <img className="liucheng" src={liucheng} />
           <div className="third-box">
-            <ContactUs></ContactUs>
+            <ContactUs className="active"></ContactUs>
             <TitleContentCard
               title={"期刊范文"}
               className="article"
@@ -226,9 +245,9 @@ class DetailIndex extends React.Component {
         <div className="detail-index-right">
           <TitleContentCard
             title={"稿件录用公告"}
-            className="gaojian-post"
+            className="gaojian-post active"
             borderColor={'#dddddd'}
-            // showMore={this.showMore.bind(this,'detailnews')} 
+            showMore={this.showMore.bind(this,'tougaoStatus')} 
           >
             <div className="gaojian-scroll">
               <ScrollBoxWithLabel
@@ -238,7 +257,7 @@ class DetailIndex extends React.Component {
           </TitleContentCard>
           <TitleContentCard
             title={"稿件录用查询"}
-            className="gaojian-query"
+            className="gaojian-query active"
             borderColor={'#dddddd'}
             // showMore={this.showMore.bind(this,'detailnews')} 
           >
@@ -247,6 +266,16 @@ class DetailIndex extends React.Component {
             </div>
           </TitleContentCard>
           <ArticleCopyright data={data}></ArticleCopyright>
+          <TitleContentCard
+            title={"友情链接"}
+            className="scroll-box-friend active"
+            borderColor={'#dddddd'}
+            // showMore={this.showMore.bind(this,'detailnews')} 
+          >
+            <div className="query">
+              <ScrollBoxFriend></ScrollBoxFriend>
+            </div>
+          </TitleContentCard>
 
         </div>
       </div>

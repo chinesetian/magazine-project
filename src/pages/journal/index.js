@@ -101,7 +101,7 @@ class JournalPage extends React.Component {
    */
   clickBook = (v) =>{
     console.log(v)
-    let page = Store.MenuStore.getMenuForName('detailview');
+    let page = Store.MenuStore.getMenuForName('detailindex');
     let { history } = this.props
     let { location } = history
       if (page) {

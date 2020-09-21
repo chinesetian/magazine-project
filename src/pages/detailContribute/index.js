@@ -9,6 +9,7 @@ import {
 } from 'antd'
 
 import AntFile from '../../components/AntFile'
+import NewDetailLeft from '../../components/newDetailLeft'
 
 import './index.less';
 
@@ -53,8 +54,11 @@ class Contribute extends React.Component {
       /**
      * 投稿提交
      */
-    handleSubmit(e) {
-      e.preventDefault();
+        handleSubmit(e) {
+        let target =  Dict.getDict("periodical_other_info") || []   
+        let platform = target.find(v => v.value == "periodical_other_info_code") || {}
+        
+        e.preventDefault();
       let { file, data } = this.state;
       this.props.form.validateFields((err, values) => {
             // console.log('Received values of form: ', values);
@@ -64,7 +68,7 @@ class Contribute extends React.Component {
           if (!err) {
                 let param ={
                     "qiKanId": data.id,
-                    "platform": window.BSConfig.platform || "SJ",
+                    "platform": platform.label || "SJ",
                     "title": values.title,
                     "author": values.author,
                     "tel": values.tel,
@@ -146,11 +150,14 @@ class Contribute extends React.Component {
                     </div>
                 </div>
                 <div className="detail-view-wrap">
-                    <div className="left">
+                    {/* <div className="left">
                     <div className="img-box">
                         <img src={`/magazine${data.url}`} />
                     </div>
-                    </div>
+                    </div> */}
+                    <NewDetailLeft
+                        data={data}
+                    ></NewDetailLeft>
                     <div className="right">
                         <div className="red">投稿关注：请详细咨询了解后自行在线正确规范投稿，稿件送审期间作者无需支付任何费用。</div>
                         <Form onSubmit={this.handleSubmit.bind(this)} className="submit-form">

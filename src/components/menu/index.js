@@ -63,7 +63,8 @@ class MenuList extends React.Component {
             location.pathname = page.url
             if(key == 'process' || key == 'about' || key == 'detailprocess' || key == 'detailabout'){
                 other = {
-                    dataHtml: this.state[key] || ''
+                    dataHtml: this.state[key] || '',
+                    isChild: (key == 'detailprocess' || key == 'detailabout') ? true : false
                 }
             }
             if(key == 'issue' || key == 'news'){

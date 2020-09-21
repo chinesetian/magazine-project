@@ -43,7 +43,7 @@ export default class TitleWithImgList extends React.Component{
     }
 
     clickArticle = (v) => {
-        let page = Store.MenuStore.getMenuForName('detailview');
+        let page = Store.MenuStore.getMenuForName('detailindex');
         let { history } = this.props
         let { location } = history
         if (page) {

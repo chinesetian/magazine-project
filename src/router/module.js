@@ -216,5 +216,17 @@ export default [
             'ContributeNotice'
         ),
     },
+    {
+        id: 28,
+        title: '稿件录用公告',
+        name: 'tougaoStatus',
+        isLocal: true,
+        url: '/detail/tougaoStatus',
+        parentId: 0,
+        component: asyncComponent(
+            () => import('../pages/tougaoStatus'),
+            'TougaoStatus'
+        ),
+    },
 
 ]

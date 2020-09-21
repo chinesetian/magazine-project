@@ -1,0 +1,74 @@
+
+.tougao-status{
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .tougao-status-right{
+    flex: 1;
+  }
+
+  .tougao-title{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #F6F6F6;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    color: #000000;
+  }
+
+  .content-box{
+    height: auto;
+  }
+  .content{
+    padding: 0 15px;
+
+    .scroll-item{
+      width: 100%;
+      text-decoration: none;
+      color: #333;
+      font-size: 12px;
+      overflow: hidden;
+      display: flex;
+      line-height: 30px;
+      height: 30px;
+      border-bottom: 1px dashed #cccccc;
+      margin-top: 15px;
+
+      .index,.name,.auther,.status{
+        line-height: 20px;
+        height: 20px;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .index{
+        max-width: 150px;
+      }
+
+      .name{
+        max-width: 300px;
+        margin-left: 10px;
+      }
+
+      .auther{
+        color: green;
+        max-width: 150px;
+        margin-left: 10px;
+      }
+
+      .status{
+        display: inline-block;
+        color: red;
+        margin-left: 10px;
+        max-width: 100px;
+      }
+    }
+    
+  }
+}

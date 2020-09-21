@@ -25,7 +25,7 @@ export default class ContactUs extends React.Component{
            <TitleContentCard
               title="联系我们"
               borderColor={'#dddddd'}
-              className="contact-us"
+              className={`contact-us ${className}`}
            >
              <div className="contact-us-content">
               <Icon type="phone" /><LabelValue  label='电话' className="info" value={this.tel} emptyValue="暂无" noWrap={true}/><br />

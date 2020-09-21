@@ -20,7 +20,7 @@ class QuestionAndIssue extends React.Component {
   constructor(props){
     super(props)
     const { location } = props;
-    let periodicalArticleTypeInfo = location.state.type == 'issue' ? 'periodical_article_type_info_question' : 'periodical_article_type_info_information';
+    let periodicalArticleTypeInfo = location.state && location.state.type && location.state.type == 'issue' ? 'periodical_article_type_info_question' : 'periodical_article_type_info_information';
     this.state = {
       bookList: [],
       searchData:{

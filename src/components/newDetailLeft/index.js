@@ -27,9 +27,9 @@ export default class NewDetailLeft extends React.Component{
     render(){
       let { title, data = {}, clickArticle } = this.props
         return(
-          <div className='New-Detail-Left' >
+          <div className='New-Detail-Left left' >
                <div className="img-box">
-                <img className={`img ${flag ? "fixed-img" :''}`} src={`/magazine${data.url}`} />
+                <img className={`img`} src={`/magazine${data.url}`} />
               </div>
               <ArticleCopyright data={data}></ArticleCopyright>
               <ContactUs></ContactUs>

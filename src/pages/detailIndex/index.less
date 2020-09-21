@@ -16,13 +16,13 @@
         display: flex;
 
        .news-left-scrool{
-          height: 350px;
-          width: 350px;
+          height: 250px;
+          width: 410px;
           padding-top: 15px;
 
           /*轮播图*/
           .img-scroll{
-            height: 315px;
+            height: 250px;
             width: 100%;
 
             .ant-carousel .slick-slider {
@@ -72,6 +72,23 @@
             border-bottom: 1px dashed #cccccc;
             overflow: hidden;
             line-height: 34px;
+            cursor: pointer;
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              width: 6px;
+              height: 6px;
+              top: 14px;
+              left: 0px;
+              // border-radius: 4px;
+              background: @activeColor;
+            }
+
+            &:hover{
+              color: @activeColor;
+            }
           }
         }
       }
@@ -122,6 +139,10 @@
             border-bottom: 1px dashed #cccccc;
             overflow: hidden;
             line-height: 34px;
+            &:hover{
+              color: @activeColor;
+            }
+
           }
         }
       }
@@ -161,6 +182,11 @@
       .query-data-box{
         border: none;
       }
+    }
+
+    /*友情链接*/
+    .scroll-box-friend{
+      margin-top: 15px;
     }
 
 

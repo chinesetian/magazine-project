@@ -7,6 +7,7 @@ import { setCache, getCache } from '../../utils/cache';
 import Card from '../../components/card'
 import ScrollBox from '../../components/scrollBox'
 import QuerySearch from '../../components/querySearch'
+import NewDetailLeft from '../../components/newDetailLeft'
 
 import './index.less';
 
@@ -108,10 +109,13 @@ class DetailView extends React.Component {
   }
 
   tougaoList(){
+    let target =  Dict.getDict("periodical_other_info") || []   
+    let platform = target.find(v => v.value == "periodical_other_info_code") || {}
+    
     let param= {
       "limit":10,
       "offset":0,
-      "platform": window.BSConfig.platform || "SJ"
+      "platform": platform.label || "SJ"
     }
     Service.base.tougaoList(param).then(res => {
       if(res.code == 0){
@@ -150,15 +154,18 @@ class DetailView extends React.Component {
     return (
       <div className='detail-view-page w1200'>
           <div className="detail-view-wrap">
-            <div className="left">
-              <div className="img-box">
+            {/* <div className="left"> */}
+              {/* <div className="img-box">
                 <img className={`img ${flag ? "fixed-img" :''}`} src={`/magazine${data.url}`} />
               </div>
               <div style={{padding: '20px  0'}}>
-                {/* <TitleWithImgList searchData={searchData} title={'相关期刊'} {...this.props}/> */}
+                <TitleWithImgList searchData={searchData} title={'相关期刊'} {...this.props}/>
                 <QuerySearch title = '稿件/期刊信息查询' {...this.props}/>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
+            <NewDetailLeft
+              data={data}
+            ></NewDetailLeft>
             <div className="right">
                 <div className="top-info">
                     <div className="top-left">

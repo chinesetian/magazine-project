@@ -3,7 +3,7 @@ import './index.less'
 
 const { Dict } = window
 
-export default class ScrollBox extends React.Component{
+export default class  ScrollBox extends React.Component{
     constructor(props){
         super(props)
         this.timer = null;

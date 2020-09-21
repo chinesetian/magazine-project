@@ -7,7 +7,7 @@ import Card from '../../components/card'
 import {
   Form, Icon, Input, Button, Checkbox, message
 } from 'antd'
-
+import NewDetailLeft from '../../components/newDetailLeft'
 
 import './index.less';
 const QikanBaseInfo = Card.QikanBaseInfo
@@ -93,11 +93,14 @@ class QueryContributeForm extends React.Component {
                     </div>
                 </div>
                 <div className="detail-view-wrap">
-                    <div className="left">
+                    {/* <div className="left">
                     <div className="img-box">
                         <img src={`/magazine${data.url}`} />
                     </div>
-                    </div>
+                    </div> */}
+                    <NewDetailLeft
+                        data={data}
+                        ></NewDetailLeft>
                     <div className="right">
                         <div className="tip" style={{paddingLeft: 30}}>
                             <span>{`查询告知：请直接输入投稿《${data.name}》杂志时订阅平台系统生成的文章编号`}</span>

@@ -24,7 +24,7 @@ export default class ArticleCopyright extends React.Component{
            <TitleContentCard
               title="版权信息"
               borderColor={'#dddddd'}
-              className="article-copyright"
+              className="article-copyright active"
            >
              <div className="content">
               <LabelValue  label='主管单位' className="info" value={data.competentDepartment} emptyValue="暂无" labelColor={"#FF9933"} valueColor={"#FF9933"} noWrap={true}/>
