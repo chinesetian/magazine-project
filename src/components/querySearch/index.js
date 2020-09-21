@@ -27,10 +27,10 @@ export default class QuerySearch extends React.Component{
     }
 
     render(){
-      let { title = '稿件/期刊信息查询' } = this.props
+      let { title } = this.props
         return(
             <div className="query-data-box">
-                <span className="title">{title}</span>
+                {title && <span className="title">{title}</span>}
                 <div className="serach-wrap">
                     <Input id="search-data" placeholder="请输入文章编号" />
                     <Button type="primary" onClick={this.searchData} className="submit-button">

@@ -156,7 +156,7 @@ class DetailView extends React.Component {
               </div>
               <div style={{padding: '20px  0'}}>
                 {/* <TitleWithImgList searchData={searchData} title={'相关期刊'} {...this.props}/> */}
-                <QuerySearch {...this.props}/>
+                <QuerySearch title = '稿件/期刊信息查询' {...this.props}/>
               </div>
             </div>
             <div className="right">

@@ -90,6 +90,12 @@
 
       .xuzhi{
         margin-left: 15px;
+
+        .xuzhi-content{
+          padding: 30px 20px;
+          line-height: 30px;
+          font-size: 14px;
+        }
       }
     }
 
@@ -101,14 +107,22 @@
     .third-box{
       height: 300px;
       width: 100%;
+      display: flex;
 
-      .contact-us{
-        width: 240px;
+      .article{
         height: 100%;
+        flex: 1;
+        margin-left: 15px;
 
-        .contact-us-content{
-          height: 100%;
-          padding: 50px 20px;
+        .article-list{
+
+          .article-title{
+            font-size: 14px;
+            padding-left: 15px;
+            border-bottom: 1px dashed #cccccc;
+            overflow: hidden;
+            line-height: 34px;
+          }
         }
       }
     }
@@ -118,5 +132,37 @@
   .detail-index-right{
     width: 320px;
     height: 100%;
+    padding-left: 15px;
+
+    /*稿件公告*/
+    .gaojian-post{
+      width: 100%;
+
+      .content-card{
+        
+      }
+
+      .gaojian-scroll{
+        height: 270px;
+
+        .scroll-box-with-label{
+          
+          .content-box{
+            height: 100% !important;
+          }
+        }
+      }
+    }
+
+    /*稿件录用查询*/
+    .gaojian-query{
+      margin: 15px 0;
+
+      .query-data-box{
+        border: none;
+      }
+    }
+
+
   }
 }

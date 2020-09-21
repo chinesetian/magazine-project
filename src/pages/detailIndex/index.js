@@ -2,12 +2,16 @@ import React from "react";
 import { Tabs, message, Carousel } from 'antd';
 import { withRouter, Switch, Route } from 'react-router-dom'
 import Card from '../../components/card'
+import ScrollBoxWithLabel from '../../components/scrollBoxWithLabel'
+import QuerySearch from '../../components/querySearch'
+import { setCache, getCache } from '../../utils/cache';
 
 import './index.less'
 
 const { Dict, Service, Store } = window
 const TitleContentCard = Card.TitleContentCard
 const ContactUs = Card.ContactUs
+const ArticleCopyright = Card.ArticleCopyright
 
 const imgData = [
   {url: "/resource/image/fw-p1-1.jpg", name: '1'},
@@ -22,14 +26,50 @@ class DetailIndex extends React.Component {
   constructor(props){
     super(props)
     const { location, history } = props;
+    let query = {};
+    try {  
+      let arr = window.location.pathname.split("/");
+      let searchId = arr[3];
+      if(searchId){
+        query = {id: searchId}
+      } else {
+        query = getCache("detailData", "session")
+        location.pathname = `${location.pathname}/${query.id}`;
+        history.replace(location);
+      }
+    } catch (error) {
+      
+    }
+
+    query.id && this.qikanDetail(query)
+
+
     this.state = {
-      bookList: [],
+      data: query, // 详情数据
+      bookList: [], //新闻
       total: 0,
+      articleList: [], // 范文
+      tougaoList: [], //稿件公告
     };
   }
 
   componentDidMount(){
     this.articleInfopageList();
+    this.articleThesispageList();
+    this.tougaoList();
+  }
+
+  qikanDetail(data){
+    Service.base.qikanDetail(data).then(res => {
+      if(res.code == 0){
+        setCache('detailData', res.data, "session")
+        this.setState({data: res.data,});
+      } else {
+          this.setState({data: {},});
+      }
+    }).catch(e => {
+      this.setState({data: {},});
+    })
   }
 
   /**
@@ -49,6 +89,42 @@ class DetailIndex extends React.Component {
     })
   }
 
+  /**
+   * 范文
+   */
+  articleThesispageList(){
+    let searchData = {"offset":0,"limit":5,}
+    Service.base.articleThesispageList(searchData).then(res => {
+        if(res.code == 0){
+            this.setState({articleList: res.data.list});
+        } else {
+            this.setState({articleList: []});
+        }
+    }).catch(e => {
+        this.setState({articleList: []});
+    })
+  }
+
+  /**
+   * 稿件公告
+   */
+  tougaoList(){
+    let param= {
+      "limit":10,
+      "offset":0,
+      "platform": window.BSConfig.platform || "SJ"
+    }
+    Service.base.tougaoList(param).then(res => {
+      if(res.code == 0){
+        this.setState({tougaoList: res.data.list,});
+      } else {
+          this.setState({tougaoList: [],});
+      }
+    }).catch(e => {
+      this.setState({tougaoList: [],});
+    })
+  }
+
   clickBook = (v) =>{
     console.log(v)
     let page = Store.MenuStore.getMenuForName('essayDetail');
@@ -62,6 +138,10 @@ class DetailIndex extends React.Component {
       } else {
           history.push('/home/404');
       }
+  }
+
+  clickArticle = () => {
+
   }
 
   showMore = (menu) => {
@@ -78,7 +158,7 @@ class DetailIndex extends React.Component {
   }
 
   render(){
-    let { bookList } = this.state
+    let {data, bookList = [], articleList = [], tougaoList = []} = this.state
     return(
       <div className="detail-index">
         <div className="detail-index-left">
@@ -121,17 +201,53 @@ class DetailIndex extends React.Component {
               borderColor={'#dddddd'}
               className="xuzhi"
             >
-              <div>请各位投稿作者注意，凡是投稿《新课程教学》正在审核期的文章，请勿一稿多投，审稿期一般二个工作日以内，作者可以随时在本站上输入文章编号查询稿件审核情况。稿件录用后，《新课程教学》编辑部在通知作者的情况下有权适当修改文章，以便适应期刊的定位要求。</div>
+              <div className="xuzhi-content">请各位投稿作者注意，凡是投稿《新课程教学》正在审核期的文章，请勿一稿多投，审稿期一般二个工作日以内，作者可以随时在本站上输入文章编号查询稿件审核情况。稿件录用后，《新课程教学》编辑部在通知作者的情况下有权适当修改文章，以便适应期刊的定位要求。</div>
             </TitleContentCard>
           </div>
           <img className="liucheng" src={liucheng} />
           <div className="third-box">
             <ContactUs></ContactUs>
-            
+            <TitleContentCard
+              title={"期刊范文"}
+              className="article"
+              borderColor={'#dddddd'}
+              // showMore={this.showMore.bind(this,'detailnews')} 
+            >
+              <div className="article-list">
+                {articleList.map((v,i) => {
+                  return( 
+                    <div onClick={this.clickArticle.bind(this, v)} key={i} className='article-title'>{v.title}</div>
+                  )
+                })}
+              </div>
+            </TitleContentCard>
           </div>
         </div>
         <div className="detail-index-right">
-2
+          <TitleContentCard
+            title={"稿件录用公告"}
+            className="gaojian-post"
+            borderColor={'#dddddd'}
+            // showMore={this.showMore.bind(this,'detailnews')} 
+          >
+            <div className="gaojian-scroll">
+              <ScrollBoxWithLabel
+                data={tougaoList}
+              />
+            </div>
+          </TitleContentCard>
+          <TitleContentCard
+            title={"稿件录用查询"}
+            className="gaojian-query"
+            borderColor={'#dddddd'}
+            // showMore={this.showMore.bind(this,'detailnews')} 
+          >
+            <div className="query">
+            <QuerySearch title = '请输入稿件编号：' {...this.props}/>
+            </div>
+          </TitleContentCard>
+          <ArticleCopyright data={data}></ArticleCopyright>
+
         </div>
       </div>
     )

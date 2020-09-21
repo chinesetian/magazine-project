@@ -1,4 +1,5 @@
 import React from 'react'
+import { Icon } from 'antd'
 import TitleContentCard from '../titleContentCard'
 import LabelValue from '../../LabelValue'
 import * as _ from 'lodash';
@@ -27,10 +28,10 @@ export default class ContactUs extends React.Component{
               className="contact-us"
            >
              <div className="contact-us-content">
-              <LabelValue  label='电话' className="info" value={this.tel} emptyValue="暂无" noWrap={true}/><br />
-              <LabelValue  label='手机' className="info" value={''} emptyValue="暂无" noWrap={true}/><br />
-              <LabelValue  label='邮箱' className="info" value={''} emptyValue="暂无" noWrap={true}/><br />
-              <LabelValue  label='地址' className="info" value={''} emptyValue="暂无" noWrap={true}/><br />
+              <Icon type="phone" /><LabelValue  label='电话' className="info" value={this.tel} emptyValue="暂无" noWrap={true}/><br />
+              <Icon type="mobile" /><LabelValue  label='手机' className="info" value={''} emptyValue="暂无" noWrap={true}/><br />
+              <Icon type="mail" /><LabelValue  label='邮箱' className="info" value={''} emptyValue="暂无" noWrap={true}/><br />
+              <Icon type="home" /><LabelValue  label='地址' className="info" value={''} emptyValue="暂无" noWrap={true}/><br />
              </div>
            </TitleContentCard>
         )

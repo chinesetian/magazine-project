@@ -1,0 +1,67 @@
+
+.scroll-box-with-label{
+  height: 100%;
+  // border-bottom: 2px solid #999;
+  position: relative;
+
+  .title{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #F6F6F6;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .content-box{
+    height:100px;
+  }
+  .content{
+    height: 100%;
+    overflow: hidden;
+    padding: 0 15px;
+
+    .scroll-item{
+      width: 100%;
+      text-decoration: none;
+      color: #333;
+      font-size: 12px;
+      overflow: hidden;
+      border-bottom: 1px dashed #cccccc;
+
+      .index,.name,.auther,.status{
+        line-height: 26px;
+        height: 26px;
+        // display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .index{
+        // max-width: 120px;
+      }
+
+      .name{
+        // max-width: 300px;
+        // margin-left: 10px;
+      }
+
+      .auther{
+        color: green;
+        max-width: 150px;
+        // margin-left: 10px;
+        display: inline-block;
+      }
+
+      .status{
+        display: inline-block;
+        color: red;
+        margin-left: 10px;
+        max-width: 100px;
+      }
+    }
+    
+  }
+}
