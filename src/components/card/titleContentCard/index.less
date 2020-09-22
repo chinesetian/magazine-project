@@ -10,6 +10,9 @@
       background:@activeColor ;
       .title{
         color: #fff !important;
+        .eng{
+          color: #fff !important;
+        }
       }
       .more{
         color: #fff !important;
@@ -27,14 +30,21 @@
     .title{
       line-height: 40px;
       color: @activeColor;
-      font-size: 18px;
+      font-size: 20px;
       padding-left: 28px;
       font-weight: bold;
+
+      .eng{
+        color: #777777;
+        font-weight: normal;
+        font-size: 14px;
+        margin-left: 6px;
+      }
     }
     .more{
       cursor: pointer;
       line-height: 40px;
-      font-size: 13px;
+      font-size: 14px;
       padding-right: 15px;
       &:hover{
         color: @activeColor;

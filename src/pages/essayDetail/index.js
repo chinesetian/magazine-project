@@ -9,6 +9,8 @@ import NewDetailLeft from '../../components/newDetailLeft'
 const { Service } = window
 const TitleWithImgList = Card.TitleWithImgList
 const EssayCard = Card.EssayCard
+const TitlePage = Card.TitlePage
+
 let query = getCache("detailData", "session") || {}
 
 class EssayDetail extends React.Component {
@@ -16,7 +18,7 @@ class EssayDetail extends React.Component {
     super(props)
     const { location } = props;
     this.state = {
-      isChild: location.state.isChild ? true : false,
+      isChild: location.state ? location.state.isChild : "" ,
       dataHtml: location.state.dataHtml,
       dataContent: location.state.dataContent
       // "<p style=\"margin: 30px 0px; padding: 0px;\"><strong>【关键词】</strong>国学经典小学语文教学</p",
@@ -30,9 +32,8 @@ class EssayDetail extends React.Component {
 
   render() {
     let { dataHtml, isChild } = this.state;
-    debugger
     let html = dataHtml && isString(dataHtml) ? dataHtml.replace('<!--HTML-->', '') : '';
-  
+    let pageName = isChild ? this.props.MenuStore.getMenuForName(isChild).title  : ""
     // console.log(html)
     return (
       <div className="journal-wrap w1200">
@@ -42,6 +43,9 @@ class EssayDetail extends React.Component {
                     ></NewDetailLeft>
                     }
           <div className="journal-left">
+              {pageName && <TitlePage 
+                  pageName={pageName}
+              ></TitlePage>}
             <div className="journal-list" dangerouslySetInnerHTML = {{ __html: html}}>
               {/* <React.Fragment>
               {data}

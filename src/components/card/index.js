@@ -10,7 +10,7 @@ import EssayCard from './essayCard'; // 期刊范文
 import TitleContentCard from './titleContentCard'; // 新的子页面壳子
 import ContactUs from './contactUs'; //联系我们
 import ArticleCopyright from './articleCopyright'; //文章版权信息
-
+import TitlePage from './titlePage'; //子页面的title
 
 import QikanBaseInfo from './qikanBaseInfo';
 
@@ -28,6 +28,7 @@ const Card =  {
   TitleContentCard,
   ContactUs,
   ArticleCopyright,
+  TitlePage
 }
 
 export default Card

@@ -146,7 +146,7 @@ export default [
     },
     {
         id: 22,
-        title: '流程须知',
+        title: '投稿须知',
         name: 'detailprocess',
         isLocal: true,
         url: '/detail/detailprocess',
@@ -158,7 +158,7 @@ export default [
     },
     {
         id: 23,
-        title: '流程须知',
+        title: '关于我们',
         name: 'detailabout',
         isLocal: true,
         url: '/detail/detailabout',
@@ -200,8 +200,8 @@ export default [
         url: '/detail/detailnews',
         parentId: 0,
         component: asyncComponent(
-            () => import('../pages/questionAndIssue'),
-            'QuestionAndIssue'
+            () => import('../pages/detailNews'),
+            'DetailNews'
         ),
     },
     {

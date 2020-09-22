@@ -16,6 +16,8 @@ import './index.less';
 const { success } = Modal;
 const QikanBaseInfo = Card.QikanBaseInfo
 const TitleWithImgList = Card.TitleWithImgList
+const TitlePage = Card.TitlePage
+
 const { Dict, Service, Store } = window
 
 class Contribute extends React.Component {
@@ -143,12 +145,12 @@ class Contribute extends React.Component {
     return (
         <div className="detail-contribute">
             <div className='detail-view-page w1200'>
-                <div className="top-info">
+                {/* <div className="top-info">
                     <div className="title">{data.name}</div>
                     <div className="qikan-base top-base">
                         <QikanBaseInfo data={data}/>
                     </div>
-                </div>
+                </div> */}
                 <div className="detail-view-wrap">
                     {/* <div className="left">
                     <div className="img-box">
@@ -159,6 +161,9 @@ class Contribute extends React.Component {
                         data={data}
                     ></NewDetailLeft>
                     <div className="right">
+                        <TitlePage 
+                            pageName={"在线投稿"}
+                        ></TitlePage>
                         <div className="red">投稿关注：请详细咨询了解后自行在线正确规范投稿，稿件送审期间作者无需支付任何费用。</div>
                         <Form onSubmit={this.handleSubmit.bind(this)} className="submit-form">
                             <Form.Item label="文章标题" {...formItemLayout}>

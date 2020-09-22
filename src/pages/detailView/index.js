@@ -13,6 +13,7 @@ import './index.less';
 
 const QikanBaseInfo = Card.QikanBaseInfo
 const TitleWithImgList = Card.TitleWithImgList
+const TitlePage = Card.TitlePage;
 const { Dict, Service, Store } = window
 
 class DetailView extends React.Component {
@@ -169,15 +170,15 @@ class DetailView extends React.Component {
             <div className="right">
                 <div className="top-info">
                     <div className="top-left">
-                      <div className="title">{data.name}</div>
-                      <div className="qikan-base">
+                      {/* <div className="title">{data.name}</div> */}
+                      {/* <div className="qikan-base">
                         <div className="left-info" ><QikanBaseInfo data={data}/></div>
-                      </div>
-                      <div className="qikan-base">
+                      </div> */}
+                      {/* <div className="qikan-base"> */}
                         {/* <LabelValue  label='期刊收录' className="item" value={this.getShow("periodical_included", data.periodicalIncluded)} emptyValue="暂无" noWrap={true}/>
                         <LabelValue  label='期刊荣誉' className="item" value={this.getShow("periodical_honor", data.periodicalHonor)} emptyValue="暂无" noWrap={true}/> */}
-                        <div className="online-contribute">
-                          <Button onClick={this.goContribute} type={'primary'}>在线投稿</Button>
+                        {/* <div className="online-contribute"> */}
+                          {/* <Button onClick={this.goContribute} type={'primary'}>在线投稿</Button>
                           <div className="online-right">
                             <LabelValue  label='期刊级别' className="info" value={Dict.getLabel("periodical_level", data.periodicalLevel)} emptyValue="暂无"  noWrap={true}/>
                             <br />
@@ -185,43 +186,45 @@ class DetailView extends React.Component {
                           </div>
                         </div>
              
-                      </div>
-                      <div className="qikan-base scroll">
+                      </div> */}
+                      {/* <div className="qikan-base scroll">
                           <ScrollBox
                             data={tougaoList}
                             title={"稿件/期刊订阅信息公告"}
                           />
-                      </div>
+                      </div> */}
                     </div>
-                    <div className="right-phone">
+                    {/* <div className="right-phone">
                         <div className="one">在线咨询：</div>
                         <div className="one">电话：{this.tel} </div>
                         <div className="one">（周一至周六）</div>
                         <div className="one">早上 09:00-12:00</div>
                         <div className="one">下午 13:30-17:30</div>
-                    </div>
+                    </div> */}
                 </div>
-
+                <TitlePage 
+                  pageName={"期刊简介"}
+                ></TitlePage>
                 <div className="qikan-other jian-jie">
-                  <div className="other-title">{'期刊简介'}</div>
+                  <div className="other-title">《{data.name}》{'期刊简介'}</div>
                   <div dangerouslySetInnerHTML = {{ __html: this.getHtml(data.description)}}></div>
                 </div>
                 <div className="qikan-other honor">
-                  <div className="other-title">{'期刊荣誉'}</div>
+                  <div className="other-title">《{data.name}》{'期刊荣誉'}</div>
                     {this.getShow("periodical_honor", data.periodicalHonor)}
                 </div>
                 <div className="qikan-other te-se">
-                  <div className="other-title">{'期刊特色'}</div>
+                  <div className="other-title">《{data.name}》{'期刊特色'}</div>
                   <div dangerouslySetInnerHTML = {{ __html: this.getHtml(data.characteristic)}}></div>
                 </div>
                
-                <div className="bottom-img">
+                {/* <div className="bottom-img">
                   {imgs.map((v,i) => {
                       return(
                           <img key={i} src={`/magazine${v}`} />
                       )
                   })}
-                </div>
+                </div> */}
             </div>
           </div>
       </div>

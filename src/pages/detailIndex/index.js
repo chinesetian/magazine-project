@@ -163,7 +163,6 @@ class DetailIndex extends React.Component {
   }
 
   showMore = (menu) => {
-    debugger
     let page = Store.MenuStore.getMenuForName(menu);
     let { history } = this.props
     let { location } = history
@@ -182,6 +181,7 @@ class DetailIndex extends React.Component {
         <div className="detail-index-left">
           <TitleContentCard
             title={"新闻咨询"}
+            eng={"NEWS"}
             className="news"
             showMore={this.showMore.bind(this,'detailnews')} 
           >
@@ -216,17 +216,23 @@ class DetailIndex extends React.Component {
             </TitleContentCard>
             <TitleContentCard
               title="投稿须知"
+              eng={"NOTICE"}
               borderColor={'#dddddd'}
               className="xuzhi"
             >
-              <div className="xuzhi-content">&nbsp;&nbsp;&nbsp; 请各位投稿作者注意，凡是投稿《新课程教学》正在审核期的文章，请勿一稿多投，审稿期一般二个工作日以内，作者可以随时在本站上输入文章编号查询稿件审核情况。稿件录用后，《新课程教学》编辑部在通知作者的情况下有权适当修改文章，以便适应期刊的定位要求。</div>
+              <div className="xuzhi-content">&nbsp;&nbsp;&nbsp; 请各位投稿作者注意，凡是投稿
+              <span>《{data.name}》</span>
+              正在审核期的文章，请勿一稿多投，审稿期一般二个工作日以内，作者可以随时在本站上输入文章编号查询稿件审核情况。稿件录用后，
+              <span>《{data.name}》</span>
+              编辑部在通知作者的情况下有权适当修改文章，以便适应期刊的定位要求。</div>
             </TitleContentCard>
           </div>
           <img className="liucheng" src={liucheng} />
           <div className="third-box">
-            <ContactUs className="active"></ContactUs>
+            <ContactUs></ContactUs>
             <TitleContentCard
               title={"期刊范文"}
+              eng={"ARTICLES"}
               className="article"
               borderColor={'#dddddd'}
               // showMore={this.showMore.bind(this,'detailnews')} 

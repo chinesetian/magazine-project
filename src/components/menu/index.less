@@ -1,27 +1,33 @@
 @activeColor: #e91d25;
 
-.menu-wrap{
+.menu-container{
     width: 100%;
+    background: @activeColor;
+}
+.menu-wrap{
     height: 50px;  
     position: relative; 
     margin: 0 auto; 
     overflow: hidden;
-    border-bottom: 1px solid #e8e8e8;
+    // border-bottom: 1px solid #e8e8e8;
+    background: @activeColor;
 
     .menu-box{
         width: 1000px;
         margin: 0 auto;
+        background: @activeColor;
     }
 
     .ant-menu{
         border-bottom: none;
         .ant-menu-item{
             font-size: 16px;
+            color: #fff;
         }
         .ant-menu-item-selected{
             color: #fff;
-            // border-color: transparent;
-            background: @activeColor;
+            background: #663300;
+            border-bottom: 2px solid #663300;
         }
     }
 }

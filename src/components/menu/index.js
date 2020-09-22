@@ -64,7 +64,7 @@ class MenuList extends React.Component {
             if(key == 'process' || key == 'about' || key == 'detailprocess' || key == 'detailabout'){
                 other = {
                     dataHtml: this.state[key] || '',
-                    isChild: (key == 'detailprocess' || key == 'detailabout') ? true : false
+                    isChild: (key == 'detailprocess' || key == 'detailabout') ? key : null
                 }
             }
             if(key == 'issue' || key == 'news'){
@@ -97,23 +97,25 @@ class MenuList extends React.Component {
         let { currentMenu} = this.state;
         let { menuList } = this.props
         return(
-            <div className="menu-wrap w1200">
-                <Menu className='menu-box' theme="light" mode="horizontal" 
-                    selectedKeys={[currentMenu]} 
-                    onClick={this.menuClick} forceSubMenuRender={true}
-                >
-                    {menuList.map((menu) => {
-                        return(
-                            <MenuItem key={menu.name}>
-                            <span className="menu-item-content">
-                            <span className="menu-item-layout">
-                                <span>{menu.menuName}</span>
-                            </span>
-                            </span>
-                        </MenuItem>
-                        )
-                    })}
-                </Menu>
+            <div className="menu-container">
+                <div className="menu-wrap w1200">
+                    <Menu className='menu-box' theme="light" mode="horizontal" 
+                        selectedKeys={[currentMenu]} 
+                        onClick={this.menuClick} forceSubMenuRender={true}
+                    >
+                        {menuList.map((menu) => {
+                            return(
+                                <MenuItem key={menu.name}>
+                                <span className="menu-item-content">
+                                <span className="menu-item-layout">
+                                    <span>{menu.menuName}</span>
+                                </span>
+                                </span>
+                            </MenuItem>
+                            )
+                        })}
+                    </Menu>
+                </div>
             </div>
         )
     }

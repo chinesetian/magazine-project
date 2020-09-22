@@ -32,7 +32,7 @@ export default class NewDetailLeft extends React.Component{
                 <img className={`img`} src={`/magazine${data.url}`} />
               </div>
               <ArticleCopyright data={data}></ArticleCopyright>
-              <ContactUs></ContactUs>
+              <ContactUs className="active"></ContactUs>
           </div>
         )
     }

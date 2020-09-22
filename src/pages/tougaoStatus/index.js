@@ -2,11 +2,13 @@ import React from 'react'
 import { Pagination } from 'antd';
 import NewDetailLeft from '../../components/newDetailLeft'
 import { setCache, getCache } from '../../utils/cache';
+import Card from '../../components/card'
 import './index.less'
 
 
 const { Dict, Service, Store } = window
 let data = getCache("detailData", "session") || {}
+const TitlePage = Card.TitlePage
 
 export default class TougaoStatus extends React.Component{
     constructor(props){
@@ -76,7 +78,10 @@ export default class TougaoStatus extends React.Component{
             data={data}
         ></NewDetailLeft>
               <div className="tougao-status-right">
-                {<div className="tougao-title">{"稿件录用公告"}</div>}
+                {/* {<div className="tougao-title">{"稿件录用公告"}</div>} */}
+                <TitlePage 
+                    pageName={"稿件录用公告"}
+                ></TitlePage>
                 <div className="content-box">
                     {<div className="content" id="scroll-content">
                         {tougaoList.map((item,index) => {

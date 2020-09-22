@@ -5,6 +5,8 @@ import { observer, inject } from 'mobx-react'
 import { Footer } from '../../components/footer';
 import MenuList from '../../components/menu'
 import LayoutView from '../AppLayout'
+import { setCache, getCache } from '../../utils/cache';
+import DetailTopInfo from '../../components/detailTopInfo'
 import * as _ from 'lodash';
 
 import './index.less'
@@ -26,7 +28,26 @@ const { Dict, Service, Store } = window
 class DetailHomeComponent extends React.Component {
     constructor(props){
         super(props)
+        const { location, history } = props;
+        let query = {};
+        try {  
+          let arr = window.location.pathname.split("/");
+          let searchId = arr[3];
+          if(searchId){
+            query = {id: searchId}
+          } else {
+            query = getCache("detailData", "session")
+            location.pathname = `${location.pathname}/${query.id}`;
+            history.replace(location);
+          }
+        } catch (error) {
+          
+        }
+    
+        query.id && this.qikanDetail(query)
+
         this.state = {
+            data: {},
             isFooter: true,
             imgs: _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_child_page_top").url.split(",") || []),
         }
@@ -45,6 +66,19 @@ class DetailHomeComponent extends React.Component {
      
     }
 
+    qikanDetail(data){
+        Service.base.qikanDetail(data).then(res => {
+          if(res.code == 0){
+            setCache('detailData', res.data, "session")
+            this.setState({data: res.data,});
+          } else {
+              this.setState({data: {},});
+          }
+        }).catch(e => {
+          this.setState({data: {},});
+        })
+      }
+
     backHome = () => {
         let page = Store.MenuStore.getMenuForName('view');
         let { history } = this.props
@@ -59,31 +93,36 @@ class DetailHomeComponent extends React.Component {
 
     render(){
 
-        let { isFooter, imgs, } = this.state;
+        let { isFooter, imgs, data, } = this.state;
         return (
             <div className="detail-home-layout">
                 
-                <div className="top-img w1200">
-                    {imgs.map((v,i) => {
+                <div className="top-info-box w1200">
+                    {/* {imgs.map((v,i) => {
                         return(
                             <img key={i}  src={`/magazine${v}`} />
                         )
-                    })}
+                    })} */}
+                    <DetailTopInfo data={data}></DetailTopInfo>
                 </div>
-                <MenuList menuList={menuList2} {...this.props}/>
-                <div className="detail-layout-content w1200">
-                    {/* <span className="back-home" onClick={this.backHome}>返回首页</span> */}
-                    <Switch>
-                        <Route
-                            exact
-                            path="/home/404"
-                            render={() => <div>404</div>}
-                        />
-                        <Route
-                            path="/detail/:module"
-                            render={() => <LayoutView {...this.props}/>}
-                        />
-                    </Switch>
+                <div className="menu-box">
+                    <MenuList menuList={menuList2} {...this.props}/>
+                </div>
+                <div className="detail-layout-content">
+                    <div className="detail-content w1200">
+                        {/* <span className="back-home" onClick={this.backHome}>返回首页</span> */}
+                        <Switch>
+                            <Route
+                                exact
+                                path="/home/404"
+                                render={() => <div>404</div>}
+                            />
+                            <Route
+                                path="/detail/:module"
+                                render={() => <LayoutView {...this.props}/>}
+                            />
+                        </Switch>
+                    </div>
                 </div>
                 {isFooter ?  <Footer isLink={false}></Footer>: null}  
             </div>

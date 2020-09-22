@@ -24,6 +24,7 @@ export default class ContactUs extends React.Component{
         return(
            <TitleContentCard
               title="联系我们"
+              eng={"CONTACT"}
               borderColor={'#dddddd'}
               className={`contact-us ${className}`}
            >

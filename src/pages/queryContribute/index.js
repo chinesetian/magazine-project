@@ -12,6 +12,8 @@ import NewDetailLeft from '../../components/newDetailLeft'
 import './index.less';
 const QikanBaseInfo = Card.QikanBaseInfo
 const TitleWithImgList = Card.TitleWithImgList
+const TitlePage = Card.TitlePage
+
 const { Dict, Service, Store } = window
 
 class QueryContributeForm extends React.Component {
@@ -86,12 +88,12 @@ class QueryContributeForm extends React.Component {
     return (
         <div className="detail-contribute">
             <div className='detail-view-page w1200'>
-                <div className="top-info">
+                {/* <div className="top-info">
                     <div className="title">{data.name}</div>
                     <div className="qikan-base top-base">
                         <QikanBaseInfo data={data}/>
                     </div>
-                </div>
+                </div> */}
                 <div className="detail-view-wrap">
                     {/* <div className="left">
                     <div className="img-box">
@@ -102,6 +104,9 @@ class QueryContributeForm extends React.Component {
                         data={data}
                         ></NewDetailLeft>
                     <div className="right">
+                        <TitlePage 
+                            pageName={"稿件查询"}
+                        ></TitlePage>
                         <div className="tip" style={{paddingLeft: 30}}>
                             <span>{`查询告知：请直接输入投稿《${data.name}》杂志时订阅平台系统生成的文章编号`}</span>
                             <span className="red">(稿件录用通知里亦有告知文章编号)</span>

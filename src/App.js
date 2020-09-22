@@ -18,6 +18,7 @@ import "./App.less";
 
 window.Service = Service;
 window.Dict = Dict;
+const arr = ["投稿咨询", "稿件查询", "稿件修改", "文章检测"]
 
 class App extends Component {
   constructor(props){
@@ -33,6 +34,8 @@ class App extends Component {
     Dict.append(dictData.data, dictType.data, imgs.data)
     window.BSConfig = BSConfig;
     
+
+    this.renderQQ();
     this.setState({flag: true})
 
   }
@@ -44,6 +47,25 @@ class App extends Component {
       Service.base.image({}), // 图片
       Service.base.systemConfig(),
     ]);
+  }
+
+  renderQQ() {
+    debugger
+    let { Dict } = window
+    let QQ = Dict.map.system_qq;
+    let target = document.getElementsByClassName("fd-qqlist")[0];
+    for(var i = 0; i< QQ.length; i++){
+      let tagA = document.createElement('a');
+      tagA.innerHTML = QQ[i].label;
+      tagA.setAttribute('href', `tencent://message/?uin=${QQ[i].dictValue}&amp;Site=www.freeforver.cn&amp;Menu=yes`);
+      tagA.setAttribute('target', '_blank');
+      let h3 = document.createElement('h3');
+      h3.setAttribute('class', 'fd-qqfgx');
+      h3.innerHTML = arr[i];
+      target.appendChild(h3);
+      target.appendChild(tagA);
+    }
+    
   }
 
   render() {
