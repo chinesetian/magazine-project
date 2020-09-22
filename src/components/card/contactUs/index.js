@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import './index.less'
 
 
-const { Dict, Service, Store } = window
+const { Dict } = window
 
 export default class ContactUs extends React.Component{
   constructor(props){
@@ -19,7 +19,7 @@ export default class ContactUs extends React.Component{
   
 
     render(){
-      let {className, title ='title', children, showMore,borderColor } = this.props
+      let {className, title ='', children, showMore,borderColor } = this.props
 
         return(
            <TitleContentCard

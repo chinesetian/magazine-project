@@ -1,6 +1,5 @@
 import React from "react";
-import { Tabs, message, Carousel } from 'antd';
-import { withRouter, Switch, Route } from 'react-router-dom'
+import { message, Carousel } from 'antd';
 import Card from '../../components/card'
 import ScrollBoxWithLabel from '../../components/scrollBoxWithLabel'
 import QuerySearch from '../../components/querySearch'
@@ -96,7 +95,7 @@ class DetailIndex extends React.Component {
    * 范文
    */
   articleThesispageList(){
-    let searchData = {"offset":0,"limit":5,}
+    let searchData = {"offset":0,"limit":6,}
     Service.base.articleThesispageList(searchData).then(res => {
         if(res.code == 0){
             this.setState({articleList: res.data.list});
@@ -213,7 +212,7 @@ class DetailIndex extends React.Component {
               borderColor={'#dddddd'}
               className="ju"
             >
-              <a href="http://www.gapp.gov.cn/govservice/108.shtml" ><img src={ju} /></a>
+              <a href="http://www.gapp.gov.cn/govservice/108.shtml" target={'_blank'} rel="noopener noreferrer"><img src={ju} /></a>
             </TitleContentCard>
             <TitleContentCard
               title="投稿须知"
