@@ -31,7 +31,7 @@ export default class DetailTopInfo extends React.Component{
       let { data ={} } = this.props
       return(
         <div className="detail-top-info">
-          <div className="left">《{data.name}》</div>
+          {data.name && <div className="left">《{data.name}杂志》</div>}
           <div className="right">
             <div className="right1">
               <LabelValue  label='主管单位' className="info" value={data.competentDepartment} emptyValue="暂无" noWrap={true}/>

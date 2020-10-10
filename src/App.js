@@ -49,6 +49,9 @@ class App extends Component {
     ]);
   }
 
+  /**
+   * 动态渲染QQ
+   */
   renderQQ() {
     debugger
     let { Dict } = window
