@@ -35,7 +35,7 @@ class App extends Component {
     window.BSConfig = BSConfig;
     
 
-    this.renderQQ();
+    this.renderQQ();  
     this.setState({flag: true})
 
   }
@@ -53,7 +53,6 @@ class App extends Component {
    * 动态渲染QQ
    */
   renderQQ() {
-    debugger
     let { Dict } = window
     let QQ = Dict.map.system_qq;
     let target = document.getElementsByClassName("fd-qqlist")[0];

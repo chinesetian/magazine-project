@@ -6,7 +6,7 @@ import './index.less'
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
-const { Service } = window
+const { Service, Dict } = window
 
 @inject('MenuStore')
 class MenuList extends React.Component {
@@ -30,6 +30,10 @@ class MenuList extends React.Component {
     }
 
     componentDidMount(){
+
+        let cnzz = Dict.getDict("periodical_other_info").find(v => v.dictValue == "periodical_other_info_cnzz").label  || '123';
+        this.appendCnzz(cnzz);
+
         let p = '';
         let a = '';
         Service.base.articleOther({}).then(res => {
@@ -37,6 +41,8 @@ class MenuList extends React.Component {
                 let result = res.data;
                 p = result.find(v => v.periodicalArticleTypeOther == 'periodical_article_type_other_process').content;
                 a = result.find(v => v.periodicalArticleTypeOther == 'periodical_article_type_other_about').content;
+                // let cnzz = result.find(v => v.periodicalArticleTypeOther == 'periodical_article_type_other_cnzz').content || 123;
+                
                 this.setState({process: p, detailprocess: p, about: a, detailabout: a});
             } else {
                 this.setState({process: p, detailprocess: p, about: a, detailabout: a});
@@ -44,6 +50,15 @@ class MenuList extends React.Component {
         }).catch(e => {
             this.setState({process: p, detailprocess: p, about: a, detailabout: a});
         })
+    }
+
+    /**
+     * 动态添加script
+     */
+    appendCnzz(src){
+        var scriptElement = document.createElement('script');
+        scriptElement.src = src
+        document.body.appendChild(scriptElement);
     }
 
     /**
