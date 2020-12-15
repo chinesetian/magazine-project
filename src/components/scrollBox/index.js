@@ -63,7 +63,7 @@ export default class ScrollBox extends React.Component{
                             </div>
                             )
                         })}
-                        {data.map((item,index) => {
+                        {data.length >= 5 && data.map((item,index) => {
                             return(
                             <div key={item.id} className="scroll-item">
                                 <span className="index" title={item.no}>{item.no}</span>

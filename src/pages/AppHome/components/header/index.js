@@ -44,7 +44,7 @@ class Header extends React.Component{
         let tel = []
         try {
             logo = _.cloneDeep(Dict.getDict("periodical_image_type").find(v => v.dictValue == "periodical_image_type_logo").url.split(",") || []);
-            tel = _.cloneDeep(Dict.getDict("periodical_other_info").find(v => v.dictValue == "periodical_other_info_tel").label || '');
+            // tel = _.cloneDeep(Dict.getDict("periodical_other_info").find(v => v.dictValue == "periodical_other_info_tel").label || '');
         } catch (error) {
             
         }
@@ -71,8 +71,8 @@ class Header extends React.Component{
                     </div>
                     <div className="phone">
                         
-                        <span>咨询热线<Icon type="phone" /></span>
-                        <span className="number">{tel || ''}</span>
+                        {/* <span>咨询热线<Icon type="phone" /></span>
+                        <span className="number">{tel || ''}</span> */}
                     </div>
                 </div>
             </div>

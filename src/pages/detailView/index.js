@@ -38,7 +38,7 @@ class DetailView extends React.Component {
 
     query.id && this.qikanDetail(query)
 
-    this.tel = _.cloneDeep(Dict.getDict("periodical_other_info").find(v => v.dictValue == "periodical_other_info_tel").label || '');
+    // this.tel = _.cloneDeep(Dict.getDict("periodical_other_info").find(v => v.dictValue == "periodical_other_info_tel").label || '');
     
     this.state = {
       data: query, // 详情数据
@@ -188,7 +188,7 @@ class DetailView extends React.Component {
                     </div>
                     <div className="right-phone">
                         <div className="one">在线咨询：</div>
-                        <div className="one">电话：{this.tel} </div>
+                        {/* <div className="one">电话：{this.tel} </div> */}
                         <div className="one">（周一至周六）</div>
                         <div className="one">早上 09:00-12:00</div>
                         <div className="one">下午 13:30-17:30</div>
