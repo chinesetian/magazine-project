@@ -1725,7 +1725,7 @@ babel-code-frame@^6.22.0:
 
 babel-eslint@10.0.1, babel-eslint@^10.0.1:
   version "10.0.1"
-  resolved "http://r.cnpmjs.org/babel-eslint/download/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
+  resolved "https://r.cnpmjs.org/babel-eslint/download/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.0.0"
@@ -2420,7 +2420,7 @@ commander@~2.19.0:
 
 comment-parser@^0.5.4:
   version "0.5.4"
-  resolved "http://r.cnpmjs.org/comment-parser/download/comment-parser-0.5.4.tgz#089840b9cccacad2b769b231ed43081d501b9487"
+  resolved "https://r.cnpmjs.org/comment-parser/download/comment-parser-0.5.4.tgz#089840b9cccacad2b769b231ed43081d501b9487"
 
 common-tags@^1.8.0:
   version "1.8.0"
@@ -3214,14 +3214,14 @@ ecc-jsbn@~0.1.1:
 
 echarts-for-react@^2.0.15-beta.0:
   version "2.0.15-beta.0"
-  resolved "http://r.cnpmjs.org/echarts-for-react/download/echarts-for-react-2.0.15-beta.0.tgz#dbf30b66bfcc8b1cb9f889eb3ec59a8b1363c3d6"
+  resolved "https://r.cnpmjs.org/echarts-for-react/download/echarts-for-react-2.0.15-beta.0.tgz#dbf30b66bfcc8b1cb9f889eb3ec59a8b1363c3d6"
   dependencies:
     fast-deep-equal "^2.0.1"
     size-sensor "^0.2.0"
 
 echarts@^4.2.1:
   version "4.2.1"
-  resolved "http://r.cnpmjs.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  resolved "https://r.cnpmjs.org/echarts/download/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
   dependencies:
     zrender "4.0.7"
 
@@ -3400,7 +3400,7 @@ eslint-plugin-import@2.16.0:
 
 eslint-plugin-jsdoc@^8.1.0:
   version "8.1.0"
-  resolved "http://r.cnpmjs.org/eslint-plugin-jsdoc/download/eslint-plugin-jsdoc-8.1.0.tgz#c0d5911b7b86d4185e4a9577446a3959376f48e9"
+  resolved "https://r.cnpmjs.org/eslint-plugin-jsdoc/download/eslint-plugin-jsdoc-8.1.0.tgz#c0d5911b7b86d4185e4a9577446a3959376f48e9"
   dependencies:
     comment-parser "^0.5.4"
     jsdoctypeparser "4.0.0"
@@ -3459,7 +3459,7 @@ eslint-visitor-keys@^1.0.0:
 
 eslint@^5.16.0:
   version "5.16.0"
-  resolved "http://r.cnpmjs.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
+  resolved "https://r.cnpmjs.org/eslint/download/eslint-5.16.0.tgz#a1e3ac1aae4a3fbd8296fcf8f7ab7314cbb6abea"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.9.1"
@@ -5333,7 +5333,7 @@ jsbn@~0.1.0:
 
 jsdoctypeparser@4.0.0:
   version "4.0.0"
-  resolved "http://r.cnpmjs.org/jsdoctypeparser/download/jsdoctypeparser-4.0.0.tgz#f25e212ff8b0e3e9ed76627554392787cd524128"
+  resolved "https://r.cnpmjs.org/jsdoctypeparser/download/jsdoctypeparser-4.0.0.tgz#f25e212ff8b0e3e9ed76627554392787cd524128"
 
 jsdom@^11.5.1:
   version "11.12.0"
@@ -6009,8 +6009,9 @@ mobx@^5.9.4:
   resolved "https://registry.npm.taobao.org/mobx/download/mobx-5.9.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmobx%2Fdownload%2Fmobx-5.9.4.tgz#1dee92aba33f67b7baeeb679e3bd376a12e55812"
 
 moment@2.x, moment@^2.24.0:
-  version "2.24.0"
-  resolved "https://registry.npm.taobao.org/moment/download/moment-2.24.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmoment%2Fdownload%2Fmoment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  version "2.29.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
+  integrity sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -8763,7 +8764,7 @@ sisteransi@^1.0.0:
 
 size-sensor@^0.2.0:
   version "0.2.4"
-  resolved "http://r.cnpmjs.org/size-sensor/download/size-sensor-0.2.4.tgz#93f7b3a8a8582967a1ae782c5ae39ae1dbb7368d"
+  resolved "https://r.cnpmjs.org/size-sensor/download/size-sensor-0.2.4.tgz#93f7b3a8a8582967a1ae782c5ae39ae1dbb7368d"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -10141,4 +10142,4 @@ yargs@^12.0.2:
 
 zrender@4.0.7:
   version "4.0.7"
-  resolved "http://r.cnpmjs.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  resolved "https://r.cnpmjs.org/zrender/download/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
